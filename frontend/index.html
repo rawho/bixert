@@ -31,7 +31,40 @@
             </div>
         </nav>
     </header>
-
+    <div class="container">
+        <div class="login-container">
+            <div class="close close-login">
+                <img src="images/icons/close.svg" alt="">
+            </div>
+            <h1>Login</h1>
+            <form class="login-form">
+                <input type="text" name="username" placeholder="username">
+                <input type="password" name="password" placeholder="password">
+                <button class="btn">Login</button>
+                <a href="#"><p>forgot password?</p></a>
+            </form>
+            <div class="already">
+                <p>Don't have an account <a id="signup__" href="#">Signup Now</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="container_">
+        <div class="signup-container">
+            <div class="close close-signup">
+                <img src="images/icons/close.svg" alt="">
+            </div>
+            <h1>Signup</h1>
+            <form class="signup-form">
+                <input type="email" name="email" placeholder="email">
+                <input type="password" name="password" placeholder="password">
+                <input type="text" name="confirmPassword" id="confirm" placeholder="Confirm password">
+                <button class="btn">signup</button>
+            </form>
+            <div class="already">
+                <p>Already have an account <a id="login__" href="#">Login</a></p>
+            </div>
+        </div>
+    </div>
     <section class="home">
         <div class="content">
             <h1>Create Events Like a <span>PRO</span> with <span>Bixert</span></h1>
@@ -43,6 +76,7 @@
         </div>
     </section>
 
+    <script src="js/login.js"></script>
     <script src="js/navbar.js"></script>
 </body>
 </html>

@@ -32,5 +32,15 @@ a {
     font-size: 1rem;
     font-weight: 600;
 }
+
+.success{
+    border: 2px solid greenyellow !important;
+}
+.error{
+    border: 2px solid crimson !important;
+}
+
+
 @import 'navbar';
 @import 'home';
+@import 'login';
