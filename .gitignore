@@ -124,6 +124,7 @@ ENV/
 env.bak/
 venv.bak/
 pythonenv*
+Bixert/.env
 
 # Spyder project settings
 .spyderproject
