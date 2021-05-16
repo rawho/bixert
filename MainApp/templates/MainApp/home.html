@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'MainApp/css/style.css' %}">
     <title>Bixert</title>
 </head>
 
@@ -36,7 +37,7 @@
     <div class="container">
         <div class="login-container">
             <div class="close close-login">
-                <img src="images/icons/close.svg" alt="">
+                <img src="{% static 'MainApp/images/icons/close.svg' %}" alt="">
             </div>
             <h1>Login</h1>
             <form class="login-form">
@@ -55,7 +56,7 @@
     <div class="container_">
         <div class="signup-container">
             <div class="close close-signup">
-                <img src="images/icons/close.svg" alt="">
+                <img src="{% static 'MainApp/images/icons/close.svg' %}" alt="">
             </div>
             <h1>Signup</h1>
             <form class="signup-form">
@@ -76,12 +77,12 @@
         </div>
 
         <div class="home-image">
-            <img src="images/schedule-management.jpg" alt="">
+            <img src="{% static 'MainApp/images/schedule-management.jpg' %}" alt="">
         </div>
     </section>
 
-    <script src="js/login.js"></script>
-    <script src="js/navbar.js"></script>
+    <script src="{% static 'MainApp/js/login.js' %}"></script>
+    <script src="{% static 'MainApp/js/navbar.js' %}"></script>
 </body>
 
 </html>

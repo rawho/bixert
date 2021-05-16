@@ -1,0 +1,111 @@
+.header{
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    border-bottom: 1px solid #E2E8F0;
+    box-shadow: 10px 10px 18px -15px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 10px 10px 18px -15px rgba(0,0,0,0.51);
+    -moz-box-shadow: 10px 10px 18px -15px rgba(0,0,0,0.51);
+
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        .nav-logo{
+            font-size: 2rem;
+            font-weight: 600;
+            color: #6657da;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .nav-item {
+                margin-left: 2rem;
+
+                @media(max-width: 767px){
+                    margin: 1.5rem 0;
+                }
+            }
+            .login{
+                border: 1px solid #7b3ad1;
+                border-radius: 20px;
+                color: #E5E5E5;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+            .register{
+                border-radius: 20px;
+                background-color: #6657da;
+                color: #E5E5E5;
+                padding: 10px 20px;
+                cursor: pointer;
+                
+                .nav-link{
+                    color: #fff;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .hamburger {
+        display: none;
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            background-color: #101010;
+        }
+
+        @media(max-width: 767px){
+            display: block;
+            cursor: pointer;
+            
+            .active .bar:nth-child(2){
+                opacity: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {  
+
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+
+}
