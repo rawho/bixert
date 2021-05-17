@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Event
 
 
 def home(request):
-    return render(request, "MainApp/home.html")
+    context = {"events": Event.objects.all()}
+    return render(request, "MainApp/home.html", context)
