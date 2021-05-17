@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Bixert</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="nav-logo">Bixert</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="./events.html" class="nav-link">Discover Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">Registered Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">My Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="./create_event.html" class="nav-link">Create Event</a>
+                </li>
+            </ul>
+            <div class="mobile-nav-right">
+                <div class="user">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-4--v1.png"/></a>
+                    </li>
+                    <div class="dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="#">My Events</a>
+                        <a href="#">Logout</a>
+                    </div>
+                </div>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="profile-container">
+        
+        <div class="_">
+            <h1>Profile Details</h1>
+            <p>View & Update Your Profile Details</p>
+            <div class="profile-details">
+                <div class="dp">
+                    <img src="images/banner.jpeg" alt="">
+                    <div class="edit"><img src="https://img.icons8.com/office/16/000000/edit.png"/></div>
+                </div>
+                <div class="personal-details">
+                    <h1>Rahul T</h1>
+                    <p>rahulmanoj@cet.ac.in</p>
+                </div>
+            </div>
+            
+        </div>
+        <div class="profile-update">
+            <div class="__">
+                <button class="btn edit-profile-btn">Edit Profile</button>
+                <button class="btn cancel">Cancel</button>
+            </div>
+            <form class="profile-edit-form">
+                <input type="text" id="name" placeholder="Name">
+
+                <input type="email" id="email" placeholder="email">
+
+                <input type="text" id="phoneNo" placeholder="Mobile No">
+                
+                <input type="text" id="company" placeholder="company name">
+
+                <button class="btn save">save</button>
+            </form>
+
+            <div class="pro-details">
+                <p>Name: <span>Rahul T</span> </p> 
+                <p>Email: <span>Rahul@gamil.com</span> </p> 
+                <p>Phone Number: <span>-</span> </p> 
+
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        document.querySelector('.edit-profile-btn').addEventListener('click', e => {
+            document.querySelector('.pro-details').style.display = 'none'
+            document.querySelector('.profile-edit-form').style.display = 'flex'
+            document.querySelector('.cancel').style.display = 'flex'
+        })
+        document.querySelector('.cancel').addEventListener('click', e => {
+            document.querySelector('.pro-details').style.display = ''
+            document.querySelector('.profile-edit-form').style.display = 'none'
+            document.querySelector('.cancel').style.display = 'none'
+        });
+    </script>
+   
+    <script src="js/login.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+
+</html>

@@ -8,6 +8,9 @@ class Profile(models.Model):
     image = models.ImageField(
         default="profile_pics/default.jpg", upload_to="profile_pics"
     )
+    name = models.CharField(null=True, blank=True, max_length=25)
+    phone_no = models.CharField(null=True, blank=True, max_length=10)
+    company = models.CharField(null=True, blank=True, max_length=50)
     def save(self):
         super().save()
 

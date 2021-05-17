@@ -1,7 +1,65 @@
 {% extends 'users/base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
+
 {% block content %}
-<h1>{{ user.username }}</h1>
-<h1>{{ user.email }}</h1>
-<img src="{{ user.profile.image.url }}" alt="">
-{% endblock content %}
+<div class="profile-container">
+    
+    <div class="_">
+        <h1>Profile Details</h1>
+        <p>View & Update Your Profile Details</p>
+        <div class="profile-details">
+            <div class="dp">
+                <img src="{{ user.profile.image.url }}" alt="">
+                <div class="edit"><img src="https://img.icons8.com/office/16/000000/edit.png"/></div>
+            </div>
+            <div class="personal-details">
+                <h1>{{ user.username }}</h1>
+                <p>{{ user.email }}</p>
+            </div>
+        </div>
+        
+    </div>
+    <div class="profile-update">
+        <div class="__">
+            <button class="btn edit-profile-btn">Edit Profile</button>
+            <button class="btn cancel">Cancel</button>
+        </div>
+
+        <form class="profile-edit-form">
+            <input type="text" id="name" placeholder="Name">
+
+            <input type="email" id="email" placeholder="email">
+
+            <input type="text" id="phoneNo" placeholder="Mobile No">
+            
+            <input type="text" id="company" placeholder="company name">
+
+            <button class="btn save">save</button>
+        </form>
+
+        <div class="pro-details">
+            <p>Username: <span>{{ user.username }}</span></p>
+            <p>Name: <span>{% if user.profile.name %} {{ user.profile.name }} {% else %} - {% endif %}</span> </p> 
+            <p>Email: <span>{{ user.email }}</span> </p> 
+            <p>Phone Number: <span>{% if user.profile.phone_no %} {{ user.profile.phone_no }} {% else %} - {% endif %}</span> </p> 
+            <p>Company: <span>{% if user.profile.company %} {{ user.profile.company }} {% else %} - {% endif %}</span> </p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.querySelector('.edit-profile-btn').addEventListener('click', e => {
+        document.querySelector('.pro-details').style.display = 'none'
+        document.querySelector('.profile-edit-form').style.display = 'flex'
+        document.querySelector('.cancel').style.display = 'flex'
+    })
+    document.querySelector('.cancel').addEventListener('click', e => {
+        document.querySelector('.pro-details').style.display = ''
+        document.querySelector('.profile-edit-form').style.display = 'none'
+        document.querySelector('.cancel').style.display = 'none'
+    });
+</script>
+
+{% endblock %}
