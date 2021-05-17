@@ -30,6 +30,9 @@
             .question{
                 font-size: 2rem;
                 margin-bottom: 20px;
+                @media(max-width: 767px){
+                    font-size: 1.3rem;
+                }
             }
 
             input, textarea{
@@ -38,6 +41,10 @@
                 border: 1px solid #00000030;
                 padding: 10px 20px;
                 font-size: 1rem;
+
+                @media(max-width: 767px){
+                    width: 100%;
+                }
             }
             
             input[type=date]{

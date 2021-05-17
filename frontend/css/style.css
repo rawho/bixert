@@ -515,12 +515,24 @@ a {
   margin-bottom: 20px;
 }
 
+@media (max-width: 767px) {
+  .create-event-container .create-event .question-container .question {
+    font-size: 1.3rem;
+  }
+}
+
 .create-event-container .create-event .question-container input, .create-event-container .create-event .question-container textarea {
   width: 50%;
   outline: none;
   border: 1px solid #00000030;
   padding: 10px 20px;
   font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  .create-event-container .create-event .question-container input, .create-event-container .create-event .question-container textarea {
+    width: 100%;
+  }
 }
 
 .create-event-container .create-event .question-container input[type=date] {
