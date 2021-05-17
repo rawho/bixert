@@ -41,7 +41,6 @@ a {
 }
 
 .header {
-  position: fixed;
   width: 100%;
   background-color: #fff;
   z-index: 100;
@@ -407,5 +406,66 @@ a {
     -webkit-transform: translate(-50%, -50%) scale(1);
             transform: translate(-50%, -50%) scale(1);
   }
+}
+
+.events-page {
+  margin-top: 50px;
+}
+
+.events-page .events-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  width: 90%;
+  margin: auto;
+}
+
+.events-page .events-container .event {
+  border: 1px solid #00000030;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+}
+
+.events-page .events-container .event .banner img {
+  width: 100%;
+}
+
+.events-page .events-container .event h1 {
+  font-size: 1.3rem;
+}
+
+.events-page .events-container .event p {
+  font-size: .9rem;
+  padding: 10px 0;
+}
+
+.events-page .events-container .event .date, .events-page .events-container .event .location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.events-page .events-container .event .date img, .events-page .events-container .event .location img {
+  width: 20px;
+}
+
+.events-page .events-container .event .date p, .events-page .events-container .event .location p {
+  margin-left: 10px;
 }
 /*# sourceMappingURL=style.css.map */
