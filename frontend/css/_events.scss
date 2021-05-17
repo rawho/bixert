@@ -1,0 +1,46 @@
+.events-page{
+    margin-top: 50px;
+    .events-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 10px;
+        width: 90%;
+        margin: auto;
+
+
+        .event{
+            border: 1px solid #00000030;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+
+
+            .banner{
+                img{
+                    width: 100%;
+                }
+
+            }
+            h1{
+                font-size: 1.3rem;
+
+            }
+            p{
+                font-size: .9rem;
+                padding: 10px 0;
+            }
+            .date, .location{
+                display: flex;
+                flex-direction: row;
+                align-items: center;                
+                img{
+                    width: 20px;
+                }
+                p{
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
