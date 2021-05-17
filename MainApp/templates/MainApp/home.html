@@ -1,49 +1,29 @@
-{% extends 'MainApp/base.html' %}
+<h1>Event listing</h1>
 
-{% load static %}
+<html lang="en">
 
-{% block content %}
-<div class="container">
-    <div class="login-container">
-        <div class="close close-login">
-            <img src="{% static 'images/icons/close.svg' %}" alt="">
-        </div>
-        <h1>Login</h1>
-        <form class="login-form">
-            <input type="text" name="username" placeholder="username">
-            <input type="password" name="password" placeholder="password">
-            <button class="btn">Login</button>
-            <a href="#">
-                <p>forgot password?</p>
-            </a>
-        </form>
-        <div class="already">
-            <p>Don't have an account <a id="signup__" href="#">Signup Now</a></p>
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
     </div>
-</div>
-<div class="container_">
-    <div class="signup-container">
-        <div class="close close-signup">
-            <img src="{% static 'images/icons/close.svg' %}" alt="">
-        </div>
-        <h1>Signup</h1>
-        <form class="signup-form">
-            <input type="email" name="email" placeholder="email">
-            <input type="password" name="password" placeholder="password">
-            <input type="text" name="confirmPassword" id="confirm" placeholder="Confirm password">
-            <button class="btn">signup</button>
-        </form>
-        <div class="already">
-            <p>Already have an account <a id="login__" href="#">Login</a></p>
-        </div>
-    </div>
-</div>
-<section class="home">
-    <div class="content">
-        <h1>Create Events Like a <span>PRO</span> with <span>Bixert</span></h1>
-        <a href=""><button class="btn">Create Event</button></a>
-    </div>
+    {% endfor %}
+    {% endif %}
+    {% for event in events %}
+    <h1>{{event.title}}</h1>
+    <h1>{{event.author}}</h1>
+    <h1>{{event.content}}</h1>
+    <h1>{{event.date_posted|date:"F d, Y, h:i A"}}</h1>
+    {% endfor %}
+</body>
 
     <div class="home-image">
         <img src="{% static 'images/schedule-management.jpg' %}" alt="">
