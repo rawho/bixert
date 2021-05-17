@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Bixert</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="nav-logo">Bixert</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="./events.html" class="nav-link">Discover Events</a>
+                </li>
+                <li class="nav-item login">
+                    <a href="#" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item register">
+                    <a href="#" class="nav-link">Get Started</a>
+                </li>
+            </ul>
+
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="login-container">
+            <div class="close close-login">
+                <img src="images/icons/close.svg" alt="">
+            </div>
+            <h1>Login</h1>
+            <form class="login-form">
+                <input type="text" name="username" placeholder="username">
+                <input type="password" name="password" placeholder="password">
+                <button class="btn">Login</button>
+                <a href="#">
+                    <p>forgot password?</p>
+                </a>
+            </form>
+            <div class="already">
+                <p>Don't have an account <a id="signup__" href="#">Signup Now</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="container_">
+        <div class="signup-container">
+            <div class="close close-signup">
+                <img src="images/icons/close.svg" alt="">
+            </div>
+            <h1>Signup</h1>
+            <form class="signup-form">
+                <input type="email" name="email" placeholder="email">
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="password">
+                <input type="text" name="confirmPassword" id="confirm" placeholder="Confirm password">
+                <button class="btn">signup</button>
+            </form>
+            <div class="already">
+                <p>Already have an account <a id="login__" href="#">Login</a></p>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="create-event-container">
+        <form class="create-event">
+            <div class="question-container">
+                <div class="circle">1</div>
+                <h1 class="question">What is your event name?</h1>
+                <input type="text" placeholder="Event name">
+            </div>
+
+            <div class="question-container">
+                <div class="circle">2</div>
+                <h1 class="question">Brief Description of Event</h1>
+                <textarea id="description" cols="30" rows="10"></textarea>
+            </div>
+
+            <div class="question-container">
+                <div class="circle">3</div>
+                <h1 class="question">When is your Event?</h1>
+                <input type="date" placeholder="Event name">
+            </div>
+
+            <div class="question-container">
+                <div class="circle">4</div>
+                <h1 class="question">Where is your Event?</h1>
+                <div class="location-container">
+                    <input type="radio" id="online" name="location">
+                    <label for="online">Online</label>
+                    <input type="radio" name="location" id="venue">
+                    <label for="venue">Venue</label>
+
+                </div>
+                <input type="text" id="location" name="location" placeholder="location">
+            </div>
+
+            <div class="question-container">
+                <div class="circle">5</div>
+                <h1 class="question">When is your Event?</h1>
+                <input type="file" id="img" name="img" accept="image/*">
+            </div>
+
+
+        </form>
+    </div>
+
+    <script>
+        const radioBtns = document.querySelectorAll('input[type=radio')
+        radioBtns.forEach(radioBtn => {
+            radioBtn.addEventListener('click', e => {
+                if(e.target.getAttribute('id') === 'venue'){
+                    document.getElementById('location').style.display = 'flex'
+                } else{
+                    document.getElementById('location').style.display = 'none'
+                }
+            })
+        });
+    </script>
+    <script src="js/login.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+
+</html>
