@@ -65,6 +65,7 @@
                 {% csrf_token %}
                 <input type="email" name="email" placeholder="email">
                 <input type="text" name="username" placeholder="Username">
+                {% csrf_token %}
                 <input type="password" name="password" placeholder="password">
                 <input type="text" name="confirmPassword" id="confirm" placeholder="Confirm password">
                 <button class="btn" name="register_form">signup</button>
