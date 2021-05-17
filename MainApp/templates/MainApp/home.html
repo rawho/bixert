@@ -1,32 +1,16 @@
-<h1>Event listing</h1>
+{% extends 'MainApp/base.html' %}
+{% load static %}
 
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">
-        {{ message }}
+{% block content %}
+<section class="home">
+    <div class="content">
+        <h1>Create Events Like a <span>PRO</span> with <span>Bixert</span></h1>
+        <a href="{% url 'create-event' %}"><button class="btn">Create Event</button></a>
     </div>
-    {% endfor %}
-    {% endif %}
-    {% for event in events %}
-    <h1>{{event.title}}</h1>
-    <h1>{{event.author}}</h1>
-    <h1>{{event.content}}</h1>
-    <h1>{{event.date_posted|date:"F d, Y, h:i A"}}</h1>
-    {% endfor %}
-</body>
 
     <div class="home-image">
-        <img src="{% static 'images/schedule-management.jpg' %}" alt="">
+        <img src="{% static 'MainApp/images/schedule-management.jpg' %}" alt="">
     </div>
 </section>
+
 {% endblock %}

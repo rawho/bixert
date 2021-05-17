@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'MainApp/css/style.css' %}">
     <title>Bixert</title>
 </head>
 
@@ -14,7 +14,7 @@
 
     <header class="header">
         <nav class="navbar">
-            <a href="{% url 'home' %}" class="nav-logo">Bixert</a>
+            <a href="{% url 'MainApp-home' %}" class="nav-logo">Bixert</a>
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="{% url 'events' %}" class="nav-link">Discover Events</a>
@@ -35,11 +35,49 @@
         </nav>
     </header>
 
+    <div class="container">
+        <div class="login-container">
+            <div class="close close-login">
+                <img src="{% static 'MainApp/images/icons/close.svg' %}" alt="">
+            </div>
+            <h1>Login</h1>
+            <form class="login-form">
+                <input type="text" name="username" placeholder="username">
+                <input type="password" name="password" placeholder="password">
+                <button class="btn">Login</button>
+                <a href="#">
+                    <p>forgot password?</p>
+                </a>
+            </form>
+            <div class="already">
+                <p>Don't have an account <a id="signup__" href="#">Signup Now</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="container_">
+        <div class="signup-container">
+            <div class="close close-signup">
+                <img src="{% static 'MainApp/images/icons/close.svg' %}" alt="">
+            </div>
+            <h1>Signup</h1>
+            <form class="signup-form">
+                <input type="email" name="email" placeholder="email">
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="password">
+                <input type="text" name="confirmPassword" id="confirm" placeholder="Confirm password">
+                <button class="btn">signup</button>
+            </form>
+            <div class="already">
+                <p>Already have an account <a id="login__" href="#">Login</a></p>
+            </div>
+        </div>
+    </div>
+
     {% block content %} {% endblock %}
     
 
-    <script src="{% static 'js/login.js' %}"></script>
-    <script src="{% static 'js/navbar.js' %}"></script>
+    <script src="{% static 'MainApp/js/navbar.js' %}"></script>
+    <script src="{% static 'MainApp/js/login.js' %}"></script>
 </body>
 
 </html>

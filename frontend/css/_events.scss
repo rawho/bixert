@@ -6,7 +6,11 @@
         gap: 10px;
         width: 90%;
         margin: auto;
+        margin-bottom: 100px;
 
+        @media(max-width: 767px){
+            grid-template-columns: 1fr;
+        }
 
         .event{
             border: 1px solid #00000030;

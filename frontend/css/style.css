@@ -420,6 +420,14 @@ a {
   gap: 10px;
   width: 90%;
   margin: auto;
+  margin-bottom: 100px;
+}
+
+@media (max-width: 767px) {
+  .events-page .events-container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 
 .events-page .events-container .event {
