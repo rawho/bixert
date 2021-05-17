@@ -4,23 +4,33 @@ from .forms import UserRegisterForm, LoginForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 
-def index(request):
-    return render(request, "index.html")
-
-
-def register(request):
+def register_login(request):
     if request.method == "POST":
-        username = request.POST.get["username"]
-        password = request.POST.get["password"]
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                return redirect("login")
-        else:
-            return HttpResponse("<h1>invalid login<h1>")
-        return render(request, "users/user_login_reg.html")
+        if "login_form" in request.POST:
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect("events")
+                else:
+                    return HttpResponse("<h1>Disabled account<h1>")
+            else:
+                return HttpResponse("<h1>invalid login<h1>")
+        elif "register_form" in request.POST:
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            email = request.POST.get("email")
+            conf_password = request.POST.get("confirmPassword")
+            User.objects.create_user(username=username, password=password, email=email)
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+            return redirect("events")
+    return render(request, "users/home.html")
 
 
 @login_required
