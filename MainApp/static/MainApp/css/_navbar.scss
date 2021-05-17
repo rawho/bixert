@@ -53,6 +53,7 @@
         &:hover .dropdown{
             display: flex;
         }
+        
         @media(max-width: 767px){
             &:active .dropdown{
                 display: flex;
@@ -82,7 +83,11 @@
         }
     }
 }
-
+#dp{
+    width: 40px !important;
+    height: 40px;
+    border-radius: 50%;
+}
 
 .mobile-nav-right{
     display: flex;
