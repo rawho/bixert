@@ -1,14 +1,26 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, LoginForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
+
+
+def index(request):
+    return render(request, "index.html")
 
 
 def register(request):
-    username = request.POST.get["username"]
-    password = request.POST.get["password"]
-    return redirect("login")
-    return render(request, "users/user_login_reg.html", {"form": form})
+    if request.method == "POST":
+        username = request.POST.get["username"]
+        password = request.POST.get["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                return redirect("login")
+        else:
+            return HttpResponse("<h1>invalid login<h1>")
+        return render(request, "users/user_login_reg.html")
 
 
 @login_required
