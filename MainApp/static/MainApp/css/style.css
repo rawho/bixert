@@ -699,10 +699,10 @@ a {
 }
 
 .profile-container {
-  height: 70vh;
   width: 80%;
   margin: auto;
   margin-top: 50px;
+  margin-bottom: 100px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -889,6 +889,13 @@ a {
 
 .event-details-profile .inner-nav {
   border-bottom: 1px solid #00000030;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .event-details-profile .inner-nav .btn {
@@ -1043,5 +1050,56 @@ a {
 
 .event-details .overview .content {
   margin: 60px 0;
+}
+
+.event-details .overview .attendees {
+  display: none;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: left;
+}
+
+@media (max-width: 767px) {
+  .event-details .overview .attendees {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    justify-items: left;
+  }
+}
+
+.event-details .overview .attendees .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 50px;
+}
+
+@media (max-width: 767px) {
+  .event-details .overview .attendees .user {
+    margin-top: 10px;
+  }
+}
+
+.event-details .overview .attendees .user img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 10px;
+}
+
+.event-details .overview .attendees .user h2 {
+  font-size: 1rem;
 }
 /*# sourceMappingURL=style.css.map */

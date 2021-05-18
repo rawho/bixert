@@ -67,6 +67,16 @@ def registered(request):
 
 class EventsDetailView(DetailView):
     model = Event
+    def get(self, request, *args, **kwargs):
+        return render(
+            request,
+            template_name=self.template_name,
+            context={
+
+                "users": [ev.registered_user for ev in EventUser.objects.all().filter(registered_event=self.object)]
+            }
+        )
+
 
 
 @csrf_exempt

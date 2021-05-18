@@ -29,16 +29,52 @@
 
     <div class="overview">
         <div class="overview-nav">
-            <button class="btn active">Overviwe</button>
-            <button class="btn">Attendees</button>
+            <button class="btn overviewBtn active">Overviwe</button>
+            <button class="btn attendeesBtn">Attendees</button>
         </div>
         <div class="content">
             <p>{{object.content}}</p>
         </div>
+        <div class="attendees">
+            
+            {% for user in users %}
+            <div class="user">
+                <img src="{{user.profile.image.url }}" alt="">
+                <h2>{{ user.username }}</h2>
+            </div>
+           {% endfor %}
+        </div>
         
     </div>
 
+
 </section>
 
+<script>
+    const contentDiv = document.querySelector('.content')
+    const attendeesDiv = document.querySelector('.attendees')
+
+    const overviewBtn = document.querySelector('.overviewBtn')
+    const attendeesBtn = document.querySelector('.attendeesBtn')
+
+
+
+
+    overviewBtn.addEventListener('click', e => {
+        overviewBtn.classList.toggle('active')
+        attendeesBtn.classList.toggle('active')
+        contentDiv.style.display = '';
+        attendeesDiv.style.display = 'none'
+    })
+
+    attendeesBtn.addEventListener('click', e => {
+        attendeesBtn.classList.toggle('active')
+        overviewBtn.classList.toggle('active')
+        contentDiv.style.display = 'none';
+        attendeesDiv.style.display = 'grid'
+    })
+
+
+</script>
 
 {% endblock %}
