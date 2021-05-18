@@ -1,0 +1,9 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+{% for event in events %}
+<h1>{{event.registered_event}}</h1>
+{% endfor %}
+
+{% endblock %}

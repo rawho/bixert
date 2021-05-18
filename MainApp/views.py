@@ -27,7 +27,7 @@ class EventsListView(ListView, View):
     def get(self, request, *args, **kwargs):
         if "register" in request.GET:
             event = request.GET.get("event")
-            event = Event.objects.all().filter(id=1).first()
+            event = Event.objects.all().filter(id=event).first()
             EventUser.objects.create(
                 registered_event=event, registered_user=request.user
             )
@@ -36,6 +36,17 @@ class EventsListView(ListView, View):
             template_name=self.template_name,
             context={"events": Event.objects.all(), "request": request},
         )
+
+
+def registered(request):
+    print(
+        EventUser.objects.all()
+        .filter(registered_user=request.user)
+        .first()
+        .registered_event
+    )
+    context = {"events": EventUser.objects.all().filter(registered_user=request.user)}
+    return render(request, "MainApp/registered.html", context)
 
 
 class EventsDetailView(DetailView):
