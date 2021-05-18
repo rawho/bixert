@@ -5,23 +5,24 @@
 
 {% block content %}
 <div class="create-event-container">
-    <form class="create-event">
+    <form class="create-event" action="" method="POST">
+        {% csrf_token %}
         <div class="question-container">
             <div class="circle">1</div>
             <h1 class="question">What is your event name?</h1>
-            <input type="text" placeholder="Event name">
+            <input type="text" placeholder="Event name" name="title">
         </div>
 
         <div class="question-container">
             <div class="circle">2</div>
             <h1 class="question">Brief Description of Event</h1>
-            <textarea id="description" cols="30" rows="10"></textarea>
+            <textarea id="description" cols="30" rows="10" name="content"></textarea>
         </div>
 
         <div class="question-container">
             <div class="circle">3</div>
             <h1 class="question">When is your Event?</h1>
-            <input type="date" placeholder="Event name">
+            <input type="date" placeholder="Event name" name="date">
         </div>
 
         <div class="question-container">
@@ -42,8 +43,7 @@
             <h1 class="question">Banner for the Event</h1>
             <input type="file" id="img" name="img" accept="image/*">
         </div>
-
-
+        <input type="submit" class="btn" value="Create Event">
     </form>
 </div>
 
@@ -51,12 +51,12 @@
     const radioBtns = document.querySelectorAll('input[type=radio')
     radioBtns.forEach(radioBtn => {
         radioBtn.addEventListener('click', e => {
-            if(e.target.getAttribute('id') === 'venue'){
+            if (e.target.getAttribute('id') === 'venue') {
                 document.getElementById('location').style.display = 'flex'
-            } else{
+            } else {
                 document.getElementById('location').style.display = 'none'
             }
         })
     });
 </script>
-{% endblock  %}
+{% endblock %}

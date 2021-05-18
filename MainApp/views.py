@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Event
 from django.views.generic import ListView, DetailView, CreateView
+from django.views.decorators.csrf import csrf_exempt
 
 
 def events(request):
@@ -18,14 +19,12 @@ class EventsDetailView(DetailView):
     model = Event
 
 
+@csrf_exempt
 def createEvent(request):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        author = request.user
+        Event.objects.create(title=title, content=content, author=author)
+        return redirect("events")
     return render(request, "MainApp/createEvent.html", {})
-
-
-class EventCreateView(CreateView):
-    model = Event
-    fields = ["title", "content"]
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
