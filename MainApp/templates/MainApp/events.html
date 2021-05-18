@@ -28,6 +28,10 @@
                 </div>
                 <p class="organised-by">Organised by {{event.author}}</p>
             </a>
+
+            {% if request.user.username != event.author %}
+                <button class="btn">Register</button>
+            {% endif %}
         </div>
 
         {% endfor %}

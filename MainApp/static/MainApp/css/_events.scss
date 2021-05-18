@@ -17,6 +17,7 @@
             border-radius: 10px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             padding: 10px;
 
 
@@ -43,6 +44,18 @@
                 }
                 p{
                     margin-left: 10px;
+                }
+            }
+
+            .btn{
+                background-color: transparent;
+                border: 1px solid #00000030;
+                color: #6657da;
+                transition: 0.1s ease;
+                
+                &:hover{
+                    background-color: #6657da;
+                    color: #fff;
                 }
             }
         }

@@ -508,6 +508,9 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 10px;
 }
 
@@ -543,6 +546,19 @@ a {
 
 .events-page .events-container .event .date p, .events-page .events-container .event .location p {
   margin-left: 10px;
+}
+
+.events-page .events-container .event .btn {
+  background-color: transparent;
+  border: 1px solid #00000030;
+  color: #6657da;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+}
+
+.events-page .events-container .event .btn:hover {
+  background-color: #6657da;
+  color: #fff;
 }
 
 .create-event-container {
