@@ -2,8 +2,32 @@
 
 {% block content %}
 
+<div style="margin-top: 50px;" class="events-container">
+
 {% for event in events %}
-<h1>{{event.registered_event}}</h1>
+<div class="event">
+    <a style="color: black;" href="{% url 'event-detail' event.id %}">
+        <div class="banner">
+            <img src="{{ event.registered_event.banner.url }}" alt="">
+        </div>
+        <h1 class="title">{{event.registered_event.title}}</h1>
+        <p>{{event.registered_event.content}}</p>
+
+        <div class="date">
+            <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
+            <p>{{event.registered_event.date_posted|date:"F d, Y, h:i A"}}</p>
+
+        </div>
+
+        <div class="location">
+            <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+            <p>{{ event.registered_event.venue }}</p>
+        </div>
+        <p class="organised-by">Organised by {{event.registered_event.author}}</p>
+    </a>
+
+</div>
+
 {% endfor %}
 
 {% endblock %}
