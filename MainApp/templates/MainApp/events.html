@@ -23,14 +23,14 @@
                 </div>
 
                 <div class="location">
-                    <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png"/>
+                    <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
                     <p>{{ event.venue }}</p>
                 </div>
                 <p class="organised-by">Organised by {{event.author}}</p>
             </a>
 
-            {% if request.user.username != event.author %}
-                <button class="btn">Register</button>
+            {% if request.user != event.author %}
+            <button class="btn">Register</button>
             {% endif %}
         </div>
 
