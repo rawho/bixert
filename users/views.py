@@ -36,13 +36,3 @@ def register_login(request):
 @login_required
 def profile(request):
     return render(request, "users/profile.html")
-
-
-# <!-- check for login sample code
-
-# {% if user.is_authenticated %}
-# show profile link
-# show logout link
-# {% else %}
-# show login
-# show register  -->

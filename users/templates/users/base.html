@@ -28,13 +28,13 @@
                 <li class="nav-item">
                     <a href="{% url 'create-event' %}" class="nav-link">Create Event</a>
                 </li>
-        
+
             </ul>
 
             <div class="mobile-nav-right">
                 <div class="user">
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><img id="dp" src="{{ user.profile.image.url }}"/></a>
+                        <a href="#" class="nav-link"><img id="dp" src="{{ user.profile.image.url }}" /></a>
                     </li>
                     <div class="dropdown">
                         <a href="{% url 'profile' %}">My Profile</a>
@@ -42,7 +42,7 @@
                         <a href="#">Logout</a>
                     </div>
                 </div>
-                
+
                 <div class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
