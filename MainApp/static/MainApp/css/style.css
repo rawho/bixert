@@ -616,6 +616,11 @@ a {
   color: #fff;
 }
 
+.events-container .event .registered {
+  background-color: #6657da;
+  color: #fff;
+}
+
 .create-event-container {
   min-height: 100vh;
   width: 80%;

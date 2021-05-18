@@ -51,11 +51,11 @@
 
 <div class="event-details-profile">
     <div class="inner-nav">
-        <button class="btn active">My Events</button>
-        <button class="btn">Upcoming Events</button>
+        <button class="btn myeventsBtn active">My Events</button>
+        <button class="btn upcomingBtn">Upcoming Events</button>
     </div>
 
-    <div class="events-container">
+    <div class="events-container my-events">
 
         {% for event in events %}
             <div class="event">
@@ -87,6 +87,33 @@
         {% endfor %}
     </div>
 
+
+    <div style="display: none;" class="events-container upcoming">
+        {% for event in registered_events %}
+        <div class="event">
+            <a style="color: black;" href="{% url 'event-detail' event.id %}">
+                <div class="banner">
+                    <img src="{{ event.registered_event.banner.url }}" alt="">
+                </div>
+                <h1 class="title">{{event.registered_event.title}}</h1>
+                <p>{{event.registered_event.content}}</p>
+
+                <div class="date">
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
+                    <p>{{event.registered_event.date_posted|date:"F d, Y, h:i A"}}</p>
+
+                </div>
+
+                <div class="location">
+                    <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+                    <p>{{ event.registered_event.venue }}</p>
+                </div>
+                <p class="organised-by">Organised by {{event.registered_event.author}}</p>
+            </a>
+        </div>
+
+        {% endfor %}
+    </div>
 </div>
 
 
@@ -100,6 +127,32 @@
         document.querySelector('.pro-details').style.display = ''
         document.querySelector('.profile-edit-form').style.display = 'none'
         document.querySelector('.cancel').style.display = 'none'
+    });
+</script>
+
+
+<script>
+    const upcomingDiv = document.querySelector('.upcoming')
+    const myeventsDiv = document.querySelector('.my-events')
+
+    const myEventsBtn = document.querySelector('.myeventsBtn')
+    const upcomingBtn = document.querySelector('.upcomingBtn')
+
+
+
+
+    myEventsBtn.addEventListener('click', e => {
+        myEventsBtn.classList.toggle('active')
+        upcomingBtn.classList.toggle('active')
+        myeventsDiv.style.display = '';
+        upcomingDiv.style.display = 'none'
+    })
+
+    upcomingBtn.addEventListener('click', e => {
+        upcomingBtn.classList.toggle('active')
+        myEventsBtn.classList.toggle('active')
+        myeventsDiv.style.display = 'none';
+        upcomingDiv.style.display = 'grid'
     });
 </script>
 
