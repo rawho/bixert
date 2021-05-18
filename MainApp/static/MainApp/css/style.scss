@@ -32,6 +32,10 @@ a {
     font-weight: 600;
 }
 
+.disabled{
+    background-color: #00000090;
+    cursor: not-allowed;
+}
 .success{
     border: 2px solid greenyellow !important;
 }

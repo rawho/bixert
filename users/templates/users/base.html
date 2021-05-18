@@ -86,9 +86,9 @@
             <h1>Login</h1>
             <form class="login-form" action="" method="POST">
                 {% csrf_token %}
-                <input type="text" name="username" placeholder="username">
-                <input type="password" name="password" placeholder="password">
-                <button class="btn" name="login_form">Login</button>
+                <input type="text" name="username" placeholder="username" required>
+                <input type="password" name="password" placeholder="password" required>
+                <input type="submit" class="btn" name="login_form" value="Login">
                 <a href="#">
                     <p>forgot password?</p>
                 </a>
@@ -104,13 +104,14 @@
                 <img src="{% static 'MainApp/images/icons/close.svg' %}" alt="">
             </div>
             <h1>Signup</h1>
+            <div class="feedback"></div>
             <form class="signup-form" action="" method="POST">
                 {% csrf_token %}
-                <input type="email" name="email" placeholder="email">
-                <input type="text" name="username" placeholder="Username">
-                <input type="password" name="password" placeholder="password">
-                <input type="text" name="confirmPassword" id="confirm" placeholder="Confirm password">
-                <button class="btn" name="register_form">signup</button>
+                <input type="email" name="email" placeholder="email" required>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" id="password" placeholder="password" required>
+                <input type="text" name="confirmPassword" id="confirm" placeholder="Confirm password" required> 
+                <input type="submit" id="signup" disabled class="btn disabled" name="register_form" value="Signup">
             </form>
             <div class="already">
                 <p>Already have an account <a id="login__" href="#">Login</a></p>
