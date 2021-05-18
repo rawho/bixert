@@ -28,14 +28,29 @@ class EventsListView(ListView, View):
         if "register" in request.GET:
             event_id = request.GET.get("event")
             event = Event.objects.all().filter(id=event_id).first()
-            if event not in Event.objects.all().filter(id=event_id):
+            event_user = (
+                EventUser.objects.all()
+                .filter(registered_event=event)
+                .filter(registered_user=request.user)
+                .first()
+            )
+            if not event_user:
                 EventUser.objects.create(
                     registered_event=event, registered_user=request.user
                 )
         return render(
             request,
             template_name=self.template_name,
-            context={"events": Event.objects.all(), "request": request},
+            context={
+                "events": Event.objects.all(),
+                "request": request,
+                "if_list": [
+                    eve.registered_event.id
+                    for eve in EventUser.objects.all().filter(
+                        registered_user=request.user
+                    )
+                ],
+            },
         )
 
 

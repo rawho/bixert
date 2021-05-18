@@ -39,10 +39,14 @@
             </a>
 
             {% if request.user != event.author %}
+            {% if event.id not in if_list %}
             <form action="" method="GET">
                 <input type="hidden" value={{ event.id }} name="event">
                 <button class="btn" name="register">Register</button>
             </form>
+            {% else %}
+            <button class="btn" style="background-color: #4CAF50;">Registered</button>
+            {% endif %}
             {% endif %}
         </div>
 
