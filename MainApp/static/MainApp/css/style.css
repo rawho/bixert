@@ -299,7 +299,7 @@ a {
   -webkit-transform: translate(-50%, -50%) scale(0);
           transform: translate(-50%, -50%) scale(0);
   width: 20rem;
-  height: 30rem;
+  height: 32rem;
   background-color: #fff;
   background: #7c9eec;
   /* fallback for old browsers */
@@ -370,7 +370,7 @@ a {
 .login-container .already, .signup-container .already {
   position: absolute;
   bottom: 0;
-  padding: 20px;
+  padding: 10px;
   font-size: 0.8rem;
 }
 
