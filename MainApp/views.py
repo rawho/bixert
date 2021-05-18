@@ -55,13 +55,11 @@ class EventsListView(ListView, View):
 
 
 def registered(request):
-    print(
-        EventUser.objects.all()
-        .filter(registered_user=request.user)
-        .first()
-        .registered_event
-    )
-    context = {"events": EventUser.objects.all().filter(registered_user=request.user)}
+    if(EventUser.objects.all().filter(registered_user=request.user)):
+        context = {"events": EventUser.objects.all().filter(registered_user=request.user)}
+    else: 
+        context = {'events': None }
+
     return render(request, "MainApp/registered.html", context)
 
 

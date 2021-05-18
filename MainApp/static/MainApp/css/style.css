@@ -95,6 +95,19 @@ a {
   }
 }
 
+.header .navbar .nav-menu .nav-item .nav-link {
+  color: #000;
+  font-weight: 500;
+}
+
+.header .navbar .nav-menu .nav-item .nav-link:hover {
+  color: #7b3ad1;
+}
+
+.header .navbar .nav-menu .nav-item .active {
+  color: #7b3ad1;
+}
+
 .header .navbar .nav-menu .login {
   border: 1px solid #7b3ad1;
   border-radius: 20px;

@@ -1,4 +1,13 @@
 {% load static %}
+{% url 'myevents' as my_events_url %}
+{% url 'events' as events_url %}
+{% url 'create-event' as create_events_url %}
+{% url 'myevents' as my_events_url %}
+{% url 'registered' as registered_events_url %}
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,16 +26,16 @@
             <a href="{% url 'MainApp-home' %}" class="nav-logo">Bixert</a>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="{% url 'events' %}" class="nav-link">Discover Events</a>
+                    <a href="{% url 'events' %}" class="nav-link {% if request.path == events_url %} active {%endif%}">Discover Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'registered' %}" class="nav-link">Registered Events</a>
+                    <a href="{% url 'registered' %}" class="nav-link {% if request.path == registered_events_url %} active {%endif%}">Registered Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'myevents' %}" class="nav-link">My Events</a>
+                    <a href="{% url 'myevents' %}" class="nav-link {% if request.path == my_events_url %} active {%endif%}">My Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'create-event' %}" class="nav-link">Create Event</a>
+                    <a href="{% url 'create-event' %}" class="nav-link {% if request.path == create_events_url %} active {%endif%}">Create Event</a>
                 </li>
 
             </ul>

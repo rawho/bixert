@@ -27,6 +27,16 @@
                 @media(max-width: 767px){
                     margin: 1.5rem 0;
                 }
+                .nav-link{
+                    color: #000;
+                    font-weight: 500;
+                    &:hover{
+                        color: #7b3ad1;
+                    }
+                }
+                .active{
+                    color: #7b3ad1;
+                }
             }
             .login{
                 border: 1px solid #7b3ad1;
