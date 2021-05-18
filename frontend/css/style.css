@@ -804,4 +804,30 @@ a {
 .profile-update .pro-details p span {
   color: #a06cf5;
 }
+
+.event-details-profile {
+  width: 80%;
+  margin: auto;
+  height: 50vh;
+}
+
+.event-details-profile .inner-nav {
+  border-bottom: 1px solid #00000030;
+}
+
+.event-details-profile .inner-nav .btn {
+  background-color: transparent;
+  border: 1px solid #00000030;
+  color: #a06cf5;
+}
+
+.event-details-profile .inner-nav .btn:hover {
+  background-color: #a06cf5;
+  color: #fff;
+}
+
+.event-details-profile .inner-nav .active {
+  background-color: #a06cf5;
+  color: #fff;
+}
 /*# sourceMappingURL=style.css.map */

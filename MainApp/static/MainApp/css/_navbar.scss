@@ -50,6 +50,9 @@
         }
     }
     .user{
+        img{
+            object-fit: cover;
+        }
         &:hover .dropdown{
             display: flex;
         }

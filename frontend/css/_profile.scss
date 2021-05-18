@@ -125,3 +125,29 @@
         }
     }
 }
+
+
+.event-details-profile{
+    width: 80%;
+    margin: auto;
+    height: 50vh;
+
+    .inner-nav{
+        border-bottom: 1px solid #00000030;
+
+        .btn{
+            background-color: transparent;
+            border: 1px solid #00000030;
+            color: #a06cf5;
+
+            &:hover{
+                background-color: #a06cf5;
+                color: #fff;
+            }
+        }
+        .active{
+            background-color: #a06cf5;
+            color: #fff;
+        }
+    }
+}

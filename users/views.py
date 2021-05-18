@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from MainApp.models import Event
 
 
 def register_login(request):
@@ -35,7 +36,7 @@ def register_login(request):
 
 @login_required
 def profile(request):
-    return render(request, "users/profile.html")
+    return render(request, "users/profile.html", {"events": Event.objects.filter(author=request.user.id)})
 
 
 def logout_view(request):

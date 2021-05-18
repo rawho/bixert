@@ -49,6 +49,47 @@
 
 </div>
 
+<div class="event-details-profile">
+    <div class="inner-nav">
+        <button class="btn active">My Events</button>
+        <button class="btn">Upcoming Events</button>
+    </div>
+
+    <div class="events-container">
+
+        {% for event in events %}
+            <div class="event">
+                <a style="color: black;" href="{% url 'event-detail' event.id %}">
+                    <div class="banner">
+                        <img src="{{ event.banner.url }}" alt="">
+                    </div>
+                    <h1 class="title">{{event.title}}</h1>
+                    <p>{{event.content}}</p>
+    
+                    <div class="date">
+                        <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
+                        <p>{{event.date_posted|date:"F d, Y, h:i A"}}</p>
+    
+                    </div>
+    
+                    <div class="location">
+                        <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+                        <p>{{ event.venue }}</p>
+                    </div>
+                    <p class="organised-by">Organised by {{event.author}}</p>
+                </a>
+    
+                {% if request.user != event.author %}
+                <button class="btn">Register</button>
+                {% endif %}
+            </div>
+    
+        {% endfor %}
+    </div>
+
+</div>
+
+
 <script>
     document.querySelector('.edit-profile-btn').addEventListener('click', e => {
         document.querySelector('.pro-details').style.display = 'none'

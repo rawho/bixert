@@ -1,62 +1,65 @@
 .events-page{
     margin-top: 50px;
-    .events-container{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 10px;
-        width: 90%;
-        margin: auto;
-        margin-bottom: 100px;
+}
+.events-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 100px;
 
-        @media(max-width: 767px){
-            grid-template-columns: 1fr;
-        }
+    @media(max-width: 767px){
+        grid-template-columns: 1fr;
+    }
 
-        .event{
-            border: 1px solid #00000030;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 10px;
+    .event{
+        border: 1px solid #00000030;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
 
 
-            .banner{
-                img{
-                    width: 100%;
-                }
-
+        .banner{
+            img{
+                width: 100%;
+                max-height: 150px;
+                overflow: hidden;
+                object-fit: cover;
             }
-            h1{
-                font-size: 1.3rem;
 
+        }
+        h1{
+            font-size: 1.3rem;
+
+        }
+        p{
+            font-size: .9rem;
+            padding: 10px 0;
+        }
+        .date, .location{
+            display: flex;
+            flex-direction: row;
+            align-items: center;                
+            img{
+                width: 20px;
             }
             p{
-                font-size: .9rem;
-                padding: 10px 0;
+                margin-left: 10px;
             }
-            .date, .location{
-                display: flex;
-                flex-direction: row;
-                align-items: center;                
-                img{
-                    width: 20px;
-                }
-                p{
-                    margin-left: 10px;
-                }
-            }
+        }
 
-            .btn{
-                background-color: transparent;
-                border: 1px solid #00000030;
-                color: #6657da;
-                transition: 0.1s ease;
-                
-                &:hover{
-                    background-color: #6657da;
-                    color: #fff;
-                }
+        .btn{
+            background-color: transparent;
+            border: 1px solid #00000030;
+            color: #6657da;
+            transition: 0.1s ease;
+            
+            &:hover{
+                background-color: #6657da;
+                color: #fff;
             }
         }
     }

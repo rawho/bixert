@@ -116,6 +116,11 @@ a {
   font-weight: 600;
 }
 
+.header .user img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .header .user:hover .dropdown {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -480,7 +485,7 @@ a {
   margin-top: 50px;
 }
 
-.events-page .events-container {
+.events-container {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
@@ -492,13 +497,13 @@ a {
 }
 
 @media (max-width: 767px) {
-  .events-page .events-container {
+  .events-container {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
 }
 
-.events-page .events-container .event {
+.events-container .event {
   border: 1px solid #00000030;
   border-radius: 10px;
   display: -webkit-box;
@@ -514,20 +519,24 @@ a {
   padding: 10px;
 }
 
-.events-page .events-container .event .banner img {
+.events-container .event .banner img {
   width: 100%;
+  max-height: 150px;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.events-page .events-container .event h1 {
+.events-container .event h1 {
   font-size: 1.3rem;
 }
 
-.events-page .events-container .event p {
+.events-container .event p {
   font-size: .9rem;
   padding: 10px 0;
 }
 
-.events-page .events-container .event .date, .events-page .events-container .event .location {
+.events-container .event .date, .events-container .event .location {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -540,15 +549,15 @@ a {
           align-items: center;
 }
 
-.events-page .events-container .event .date img, .events-page .events-container .event .location img {
+.events-container .event .date img, .events-container .event .location img {
   width: 20px;
 }
 
-.events-page .events-container .event .date p, .events-page .events-container .event .location p {
+.events-container .event .date p, .events-container .event .location p {
   margin-left: 10px;
 }
 
-.events-page .events-container .event .btn {
+.events-container .event .btn {
   background-color: transparent;
   border: 1px solid #00000030;
   color: #6657da;
@@ -556,7 +565,7 @@ a {
   transition: 0.1s ease;
 }
 
-.events-page .events-container .event .btn:hover {
+.events-container .event .btn:hover {
   background-color: #6657da;
   color: #fff;
 }
@@ -734,6 +743,8 @@ a {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 @media (max-width: 767px) {
@@ -824,6 +835,37 @@ a {
   color: #a06cf5;
 }
 
+.event-details-profile {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 100px;
+}
+
+.event-details-profile .inner-nav {
+  border-bottom: 1px solid #00000030;
+}
+
+.event-details-profile .inner-nav .btn {
+  background-color: transparent;
+  border: 1px solid #00000030;
+  color: #a06cf5;
+}
+
+.event-details-profile .inner-nav .btn:hover {
+  background-color: #a06cf5;
+  color: #fff;
+}
+
+.event-details-profile .inner-nav .active {
+  background-color: #a06cf5;
+  color: #fff;
+}
+
+.event-details-profile .events-container {
+  margin-top: 50px;
+  width: 100%;
+}
+
 .event-details {
   width: 70%;
   margin: auto;
@@ -859,6 +901,9 @@ a {
 
 .event-details .event-banner img {
   width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .event-details .details {
