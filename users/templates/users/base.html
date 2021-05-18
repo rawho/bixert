@@ -23,7 +23,7 @@
                     <a href="" class="nav-link">Registered Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">My Events</a>
+                    <a href="{% url 'myevents' %}" class="nav-link">My Events</a>
                 </li>
                 <li class="nav-item">
                     <a href="{% url 'create-event' %}" class="nav-link">Create Event</a>
@@ -38,7 +38,7 @@
                     </li>
                     <div class="dropdown">
                         <a href="{% url 'profile' %}">My Profile</a>
-                        <a href="#">My Events</a>
+                        <a href="{% url 'myevents' %}">My Events</a>
                         <a href="{% url 'logout' %}">Logout</a>
                     </div>
                 </div>

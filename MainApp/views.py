@@ -3,16 +3,21 @@ from .models import Event
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
-def events(request):
-    return render(request, "MainApp/events.html", {"events": Event.objects.all()})
+def myevents(request):
+    return render(request, 'MainApp/events.html', {
+        "events" : Event.objects.filter(author=request.user.id)
+    })
+
 
 
 class EventsListView(ListView):
     model = Event
     template_name = "MainApp/events.html"  # <app>/<models>_<viewtype>.html
     context_object_name = "events"
-    ordering = ["-date_posted"]
+    ordering = ["date_posted"]
 
 
 class EventsDetailView(DetailView):
