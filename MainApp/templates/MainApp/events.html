@@ -7,9 +7,9 @@
 <section class="events-page">
 
     <div class="search-bar">
-        
+
         <form>
-            <div class="search-icon"><img src="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png"/></div>
+            <div class="search-icon"><img src="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png" /></div>
             <input type="search" placeholder="Search for event">
         </form>
     </div>
@@ -39,13 +39,14 @@
             </a>
 
             {% if request.user != event.author %}
-            <button class="btn">Register</button>
+            <form action="" method="GET">
+                <input type="hidden" value={{ event.id }} name="event">
+                <button class="btn" name="register">Register</button>
+            </form>
             {% endif %}
         </div>
 
         {% endfor %}
-
-
     </div>
 </section>
 

@@ -15,3 +15,8 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class EventUser(models.Model):
+    registered_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    registered_event = models.ForeignKey(Event, on_delete=models.CASCADE)

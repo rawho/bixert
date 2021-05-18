@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Event
+from .models import Event, EventUser
 from django.views.generic import ListView, DetailView, CreateView, View
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
@@ -11,7 +11,10 @@ def myevents(request):
     return render(
         request,
         "MainApp/events.html",
-        {"events": Event.objects.filter(author=request.user.id)},
+        {
+            "events": Event.objects.filter(author=request.user.id),
+            "Users": EventUser.objects.all(),
+        },
     )
 
 
@@ -22,6 +25,12 @@ class EventsListView(ListView, View):
     ordering = ["date_posted"]
 
     def get(self, request, *args, **kwargs):
+        if "register" in request.GET:
+            event = request.GET.get("event")
+            event = Event.objects.all().filter(id=1).first()
+            EventUser.objects.create(
+                registered_event=event, registered_user=request.user
+            )
         return render(
             request,
             template_name=self.template_name,
