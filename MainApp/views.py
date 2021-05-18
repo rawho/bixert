@@ -26,11 +26,12 @@ class EventsListView(ListView, View):
 
     def get(self, request, *args, **kwargs):
         if "register" in request.GET:
-            event = request.GET.get("event")
-            event = Event.objects.all().filter(id=event).first()
-            EventUser.objects.create(
-                registered_event=event, registered_user=request.user
-            )
+            event_id = request.GET.get("event")
+            event = Event.objects.all().filter(id=event_id).first()
+            if event not in Event.objects.all().filter(id=event_id):
+                EventUser.objects.create(
+                    registered_event=event, registered_user=request.user
+                )
         return render(
             request,
             template_name=self.template_name,
