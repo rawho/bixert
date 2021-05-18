@@ -9,28 +9,30 @@
 
         {% for event in events %}
         <div class="event">
-            <div class="banner">
-                <img src="{{ event.banner.url }}" alt="">
-            </div>
-            <h1 class="title">{{event.title}}</h1>
-            <p>{{event.content}}</p>
+            <a href="{% url 'event-detail' event.id %}">
+                <div class="banner">
+                    <img src="{{ event.banner.url }}" alt="">
+                </div>
+                <h1 class="title">{{event.title}}</h1>
+                <p>{{event.content}}</p>
 
-            <div class="date">
-                <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png"/>
-                <p>{{event.date_posted|date:"F d, Y, h:i A"}}</p>
+                <div class="date">
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
+                    <p>{{event.date_posted|date:"F d, Y, h:i A"}}</p>
 
-            </div>
+                </div>
 
-            <div class="location">
-                <img src="https://img.icons8.com/material-rounded/24/000000/no-video--v2.png"/>
-                <p>Online Event</p>
-            </div>
-            <p class="organised-by">Organised by {{event.author}}</p>
+                <div class="location">
+                    <img src="https://img.icons8.com/material-rounded/24/000000/no-video--v2.png" />
+                    <p>Online Event</p>
+                </div>
+                <p class="organised-by">Organised by {{event.author}}</p>
+            </a>
         </div>
 
         {% endfor %}
 
-       
+
     </div>
 </section>
 

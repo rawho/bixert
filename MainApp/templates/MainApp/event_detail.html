@@ -1,0 +1,33 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="events-page">
+    <div class="events-container">
+
+        <div class="event">
+            <div class="banner">
+                <img src="{{ object.banner.url }}" alt="">
+            </div>
+            <h1 class="title">{{object.title}}</h1>
+            <p>{{object.content}}</p>
+
+            <div class="date">
+                <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
+                <p>{{object.date_posted|date:"F d, Y, h:i A"}}</p>
+
+            </div>
+
+            <div class="location">
+                <img src="https://img.icons8.com/material-rounded/24/000000/no-video--v2.png" />
+                <p>Online Event</p>
+            </div>
+            <p class="organised-by">Organised by {{object.author}}</p>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
