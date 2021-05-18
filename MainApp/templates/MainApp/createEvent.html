@@ -5,12 +5,12 @@
 
 {% block content %}
 <div class="create-event-container">
-    <form class="create-event" action="" method="POST">
+    <form class="create-event" action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="question-container">
             <div class="circle">1</div>
             <h1 class="question">What is your event name?</h1>
-            <input type="text" placeholder="Event name" name="title">
+            <input type="text" placeholder="Event name" name="title" required>
         </div>
 
         <div class="question-container">
@@ -22,7 +22,7 @@
         <div class="question-container">
             <div class="circle">3</div>
             <h1 class="question">When is your Event?</h1>
-            <input type="date" placeholder="Event name" name="date">
+            <input type="date" placeholder="Event name" name="date" required>
         </div>
 
         <div class="question-container">
@@ -41,7 +41,7 @@
         <div class="question-container">
             <div class="circle">5</div>
             <h1 class="question">Banner for the Event</h1>
-            <input type="file" id="img" name="img" accept="image/*">
+            <input type="file" id="banner_" name="banner" accept="image/*" required>
         </div>
         <input type="submit" class="btn" value="Create Event">
     </form>
