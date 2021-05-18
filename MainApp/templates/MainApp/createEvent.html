@@ -21,25 +21,31 @@
 
         <div class="question-container">
             <div class="circle">3</div>
-            <h1 class="question">When is your Event?</h1>
-            <input type="date" placeholder="Event name" name="date" required>
+            <h1 class="question">Max Number of Participants</h1>
+            <input type="number" name="maxParticipants" required>
         </div>
 
         <div class="question-container">
             <div class="circle">4</div>
-            <h1 class="question">Where is your Event?</h1>
-            <div class="location-container">
-                <input type="radio" id="online" name="location">
-                <label for="online">Online</label>
-                <input type="radio" name="location" id="venue">
-                <label for="venue">Venue</label>
-
-            </div>
-            <input type="text" id="location" name="location" placeholder="location">
+            <h1 class="question">When is your Event?</h1>
+            <input type="date" name="date" required>
         </div>
 
         <div class="question-container">
             <div class="circle">5</div>
+            <h1 class="question">Where is your Event?</h1>
+            <div class="location-container">
+                <input type="radio" id="online" name="location" checked value="online Event">
+                <label for="online">Online</label>
+                <input type="radio" name="location" id="venue" value="venue">
+                <label for="venue">Venue</label>
+
+            </div>
+            <input type="text" style="display: none;" id="place" name="place" placeholder="location">
+        </div>
+
+        <div class="question-container">
+            <div class="circle">6</div>
             <h1 class="question">Banner for the Event</h1>
             <input type="file" id="banner_" name="banner" accept="image/*" required>
         </div>
@@ -52,9 +58,9 @@
     radioBtns.forEach(radioBtn => {
         radioBtn.addEventListener('click', e => {
             if (e.target.getAttribute('id') === 'venue') {
-                document.getElementById('location').style.display = 'flex'
+                document.getElementById('place').style.display = 'flex'
             } else {
-                document.getElementById('location').style.display = 'none'
+                document.getElementById('place').style.display = 'none'
             }
         })
     });

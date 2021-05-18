@@ -25,10 +25,15 @@ def createEvent(request):
         title = request.POST.get("title")
         content = request.POST.get("content")
         author = request.user
+        date = request.POST.get('date')
+        max_participants = request.POST.get('maxParticipants')
+        location = request.POST.get('location')
+        if location == 'venue':
+            location = request.POST.get('place')
         banner = request.FILES['banner']
         fs = FileSystemStorage()
         filename = fs.save(banner.name, banner)
-        Event.objects.create(title=title, content=content, author=author, banner=filename)
+        Event.objects.create(title=title, content=content, author=author, banner=filename, venue=location, date_posted=date, max_participants=max_participants)
         return redirect("events")
     return render(request, "MainApp/createEvent.html", {})
  

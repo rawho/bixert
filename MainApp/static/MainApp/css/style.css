@@ -621,10 +621,6 @@ a {
   margin-bottom: 20px;
 }
 
-.create-event-container .create-event .question-container #location {
-  display: none;
-}
-
 .create-event-container .create-event .question-container input[type=radio] {
   width: -webkit-fit-content;
   width: -moz-fit-content;
