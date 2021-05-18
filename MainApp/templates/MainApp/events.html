@@ -5,6 +5,15 @@
 {% block content %}
 
 <section class="events-page">
+
+    <div class="search-bar">
+        
+        <form>
+            <div class="search-icon"><img src="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png"/></div>
+            <input type="search" placeholder="Search for event">
+        </form>
+    </div>
+
     <div class="events-container">
 
         {% for event in events %}
