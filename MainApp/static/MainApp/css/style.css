@@ -811,4 +811,134 @@ a {
 .profile-update .pro-details p span {
   color: #a06cf5;
 }
+
+.event-details {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 200px;
+  min-height: 70vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .event-details {
+    width: 95%;
+  }
+}
+
+.event-details .event-banner {
+  width: 50%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+@media (max-width: 767px) {
+  .event-details .event-banner {
+    width: 100%;
+  }
+}
+
+.event-details .event-banner img {
+  width: 100%;
+}
+
+.event-details .details {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  border-bottom: 1px solid #00000030;
+  padding: 60px 0 30px;
+}
+
+@media (max-width: 767px) {
+  .event-details .details {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.event-details .details .event-title {
+  font-size: 3rem;
+}
+
+.event-details ._ {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin: 30px 0;
+}
+
+.event-details ._ p span {
+  color: #6657da;
+}
+
+.event-details .date, .event-details .location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 20px 0 0 0;
+}
+
+.event-details .date img, .event-details .location img {
+  width: 20px;
+}
+
+.event-details .overview {
+  border-top: 1px solid #00000030;
+  padding: 50px 0;
+}
+
+.event-details .overview .overview-nav .btn {
+  background-color: transparent;
+  color: #6657da;
+  border: 1px solid #00000030;
+}
+
+.event-details .overview .overview-nav .active {
+  background-color: #6657da;
+  color: #fff;
+}
+
+.event-details .overview .content {
+  margin: 60px 0;
+}
 /*# sourceMappingURL=style.css.map */

@@ -9,7 +9,7 @@
 
         {% for event in events %}
         <div class="event">
-            <a href="{% url 'event-detail' event.id %}">
+            <a style="color: black;" href="{% url 'event-detail' event.id %}">
                 <div class="banner">
                     <img src="{{ event.banner.url }}" alt="">
                 </div>
