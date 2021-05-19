@@ -55,26 +55,28 @@ class EventsListView(ListView, View):
 
 
 def registered(request):
-    if(EventUser.objects.all().filter(registered_user=request.user)):
-        context = {"events": EventUser.objects.all().filter(registered_user=request.user)}
-    else: 
-        context = {'events': None }
+    if EventUser.objects.all().filter(registered_user=request.user):
+        context = {
+            "events": EventUser.objects.all().filter(registered_user=request.user)
+        }
+    else:
+        context = {"events": None}
 
     return render(request, "MainApp/registered.html", context)
 
 
 class EventsDetailView(DetailView):
     model = Event
-    def get(self, request, *args, **kwargs):
-        return render(
-            request,
-            template_name=self.template_name,
-            context={
 
-                "users": [ev.registered_user for ev in EventUser.objects.all().filter(registered_event=self.object)]
-            }
-        )
-
+    def get_context_data(self, **kwargs):
+        context = super(EventsDetailView, self).get_context_data(**kwargs)
+        context["attendees"] = [
+            eve.registered_user
+            for eve in EventUser.objects.all().filter(
+                registered_event=self.kwargs["pk"]
+            )
+        ]
+        return context
 
 
 @csrf_exempt

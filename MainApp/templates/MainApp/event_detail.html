@@ -17,11 +17,11 @@
         <div class="date">
             <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
             <p>{{object.date_posted|date:"F d, Y, h:i A"}}</p>
-    
+
         </div>
-    
+
         <div class="location">
-            <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png"/>
+            <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
             <p>{{ object.venue }}</p>
         </div>
 
@@ -36,15 +36,15 @@
             <p>{{object.content}}</p>
         </div>
         <div class="attendees">
-            
-            {% for user in users %}
+
+            {% for user in attendees %}
             <div class="user">
                 <img src="{{user.profile.image.url }}" alt="">
                 <h2>{{ user.username }}</h2>
             </div>
-           {% endfor %}
+            {% endfor %}
         </div>
-        
+
     </div>
 
 
