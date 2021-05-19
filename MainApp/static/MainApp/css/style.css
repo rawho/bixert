@@ -1117,6 +1117,21 @@ a {
   margin-right: 10px;
 }
 
+.event-details .overview .attendees .user .tick {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+}
+
+.event-details .overview .attendees .user .pending {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  border-radius: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .event-details .overview .attendees .user h2 {
   font-size: 1rem;
 }
