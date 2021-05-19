@@ -20,7 +20,6 @@ def myevents(request):
         },
     )
 
-
 class EventsListView(ListView, View):
     model = Event
     template_name = "MainApp/events.html"  # <app>/<models>_<viewtype>.html
@@ -49,6 +48,7 @@ class EventsListView(ListView, View):
                         for x in EventUser.objects.all().filter(registered_event=eve)
                     ]
                     else False,
+                    "user" : request.user.username
                 }
             )
             print(d)
@@ -56,6 +56,7 @@ class EventsListView(ListView, View):
         return JsonResponse(d, safe=False)
 
     def get(self, request, *args, **kwargs):
+        
         if "register" in request.GET:
             event_id = request.GET.get("event")
             event = Event.objects.all().filter(id=event_id).first()

@@ -66,6 +66,7 @@
             html = ''
             document.querySelector('.events-container').style.display = 'none'
             response.forEach(event => {
+               
                 html += `<div class="event">
                             <a style="color: black;" href="/events/${event.id}">
                                 <div class="banner">
@@ -88,17 +89,32 @@
                             </a>
 
                             {% if request.user != event.author %}
-                            {% if not ${event.if_reg} %}
+                       
                             <form action="" method="GET">
-                                <input type="hidden" value={{ event.id }} name="event">
+                                <input type="hidden" value=${event.id} name="event">
                                 <button class="btn" name="register">Register</button>
                             </form>
+                            
                             {% else %}
-                            <button class="btn registered">Registered</button>
-                            {% endif %}
+                            <button style="display: none;" class="btn registered">Registered</button>
+       
                             {% endif %}
                         </div>`
                 document.querySelector('.search-events').innerHTML = html
+                
+                
+                if(event.user == event.author){
+                    document.querySelector('.search-events .btn').style.display = 'none'
+                    document.querySelector('.search-events .registered').style.display = 'none'
+                } else{
+                    if(event.if_reg){
+                        document.querySelector('.search-events .btn').style.display = 'none'
+                        document.querySelector('.search-events .registered').style.display = ''
+                    } else{
+                        document.querySelector('.search-events .btn').style.display = ''
+                        document.querySelector('.search-events .registered').style.display = 'none'
+                    }
+                }
             });
         }
         async function postdata() {
