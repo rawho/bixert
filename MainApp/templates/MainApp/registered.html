@@ -9,7 +9,7 @@
 <div style="margin-top: 50px;" class="events-container">
     {% for event in events %}
     <div class="event">
-        <a style="color: black;" href="{% url 'event-detail' event.id %}">
+        <a style="color: black;" href="{% url 'event-detail' event.registered_event.id %}">
             <div class="banner">
                 <img src="{{ event.registered_event.banner.url }}" alt="">
             </div>
