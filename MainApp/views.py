@@ -54,6 +54,7 @@ class EventsListView(ListView, View):
                     ]
                     else False,
                     "user": request.user.username,
+                    "isAuthor": request.user.username == eve.author.username
                 }
             )
         d = json.dumps(d)
