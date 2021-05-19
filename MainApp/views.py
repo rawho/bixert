@@ -8,6 +8,10 @@ from django.contrib.auth.decorators import login_required
 import json
 import requests
 from django.http import JsonResponse
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from .send_mail import sendmail
 
 
 def myevents(request):
@@ -71,6 +75,7 @@ class EventsListView(ListView, View):
                 EventUser.objects.create(
                     registered_event=event, registered_user=request.user
                 )
+                sendmail(event, request.user)
         return render(
             request,
             template_name=self.template_name,
