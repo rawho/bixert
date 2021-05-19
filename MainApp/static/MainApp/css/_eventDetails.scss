@@ -109,6 +109,18 @@
                     object-fit: cover;
                     margin-right: 10px;
                 }
+                .tick{
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 100%;
+                }
+                .pending{
+                    width: 25px;
+                    height: 25px;
+                    margin-left: 10px;
+                    border-radius: 100%;
+                    object-fit: contain;
+                }
                 h2{
                     font-size: 1rem;
                 }
