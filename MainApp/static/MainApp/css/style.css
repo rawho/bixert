@@ -874,7 +874,7 @@ a {
 
 .profile-update .pro-details {
   margin-top: 50px;
-  width: 60%;
+  width: 100%;
 }
 
 @media (max-width: 767px) {

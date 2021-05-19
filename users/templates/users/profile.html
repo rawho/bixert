@@ -2,23 +2,23 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block content %} 
+{% block content %}
 <div class="profile-container">
-    
+
     <div class="_">
         <h1>Profile Details</h1>
         <p>View & Update Your Profile Details</p>
         <div class="profile-details">
             <div class="dp">
                 <img src="{{ user.profile.image.url }}" alt="">
-                <div class="edit"><img src="https://img.icons8.com/office/16/000000/edit.png"/></div>
+                <div class="edit"><img src="https://img.icons8.com/office/16/000000/edit.png" /></div>
             </div>
             <div class="personal-details">
                 <h1>{{ user.username }}</h1>
                 <p>{{ user.email }}</p>
             </div>
         </div>
-        
+
     </div>
     <div class="profile-update">
         <div class="__">
@@ -26,24 +26,26 @@
             <button class="btn cancel">Cancel</button>
         </div>
 
-        <form class="profile-edit-form">
-            <input type="text" id="name" placeholder="Name" value="{{ user.username }}">
+        <form class="profile-edit-form" action="" method="POST">
+            {% csrf_token %}
+            <input type="text" id="name" name="name" placeholder="Name" value="{{ user.profile.name }}">
 
-            <input type="email" id="email" placeholder="email" value="{{ user.email }}">
+            <input type="email" id="email" name="email" placeholder="email" value="{{ user.email }}">
 
-            <input type="text" id="phoneNo" placeholder="Mobile No">
-            
-            <input type="text" id="company" placeholder="company name">
+            <input type="text" id="phoneNo" name="phoneNo" placeholder="Mobile No" value="{{ user.profile.phone_no }}">
+
+            <input type="text" id="company" name="company" placeholder="company name" value="{{ user.profile.company }}">
 
             <button class="btn save">save</button>
         </form>
 
         <div class="pro-details">
             <p>Username: <span>{{ user.username }}</span></p>
-            <p>Name: <span>{% if user.profile.name %} {{ user.profile.name }} {% else %} - {% endif %}</span> </p> 
-            <p>Email: <span>{{ user.email }}</span> </p> 
-            <p>Phone Number: <span>{% if user.profile.phone_no %} {{ user.profile.phone_no }} {% else %} - {% endif %}</span> </p> 
-            <p>Company: <span>{% if user.profile.company %} {{ user.profile.company }} {% else %} - {% endif %}</span> </p>
+            <p>Name: <span>{% if user.profile.name %} {{ user.profile.name }} {% else %} - {% endif %}</span> </p>
+            <p>Email: <span>{{ user.email }}</span> </p>
+            <p>Phone Number: <span>{% if user.profile.phone_no %} {{ user.profile.phone_no }} {% else %} - {% endif %}</span> </p>
+            <p>Company: <span>{% if user.profile.company %} {{ user.profile.company }} {% else %} - {% endif %}</span>
+            </p>
         </div>
     </div>
 
@@ -58,32 +60,32 @@
     <div class="events-container my-events">
 
         {% for event in events %}
-            <div class="event">
-                <a style="color: black;" href="{% url 'event-detail' event.id %}">
-                    <div class="banner">
-                        <img src="{{ event.banner.url }}" alt="">
-                    </div>
-                    <h1 class="title">{{event.title}}</h1>
-                    <p>{{event.content}}</p>
-    
-                    <div class="date">
-                        <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
-                        <p>{{event.date_posted|date:"F d, Y, h:i A"}}</p>
-    
-                    </div>
-    
-                    <div class="location">
-                        <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
-                        <p>{{ event.venue }}</p>
-                    </div>
-                    <p class="organised-by">Organised by {{event.author}}</p>
-                </a>
-    
-                {% if request.user != event.author %}
-                <button class="btn">Register</button>
-                {% endif %}
-            </div>
-    
+        <div class="event">
+            <a style="color: black;" href="{% url 'event-detail' event.id %}">
+                <div class="banner">
+                    <img src="{{ event.banner.url }}" alt="">
+                </div>
+                <h1 class="title">{{event.title}}</h1>
+                <p>{{event.content}}</p>
+
+                <div class="date">
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
+                    <p>{{event.date_posted|date:"F d, Y, h:i A"}}</p>
+
+                </div>
+
+                <div class="location">
+                    <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+                    <p>{{ event.venue }}</p>
+                </div>
+                <p class="organised-by">Organised by {{event.author}}</p>
+            </a>
+
+            {% if request.user != event.author %}
+            <button class="btn">Register</button>
+            {% endif %}
+        </div>
+
         {% endfor %}
     </div>
 
