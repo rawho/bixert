@@ -8,4 +8,5 @@ urlpatterns = [
     path("events/new/", views.createEvent, name="create-event"),
     path("myevents", views.myevents, name="myevents"),
     path("registered/", views.registered, name="registered"),
+    path("verify/<ids>", views.verify, name="verify"),
 ]

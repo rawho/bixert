@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 
 def sendmail(event, user):
     sender_email = "bixertbot@gmail.com"
-    receiver_email = "rahupmanoj@gmail.com"
+    receiver_email = "adi@cet.ac.in"
     password = "Bixert@123"
     message = MIMEMultipart("alternative")
     message["Subject"] = "Invitation"
@@ -18,15 +18,14 @@ def sendmail(event, user):
     How are you?
     Real Python has many great tutorials:
     www.realpython.com"""
-    html = """\
+    html = f"""\
     <html>
     <body>
-        <div style="width:80%; margin: auto; display:flex; flex-direction: column; align-items:center;">
-            <img src="https://img.freepik.com/free-vector/elegant-business-conference-poster-template_1361-1210.jpg?size=626&ext=jpg">
-            <h1>Event Name </h1>
-            <p>Event Description </p>
+        <div style="width:80%; margin: auto;">
+            <h1>{event.title} </h1>
+            <p>{event.content} </p>
             <p>Are you coming?</p>
-            <button>Yes</button> <button>No</button>
+            <a href="http://127.0.0.1:8000/verify/{event.id}-{user.id}"><button>Yes</button></a> <button>No</button>
         </div>
     </body>
     </html>

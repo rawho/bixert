@@ -39,8 +39,12 @@
 
             {% for user in attendees %}
             <div class="user">
-                <img src="{{user.profile.image.url }}" alt="">
-                <h2>{{ user.username }}</h2>
+                <img src="{{user.registered_user.profile.image.url }}" alt="">
+                {% if user.confirm %}
+                <h2>verified {{ user.registered_user.username }}</h2>
+                {% else %}
+                <h2>{{ user.registered_user.username }}</h2>
+                {% endif %}
             </div>
             {% endfor %}
         </div>

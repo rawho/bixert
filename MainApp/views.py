@@ -54,7 +54,7 @@ class EventsListView(ListView, View):
                     ]
                     else False,
                     "user": request.user.username,
-                    "isAuthor": request.user.username == eve.author.username
+                    "isAuthor": request.user.username == eve.author.username,
                 }
             )
         d = json.dumps(d)
@@ -110,7 +110,7 @@ class EventsDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(EventsDetailView, self).get_context_data(**kwargs)
         context["attendees"] = [
-            eve.registered_user
+            eve
             for eve in EventUser.objects.all().filter(
                 registered_event=self.kwargs["pk"]
             )
@@ -143,3 +143,18 @@ def createEvent(request):
         )
         return redirect("events")
     return render(request, "MainApp/createEvent.html", {})
+
+
+def verify(request, ids):
+    event_id, user_id = ids.split("-")
+    event = Event.objects.all().filter(id=event_id).first()
+    user = User.objects.all().filter(id=user_id).first()
+    eventuser = (
+        EventUser.objects.all()
+        .filter(registered_user=user)
+        .filter(registered_event=event)
+        .first()
+    )
+    eventuser.confirm = True
+    eventuser.save()
+    return redirect("registered")
