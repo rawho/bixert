@@ -31,6 +31,7 @@ class EventsListView(ListView, View):
         self.x = json.loads(request.body.decode())
         event = Event.objects.all().filter(title__contains=self.x["search_value"])
         d = []
+
         for eve in event:
             d.append(
                 {
@@ -38,8 +39,19 @@ class EventsListView(ListView, View):
                     "content": eve.content,
                     "venue": eve.venue,
                     "author": eve.author.username,
+                    "id": eve.id,
+                    "image": f"/media/{eve.banner}",
+                    "date": eve.date_posted.strftime(" %d-%b-%Y"),
+                    "if_reg": True
+                    if request.user
+                    in [
+                        x.registered_user
+                        for x in EventUser.objects.all().filter(registered_event=eve)
+                    ]
+                    else False,
                 }
             )
+            print(d)
         d = json.dumps(d)
         return JsonResponse(d, safe=False)
 

@@ -67,28 +67,28 @@
             document.querySelector('.events-container').style.display = 'none'
             response.forEach(event => {
                 html += `<div class="event">
-                            <a style="color: black;" href="">
+                            <a style="color: black;" href="/events/${event.id}">
                                 <div class="banner">
-                                    <img src="{{ event.banner.url }}" alt="">
+                                    <img src="${event.image}" alt="">
                                 </div>
                                 <h1 class="title">${event.title}</h1>
                                 <p>${event.content}</p>
 
                                 <div class="date">
                                     <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
-                                    <p>{{event.date_posted|date:"F d, Y, h:i A"}}</p>
+                                    <p>${event.date}</p>
 
                                 </div>
 
                                 <div class="location">
                                     <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
-                                    <p>${ event.venue }</p>
+                                    <p>${event.venue}</p>
                                 </div>
                                 <p class="organised-by">Organised by ${event.author}</p>
                             </a>
 
                             {% if request.user != event.author %}
-                            {% if event.id not in if_list %}
+                            {% if not ${event.if_reg} %}
                             <form action="" method="GET">
                                 <input type="hidden" value={{ event.id }} name="event">
                                 <button class="btn" name="register">Register</button>
@@ -98,7 +98,7 @@
                             {% endif %}
                             {% endif %}
                         </div>`
-                    document.querySelector('.search-events').innerHTML = html
+                document.querySelector('.search-events').innerHTML = html
             });
         }
         async function postdata() {
