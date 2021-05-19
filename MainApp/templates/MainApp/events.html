@@ -10,7 +10,7 @@
 
         <form>
             <div class="search-icon"><img src="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png" /></div>
-            <input type="search" placeholder="Search for event">
+            <input type="search" placeholder="Search for event" name="searchbar" class="search">
         </form>
     </div>
 
@@ -53,5 +53,22 @@
         {% endfor %}
     </div>
 </section>
-
+<script>
+    const searchbar = document.querySelector('.search');
+    searchbar.addEventListener('keyup', () => {
+        let searchvalue = { search_value: searchbar.value }
+        async function postdata() {
+            const response = await fetch('http://127.0.0.1:8000/events/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(searchvalue)
+            })
+            console.log(searchvalue)
+            return response.json();
+        }
+        postdata();
+    });
+</script>
 {% endblock %}
