@@ -56,17 +56,19 @@
 <script>
     const searchbar = document.querySelector('.search');
     searchbar.addEventListener('keyup', () => {
-        let searchvalue = { search_value: searchbar.value }
+        let searchvalue = {
+            search_value: searchbar.value,
+        }
         async function postdata() {
-            const response = await fetch('http://127.0.0.1:8000/events/', {
-                method: 'GET',
+            const response = await fetch('', {
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "X-CSRFToken": '{{csrf_token}}'
                 },
                 body: JSON.stringify(searchvalue)
             })
-            console.log(searchvalue)
-            return response.json();
+            console.log(response)
         }
         postdata();
     });
