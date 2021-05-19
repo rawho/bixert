@@ -5,6 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+import json
+import requests
 
 
 def myevents(request):
@@ -24,7 +26,33 @@ class EventsListView(ListView, View):
     context_object_name = "events"
     ordering = ["date_posted"]
 
+    @csrf_exempt
+    def post(self, request, *args, **kwargs):
+        x = json.loads(request.body.decode())
+        event = Event.objects.all().filter(title__contains=x["search_value"])
+        print(event)
+        d = []
+        for eve in event:
+            d.append({"title": eve.title})
+        d = json.dumps(d)
+        requests.post("http://127.0.0.1:8000/events/", json=d)
+        return render(
+            request,
+            template_name=self.template_name,
+            context={
+                "events": Event.objects.all().filter(title__contains=x["search_value"]),
+                "request": request,
+                "if_list": [
+                    eve.registered_event.id
+                    for eve in EventUser.objects.all().filter(
+                        registered_user=request.user
+                    )
+                ],
+            },
+        )
+
     def get(self, request, *args, **kwargs):
+
         if "register" in request.GET:
             event_id = request.GET.get("event")
             event = Event.objects.all().filter(id=event_id).first()
