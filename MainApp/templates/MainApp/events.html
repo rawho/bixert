@@ -59,6 +59,44 @@
         let searchvalue = {
             search_value: searchbar.value,
         }
+        function display(response) {
+            document.querySelector('.events-container').style.display = 'none'
+            html = ``
+            response.forEach(event => {
+                html = `<div class="event">
+            <a style="color: black;" href="">
+                <div class="banner">
+                    <img src="{{ event.banner.url }}" alt="">
+                </div>
+                <h1 class="title">${event.title}</h1>
+                <p>{{event.content}}</p>
+
+                <div class="date">
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
+                    <p>{{event.date_posted|date:"F d, Y, h:i A"}}</p>
+
+                </div>
+
+                <div class="location">
+                    <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+                    <p>{{ event.venue }}</p>
+                </div>
+                <p class="organised-by">Organised by {{event.author}}</p>
+            </a>
+
+            {% if request.user != event.author %}
+            {% if event.id not in if_list %}
+            <form action="" method="GET">
+                <input type="hidden" value={{ event.id }} name="event">
+                <button class="btn" name="register">Register</button>
+            </form>
+            {% else %}
+            <button class="btn registered">Registered</button>
+            {% endif %}
+            {% endif %}
+        </div>`
+            });
+        }
         async function postdata() {
             const response = await fetch('', {
                 method: 'POST',
@@ -68,9 +106,9 @@
                 },
                 body: JSON.stringify(searchvalue)
             })
-            console.log(response)
+            return response.json()
         }
-        postdata();
+        postdata().then(response => display(response)).catch(error => console.error(error));
     });
 </script>
 {% endblock %}
