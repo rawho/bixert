@@ -104,7 +104,7 @@
     <div style="display: none;" class="events-container upcoming">
         {% for event in registered_events %}
         <div class="event">
-            <a style="color: black;" href="{% url 'event-detail' event.id %}">
+            <a style="color: black;" href="{% url 'event-detail' event.registered_event.id %}">
                 <div class="banner">
                     <img src="{{ event.registered_event.banner.url }}" alt="">
                 </div>
