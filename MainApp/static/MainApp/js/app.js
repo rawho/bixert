@@ -34,26 +34,13 @@ newNameForm.addEventListener('submit', e => {
 
 })
 
-// update the channel 
-channels.addEventListener('click', e => {
-    if(e.target.tagName === 'BUTTON'){
-        document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'))
-        e.target.classList.toggle('active')
-        chatUI.clear();
-        chatroom.updateChannel(e.target.getAttribute('id'))
-        chatroom.getChats(chat => {
-            chatUI.render(chat)
-        })
-
-    }
-})
 
 // check local storage for a name 
 const username = localStorage.username ? localStorage.username : 'anonymous'
 
 // class instances
 const chatUI = new ChatUI(chatList)
-const chatroom = new Chatroom('general', username)
+const chatroom = new Chatroom('event', username)
 
 // get chats and render
 chatroom.getChats(data => chatUI.render(data))

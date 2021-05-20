@@ -15,8 +15,9 @@ class ChatUI {
             data.created_at.toDate(),
             { addSuffix: true }
         )
-        const html = `
-        <div class="chat">
+        let div = document.createElement('div')
+        div.setAttribute('class', 'chat')
+        div.innerHTML = `
             <div class="user-dets">
                 <img src="https://img.icons8.com/cotton/64/000000/user-male--v4.png"/>
                 <p>${data.username}</p>
@@ -24,10 +25,8 @@ class ChatUI {
             </div>
             <p>${data.msg}</p>
             <p class="time">${when}</p>
-        </div>
         `
-
-        this.list.innerHTML += html
-        this.list.scrollTop = this.list.scrollHeight - this.list.clientHeight
+        
+        this.list.prepend(div) 
     }
 }

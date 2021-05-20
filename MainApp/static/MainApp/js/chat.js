@@ -32,6 +32,7 @@ class Chatroom{
                 snapshot.docChanges().forEach(change => {
                     if (change.type === 'added') {
                         // update ui
+                        console.log('working');
                         callback(change.doc.data())
                     }
                 })
