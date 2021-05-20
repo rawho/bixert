@@ -25,7 +25,7 @@ def sendmail(event, user):
             <h1>{event.title} </h1>
             <p>{event.content} </p>
             <p>Are you coming?</p>
-            <a href="http://127.0.0.1:8000/verify/{event.id}-{user.id}"><button>Yes</button></a> <button>No</button>
+            <a href="https://bixert.herokuapp.com/verify/{event.id}-{user.id}"><button>Yes</button></a> <button>No</button>
         </div>
     </body>
     </html>
