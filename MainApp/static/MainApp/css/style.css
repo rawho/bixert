@@ -1,4 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+/* Scrollbar  */
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+@media (max-width: 676px) {
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6657da;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #6657da;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1175,5 +1202,41 @@ a {
 
 .event-details .overview .attendees .user h2 {
   font-size: 1rem;
+}
+
+.notification-section {
+  width: 50%;
+  margin: 50px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .notification-section {
+    width: 90%;
+  }
+}
+
+.notification-section .notification {
+  margin-top: 10px;
+  width: 90%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid #00000020;
+  box-shadow: 1px 3px 7px -1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 1px 3px 7px -1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px 3px 7px -1px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 767px) {
+  .notification-section .notification {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

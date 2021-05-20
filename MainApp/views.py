@@ -159,3 +159,7 @@ def verify(request, ids):
     eventuser.confirm = True
     eventuser.save()
     return redirect("registered")
+
+
+def notification(request):
+    return render(request, 'MainApp/notifications.html')

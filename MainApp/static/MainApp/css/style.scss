@@ -1,6 +1,30 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
+/* Scrollbar  */
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  @media(max-width: 676px){
+    ::-webkit-scrollbar {
+        width: 2px;
+      }
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #6657da;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6657da;
+  }
 * {
     margin: 0;
     padding: 0;
@@ -51,3 +75,4 @@ a {
 @import 'createEvent';
 @import 'profile';
 @import 'eventDetails';
+@import 'notifications';
