@@ -13,8 +13,10 @@
                 <img src="{{ user.profile.image.url }}" alt="">
                 <form action="" method="POST" enctype="multipart/form-data" id="dpform">
                     {% csrf_token %}
-                        <input id="im" class="edit" accept="image/*" type="file" name="image">
-                        <img src="https://img.icons8.com/office/16/000000/edit.png" />
+                    <label class="custom-file-upload edit">
+                        <input id="im" type="file" accept="image/*" name="image"/>
+                        <img src="{% static 'MainApp/images/icons/edit.svg' %}" /> 
+                    </label>
                 </form>
             </div>
             <div class="personal-details">
@@ -32,24 +34,28 @@
 
         <form class="profile-edit-form" action="" method="POST">
             {% csrf_token %}
-            <input type="text" id="name" name="name" placeholder="Name" value="{{ user.profile.name }}">
+            <input type="text" id="name" name="name" placeholder="Name" {% if user.profile.name %} value="{{ user.profile.name }}" {% endif %}>
 
-            <input type="email" id="email" name="email" placeholder="email" value="{{ user.email }}">
+            <input type="email" id="email" name="email" placeholder="email" value="{{ user.email }}" >
 
-            <input type="text" id="phoneNo" name="phoneNo" placeholder="Mobile No" value="{{ user.profile.phone_no }}">
+            <input type="text" id="phoneNo" name="phoneNo" placeholder="Mobile No" {% if user.profile.phone_no %} value="{{ user.profile.phone_no }}" {% endif %}>
 
-            <input type="text" id="company" name="company" placeholder="company name"
-                value="{{ user.profile.company }}">
+            <input type="text" id="company" name="company" placeholder="College name" {% if user.profile.company %} value="{{ user.profile.company }}" {% endif %}>
 
             <button name="edit" class="btn save">save</button>
         </form>
 
+        <style>
+            span{
+                text-align: right;
+            }
+        </style>
         <div class="pro-details">
             <p>Username: <span>{{ user.username }}</span></p>
             <p>Name: <span>{% if user.profile.name %} {{ user.profile.name }} {% else %} - {% endif %}</span> </p>
             <p>Email: <span>{{ user.email }}</span> </p>
             <p>Phone Number: <span>{% if user.profile.phone_no %} {{ user.profile.phone_no }} {% else %} - {% endif %}</span> </p>
-            <p>Company: <span>{% if user.profile.company %} {{ user.profile.company }} {% else %} - {% endif %}</span>
+            <p>College: <span>{% if user.profile.company %} {{ user.profile.company }} {% else %} - {% endif %}</span>
             </p>
         </div>
     </div>

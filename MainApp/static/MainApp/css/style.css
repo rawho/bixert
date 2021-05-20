@@ -799,6 +799,15 @@ a {
   height: 20px;
 }
 
+.profile-container .profile-details .dp input[type=file] {
+  display: none;
+}
+
+.profile-container .profile-details .dp .custom-file-upload {
+  display: inline-block;
+  cursor: pointer;
+}
+
 .profile-container .profile-details .dp:hover .edit {
   display: block;
 }
