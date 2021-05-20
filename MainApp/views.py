@@ -12,7 +12,7 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from .send_mail import sendmail
-
+import datetime,time
 
 def myevents(request):
     return render(
@@ -46,13 +46,8 @@ class EventsListView(ListView, View):
                     "id": eve.id,
                     "image": f"/media/{eve.banner}",
                     "date": eve.date_posted.strftime(" %d-%b-%Y"),
-                    "if_reg": True
-                    if request.user
-                    in [
-                        x.registered_user
-                        for x in EventUser.objects.all().filter(registered_event=eve)
-                    ]
-                    else False,
+                    "time" : eve.time.strftime("%I:%M %p"),
+                    "if_reg": True if request.user in [x.registered_user for x in EventUser.objects.all().filter(registered_event=eve)] else False,
                     "user": request.user.username,
                     "isAuthor": request.user.username == eve.author.username,
                 }
@@ -125,12 +120,12 @@ def createEvent(request):
         content = request.POST.get("content")
         author = request.user
         date = request.POST.get("date")
+        time = request.POST.get("time")
         max_participants = request.POST.get("maxParticipants")
         location = request.POST.get("location")
         if location == "venue":
             location = request.POST.get("place")
         banner = request.FILES["banner"]
-        print(request.FILES, "|||||||||||||||||||||||||||||||")
         fs = FileSystemStorage()
         filename = fs.save(banner.name, banner)
         Event.objects.create(
@@ -140,6 +135,7 @@ def createEvent(request):
             banner=filename,
             venue=location,
             date_posted=date,
+            time=time,
             max_participants=max_participants,
         )
         return redirect("events")
@@ -160,6 +156,3 @@ def verify(request, ids):
     eventuser.save()
     return redirect("registered")
 
-
-def notification(request):
-    return render(request, "MainApp/notifications.html")

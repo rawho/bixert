@@ -27,7 +27,7 @@
 
                 <div class="date">
                     <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
-                    <p>{{event.date_posted|date:"F d, Y, h:i A"}}</p>
+                    <p>{{event.date_posted|date:"F d, Y"}} - {{ event.time }}</p>
 
                 </div>
 
@@ -62,8 +62,8 @@
         let searchvalue = {
             search_value: searchbar.value,
         }
-        
-        
+
+
         async function postdata() {
             const response = await fetch('', {
                 method: 'POST',
@@ -79,7 +79,7 @@
             html = ''
             document.querySelector('.events-container').style.display = 'none'
             console.log(response.length)
-            if(response.length === 0){
+            if (response.length === 0) {
                 html += `
                     <center>
                         <h1> No Events Found </h1>
@@ -87,10 +87,10 @@
                 `
                 document.querySelector('.search-events').innerHTML = html
 
-            } else{
+            } else {
 
                 response.forEach(event => {
-    
+
                     html += `<div class="event">
                                 <a style="color: black;" href="/events/${event.id}">
                                     <div class="banner">
@@ -101,7 +101,7 @@
     
                                     <div class="date">
                                         <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
-                                        <p>${event.date}</p>
+                                        <p>${event.date} - ${event.time}</p>
     
                                     </div>
     
@@ -118,29 +118,29 @@
                                 <button style ="display: none;" class="btn registered registered-${event.id} ${event.if_reg}">Registered</button>
                             </div>`
                     document.querySelector('.search-events').innerHTML = html
-                    
+
                 });
             }
-            
-            
+
+
         }
-        
+
         postdata()
             .then(response => display(JSON.parse(response)))
             .then(res => {
                 const events = document.querySelectorAll('.search-events .event')
-              
+
                 events.forEach(event => {
-                    
-                    if(event.querySelector('.author-false')){
-                        if(event.querySelector('.true')){
+
+                    if (event.querySelector('.author-false')) {
+                        if (event.querySelector('.true')) {
                             event.querySelector('.registered').style.display = ''
-                            
-                        } else if(event.querySelector('.false')){
+
+                        } else if (event.querySelector('.false')) {
                             event.querySelector('.register').style.display = ''
-                            
-                        } 
-                    } 
+
+                        }
+                    }
                 })
             })
             .catch(error => console.error(error));

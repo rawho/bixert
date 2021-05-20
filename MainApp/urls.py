@@ -9,5 +9,4 @@ urlpatterns = [
     path("myevents", views.myevents, name="myevents"),
     path("registered/", views.registered, name="registered"),
     path("verify/<ids>", views.verify, name="verify"),
-    path("notifications", views.notification, name="notifications"),
 ]
