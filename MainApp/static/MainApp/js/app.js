@@ -4,7 +4,7 @@ const newChatForm = document.querySelector('.new-chat-form')
 const newNameForm = document.querySelector('.update-username')
 const updateMsg = document.querySelector('.update-msg')
 const channels = document.querySelector('.buttons')
-
+let event_id = document.querySelector('.chatsection').getAttribute('data-event_id')
 // add a new chat 
 newChatForm.addEventListener('submit', e => {
     e.preventDefault()
@@ -36,11 +36,18 @@ newNameForm.addEventListener('submit', e => {
 
 
 // check local storage for a name 
-const username = localStorage.username ? localStorage.username : 'anonymous'
+const username = document.querySelector(".chatsection").getAttribute("data-user")
 
 // class instances
 const chatUI = new ChatUI(chatList)
-const chatroom = new Chatroom('event', username)
+const chatroom = new Chatroom(event_id, username)
 
 // get chats and render
 chatroom.getChats(data => chatUI.render(data))
+
+// update the channel 
+chatUI.clear();
+chatroom.updateChannel(event_id)
+chatroom.getChats(chat => {
+    chatUI.render(chat)
+})

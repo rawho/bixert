@@ -111,6 +111,7 @@ class EventsDetailView(DetailView):
                 registered_event=self.kwargs["pk"]
             )
         ]
+        context["user"] =  self.request.user.username
         return context
 
 

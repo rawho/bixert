@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block content %}
-
 <section class="event-details">
     <div class="event-banner">
         <img src="{{ object.banner.url }}" alt="">
@@ -54,8 +53,7 @@
             {% endfor %}
         </div>
 
-        <div class="chatsection">
-            
+        <div class="chatsection" data-event_id="{{ object.id }}"  data-user = "{{ user }}">
             <div class="chats-container">
                 <div class="form">
                     <form class="new-chat-form">
