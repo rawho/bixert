@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+import datetime
 
 
 class Event(models.Model):
@@ -11,6 +12,7 @@ class Event(models.Model):
     max_participants = models.IntegerField()
     # date_posted = models.DateTimeField(auto_now_add=True)
     date_posted = models.DateTimeField(default=timezone.now)
+    time = models.TimeField(auto_now=False, auto_now_add=False, default=datetime.datetime.now())
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -21,3 +23,9 @@ class EventUser(models.Model):
     registered_user = models.ForeignKey(User, on_delete=models.CASCADE)
     registered_event = models.ForeignKey(Event, on_delete=models.CASCADE)
     confirm = models.BooleanField(default=False)
+
+
+class Chat(models.Model):
+    message = models.CharField(null=True, blank=True, max_length=300)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)

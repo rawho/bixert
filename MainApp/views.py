@@ -12,6 +12,7 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from .send_mail import sendmail
+from .models import Chat
 
 
 def myevents(request):
@@ -162,4 +163,18 @@ def verify(request, ids):
 
 
 def notification(request):
-    return render(request, 'MainApp/notifications.html')
+    return render(request, "MainApp/notifications.html")
+
+
+def chat(request, event_id, user_id):
+    event = Event.objects.all().filter(id=event_id).first()
+    user = User.objects.all().filter(id=user_id).first()
+    if request.POST:
+        message = request.POST.get("message")
+        if message != "":
+            Chat.objects.create(user=user, event=event, message=message)
+    return render(
+        request,
+        "MainApp/chatroom.html",
+        context={"message_user": Chat.objects.all().filter(event=event_id)},
+    )
