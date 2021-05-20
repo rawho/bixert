@@ -1,0 +1,10 @@
+<h2>chat room</h2>
+{% for m in message_user %}
+<h2>{{ m.user.username }}</h2>
+<h2>{{ m.message }}</h2>
+{% endfor %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" placeholder="type" name="message">
+    <button type="submit">submit</button>
+</form>

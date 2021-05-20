@@ -12,7 +12,8 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from .send_mail import sendmail
-import datetime,time
+import datetime,pytz
+from .models import Notifications
 
 def myevents(request):
     return render(
@@ -156,3 +157,10 @@ def verify(request, ids):
     eventuser.save()
     return redirect("registered")
 
+
+def notifications(request):
+    l = Notifications.objects.all().filter(user = request.user)
+    IST = pytz.timezone('Asia/Kolkata')
+    events = [eve.registered_event for eve in EventUser.objects.all().filter(registered_user = request.user)]
+    events = [event for event in events if event.date_posted.strftime("%d-%b-%Y") == datetime.datetime.now(IST).strftime("%d-%b-%Y")]
+    return render(request,"MainApp/notifications.html",context= {"noti":l,"current_event":events})

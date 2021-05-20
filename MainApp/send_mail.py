@@ -1,7 +1,7 @@
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
+from .models import Notifications
 
 def sendmail(event, user):
     sender_email = "bixertbot@gmail.com"
@@ -34,7 +34,7 @@ def sendmail(event, user):
     # Turn these into plain/html MIMEText objects
     part1 = MIMEText(text, "plain")
     part2 = MIMEText(html, "html")
-
+    Notifications.objects.create(user = user,notification = f"Please confirm your invitation for {event.title} sent to your mail {user.email}")
     # Add HTML/plain-text parts to MIMEMultipart message
     # The email client will try to render the last part first
     message.attach(part1)
