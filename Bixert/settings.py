@@ -87,12 +87,12 @@ WSGI_APPLICATION = "Bixert.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bixert', 
-        'USER': 'bixert', 
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bixert',
+        'USER': 'bixert',
         'PASSWORD': 'Bixert@123',
-        'HOST': '127.0.0.1', 
-        'PORT': '5432',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
