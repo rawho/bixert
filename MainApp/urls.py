@@ -10,5 +10,4 @@ urlpatterns = [
     path("registered/", views.registered, name="registered"),
     path("verify/<ids>", views.verify, name="verify"),
     path("notifications", views.notification, name="notifications"),
-    path("chat/<event_id>/<user_id>", views.chat, name="chat"),
 ]

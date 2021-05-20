@@ -23,9 +23,3 @@ class EventUser(models.Model):
     registered_user = models.ForeignKey(User, on_delete=models.CASCADE)
     registered_event = models.ForeignKey(Event, on_delete=models.CASCADE)
     confirm = models.BooleanField(default=False)
-
-
-class Chat(models.Model):
-    message = models.CharField(null=True, blank=True, max_length=300)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
