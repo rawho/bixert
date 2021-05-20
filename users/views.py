@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from MainApp.models import Event, EventUser
 from .models import Profile
+from django.core.files.storage import FileSystemStorage
 
 
 def register_login(request):
@@ -38,17 +39,26 @@ def register_login(request):
 @login_required
 def profile(request):
     if request.POST:
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        company = request.POST.get("company")
-        phoneNo = request.POST.get("phoneNo")
-        print(name)
-        user_profile = Profile.objects.all().filter(user=request.user).first()
-        user_profile.name = name
-        user_profile.email = email
-        user_profile.company = company
-        user_profile.phone_no = phoneNo
-        user_profile.save()
+        if "edit" in request.POST:
+            name = request.POST.get("name")
+            email = request.POST.get("email")
+            company = request.POST.get("company")
+            phoneNo = request.POST.get("phoneNo")
+            print(name)
+            user_profile = Profile.objects.all().filter(user=request.user).first()
+            user_profile.name = name
+            user_profile.email = email
+            user_profile.company = company
+            user_profile.phone_no = phoneNo
+            user_profile.save()
+        elif request.FILES["image"]:
+            print("helo")
+            dp = request.FILES["image"]
+            fs = FileSystemStorage()
+            filename = fs.save(dp.name, dp)
+            user_profile = Profile.objects.all().filter(user=request.user).first()
+            user_profile.image = filename
+            user_profile.save()
     return render(
         request,
         "users/profile.html",

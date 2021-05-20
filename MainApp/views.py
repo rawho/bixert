@@ -130,6 +130,7 @@ def createEvent(request):
         if location == "venue":
             location = request.POST.get("place")
         banner = request.FILES["banner"]
+        print(request.FILES, "|||||||||||||||||||||||||||||||")
         fs = FileSystemStorage()
         filename = fs.save(banner.name, banner)
         Event.objects.create(

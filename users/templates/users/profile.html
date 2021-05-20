@@ -11,7 +11,11 @@
         <div class="profile-details">
             <div class="dp">
                 <img src="{{ user.profile.image.url }}" alt="">
-                <div class="edit"><img src="https://img.icons8.com/office/16/000000/edit.png" /></div>
+                <form action="" method="POST" enctype="multipart/form-data" id="dpform">
+                    {% csrf_token %}
+                        <input id="im" class="edit" accept="image/*" type="file" name="image">
+                        <img src="https://img.icons8.com/office/16/000000/edit.png" />
+                </form>
             </div>
             <div class="personal-details">
                 <h1>{{ user.username }}</h1>
@@ -34,9 +38,10 @@
 
             <input type="text" id="phoneNo" name="phoneNo" placeholder="Mobile No" value="{{ user.profile.phone_no }}">
 
-            <input type="text" id="company" name="company" placeholder="company name" value="{{ user.profile.company }}">
+            <input type="text" id="company" name="company" placeholder="company name"
+                value="{{ user.profile.company }}">
 
-            <button class="btn save">save</button>
+            <button name="edit" class="btn save">save</button>
         </form>
 
         <div class="pro-details">
@@ -156,6 +161,10 @@
         myeventsDiv.style.display = 'none';
         upcomingDiv.style.display = 'grid'
     });
+    document.querySelector('#im').addEventListener('change',i=>{
+        console.log("submitted")
+        document.querySelector('#dpform').submit()
+    })
 </script>
 
 {% endblock %}
