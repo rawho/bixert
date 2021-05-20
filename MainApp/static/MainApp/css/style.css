@@ -172,6 +172,37 @@ a {
   }
 }
 
+.notification-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: red;
+  position: relative;
+  right: -20px;
+  top: 10px;
+}
+
+@media (max-width: 767px) {
+  .notification-dot {
+    width: 6px;
+    height: 6px;
+    top: 6px;
+    right: -11px;
+  }
+}
+
+#notification {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 767px) {
+  #notification {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 #dp {
   width: 40px !important;
   height: 40px;
@@ -198,6 +229,7 @@ a {
 .dropdown {
   display: none;
   position: absolute;
+  right: 0;
   background-color: #f9f9f9;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
