@@ -46,8 +46,15 @@
                     width: 100%;
                 }
             }
-            
+            .datetime{
+                display: flex;
+                flex-direction: row;
+            }
             input[type=date]{
+                width: fit-content;
+                margin-right: 20px;
+            }
+            input[type=time]{
                 width: fit-content;
             }
             .location-container{
