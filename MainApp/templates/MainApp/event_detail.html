@@ -9,7 +9,6 @@
     </div>
     <div class="details">
         <h1 class="event-title">{{object.title}}</h1>
-        <button class="btn">Register</button>
     </div>
     <div class="_">
         <p>Organised by <span>{{object.author}}</span></p>
@@ -53,7 +52,7 @@
             {% endfor %}
         </div>
 
-        <div class="chatsection" data-event_id="{{ object.id }}"  data-user = "{{ user }}">
+        <div class="chatsection" data-event_id="{{ object.id }}"  data-user = "{{ user.username }}" data-image = "{{ user.profile.image.url }}">
             <div class="chats-container">
                 <div class="form">
                     <form class="new-chat-form">

@@ -1,0 +1,19 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<h2>{{ user.username }}</h2>
+<h2>{{ user.profile.name }}</h2>
+<h2>{{ user.email }}</h2>
+<h2>{{ user.profile.company }}</h2>
+<h2>{{ user.profile.phone_no }}</h2>
+
+<form action="" method="GET">
+    <input type="hidden" value={{ user.id }} name="user_id">
+    <button class="btn" name="message">message</button>
+</form>
+
+{% endblock %}

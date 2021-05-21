@@ -1,0 +1,10 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+{% for user in users %}
+<form action="" method="GET">
+    <input type="hidden" value={{ user.user_2.username }} name="user_2">
+    <button class="btn" name="user">{{ user.user_2.username }}</button>
+</form>
+{% endfor %}
+{% endblock %}

@@ -9,5 +9,6 @@ urlpatterns = [
     path("myevents", views.myevents, name="myevents"),
     path("registered/", views.registered, name="registered"),
     path("verify/<ids>", views.verify, name="verify"),
-    path("notifications/", views.notifications, name="notifications"),   
+    path("notifications/", views.notifications, name="notifications"), 
+    path("<username>/", views.profile, name="profile"),   
 ]

@@ -1,6 +1,6 @@
 // render chat templates to the DOM 
 // clear the list of chats (when the room changes)
-
+let image_url = document.querySelector('.chatsection').getAttribute('data-image')
 class ChatUI {
     constructor(list) {
         this.list = list;

@@ -27,3 +27,6 @@ class Profile(models.Model):
 
 
     
+class Messaging(models.Model):
+    user_id = models.CharField(null=True, blank=True, max_length=25)
+    user_2 = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -14,6 +14,8 @@ from email.mime.multipart import MIMEMultipart
 from .send_mail import sendmail
 import datetime,pytz
 from .models import Notifications
+from users.models import Messaging
+
 
 def myevents(request):
     return render(
@@ -98,11 +100,11 @@ def registered(request):
         context = {"events": None}
 
     return render(request, "MainApp/registered.html", context)
-
+    
 
 class EventsDetailView(DetailView):
     model = Event
-
+    template_name = "MainApp/event_detail.html"
     def get_context_data(self, **kwargs):
         context = super(EventsDetailView, self).get_context_data(**kwargs)
         context["attendees"] = [
@@ -111,8 +113,10 @@ class EventsDetailView(DetailView):
                 registered_event=self.kwargs["pk"]
             )
         ]
-        context["user"] =  self.request.user.username
+        context["user"] =  self.request.user
+        context["if_list"] = [eve.registered_event.id for eve in EventUser.objects.all().filter(registered_user=self.request.user)]
         return context
+
 
 
 @csrf_exempt
@@ -165,3 +169,18 @@ def notifications(request):
     events = [eve.registered_event for eve in EventUser.objects.all().filter(registered_user = request.user)]
     events = [event for event in events if event.date_posted.strftime("%d-%b-%Y") == datetime.datetime.now(IST).strftime("%d-%b-%Y")]
     return render(request,"MainApp/notifications.html",context= {"noti":l,"current_event":events})
+
+
+
+
+
+def profile(request,username):
+    if request.GET:
+        id = request.GET.get('user_id')
+        user = User.objects.all().filter(id = id).first()
+        if not Messaging.objects.all().filter(user_id = id).filter(user_2 = user):
+            Messaging.objects.create(user_id = request.user.id,user_2 = user)
+            Messaging.objects.create(user_id = user.id,user_2 = request.user)
+        return redirect("messaging")
+    user = User.objects.all().filter(username = username).first()
+    return render(request,"MainApp/profile.html",{"user":user,"requser":request.user})

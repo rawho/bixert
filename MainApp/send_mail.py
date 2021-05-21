@@ -2,11 +2,12 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from .models import Notifications
+import os
 
 def sendmail(event, user):
-    sender_email = "bixertbot@gmail.com"
-    receiver_email = "adi@cet.ac.in"
-    password = "Bixert@123"
+    sender_email = os.environ.get("EMAIL_USERNAME")
+    receiver_email = user.email
+    password = os.environ.get("EMAIL_PASSWORD")
     message = MIMEMultipart("alternative")
     message["Subject"] = "Invitation"
     message["From"] = sender_email
@@ -25,7 +26,7 @@ def sendmail(event, user):
             <h1>{event.title} </h1>
             <p>{event.content} </p>
             <p>Are you coming?</p>
-            <a href="https://bixert.herokuapp.com/verify/{event.id}-{user.id}"><button>Yes</button></a> <button>No</button>
+            <a href="https://bixert.xyz/verify/{event.id}-{user.id}"><button>Yes</button></a> <button>No</button>
         </div>
     </body>
     </html>
