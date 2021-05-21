@@ -71,6 +71,10 @@
             }
         }
         .personal-details{
+
+            form{
+                padding: 20px 0;
+            }
             @media(max-width: 767px){
                 text-align: center;
             }

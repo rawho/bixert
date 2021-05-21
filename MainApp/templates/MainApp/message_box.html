@@ -25,9 +25,9 @@
 
     </section>
 
-<section class="message-section chats-container">
-    <div class="chatsection" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}"></div>
+<section class="chatsection message-section chats-container" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}">
         <div class="chat-input">
+            
             <form class="new-chat-form">
                 <textarea name="msg" id="msg" cols="30" rows="2" placeholder="type your message" required></textarea>
                 <input class="submit btn" type="submit" id="submit" value="send">
@@ -44,23 +44,7 @@
                 <p class="author">Rahul T</p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptatum voluptate aspernatur tenetur! A, dignissimos libero atque, provident quasi hic explicabo tempora doloribus error quisquam sapiente. Obcaecati dolorum error exercitationem!
             </div>
-
-        </div>
-            
-    <!-- <div class="chatsection" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}" data-image = "{{ user.profile.image.url }}">
-        <div class="chats-container">
-            <div class="form">
-                <form class="new-chat-form">
-                    <textarea name="msg" id="msg" cols="30" rows="2" placeholder="type your message" required></textarea>
-                    <input class="btn" type="submit" id="submit" value="Send">
-                </form>
-            </div>
-    
-            <div class="chats">
-                
-            </div>
-        </div>
-        <div class="users container">
+             <div class="users container">
             <div class="update-msg"></div>
             <form class="update-username">
                 <input type="text" id="name" required placeholder="name">
@@ -69,11 +53,8 @@
             
     
         </div>
-    
-    </div>
 
-</div> -->
-
+        </div>
 
     </section>
 </div>

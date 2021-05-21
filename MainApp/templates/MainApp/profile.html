@@ -1,19 +1,145 @@
 {% extends 'users/base.html' %}
-
 {% load static %}
 
 {% block content %}
 
+<div class="profile-container">
 
-<h2>{{ user.username }}</h2>
-<h2>{{ user.profile.name }}</h2>
-<h2>{{ user.email }}</h2>
-<h2>{{ user.profile.company }}</h2>
-<h2>{{ user.profile.phone_no }}</h2>
+    <div class="_">
+        <!-- <h1>Profile Details</h1>
+        <p>View & Update Your Profile Details</p> -->
+        <div class="profile-details">
+            <div class="dp">
+                <img src="{{ user.profile.image.url }}" alt="">
+                
+            </div>
+            <div class="personal-details">
+                <h1>{{ user.username }}</h1>
+                <p>{{ user.email }}</p>
+                <form action="" method="GET">
+                    <input type="hidden" value={{ user.id }} name="user_id">
+                    <button class="btn" name="message">message</button>
+                </form>
+                
+            </div>
+        </div>
 
-<form action="" method="GET">
-    <input type="hidden" value={{ user.id }} name="user_id">
-    <button class="btn" name="message">message</button>
-</form>
+    </div>
+    <div class="profile-update">
+
+        <style>
+            span{
+                text-align: right;
+            }
+        </style>
+        <div class="pro-details">
+            <p>Username: <span>{{ user.username }}</span></p>
+            <p>Name: <span>{% if user.profile.name %} {{ user.profile.name }} {% else %} - {% endif %}</span> </p>
+            <p>Email: <span>{{ user.email }}</span> </p>
+            <p>Phone Number: <span>{% if user.profile.phone_no %} {{ user.profile.phone_no }} {% else %} - {% endif %}</span> </p>
+            <p>College: <span>{% if user.profile.company %} {{ user.profile.company }} {% else %} - {% endif %}</span>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<div class="event-details-profile">
+    <div class="inner-nav">
+        <button class="btn myeventsBtn active">Upcoming Events</button>
+        <button class="btn upcomingBtn">Past Events</button>
+    </div>
+
+    <div class="events-container my-events">
+
+        {% for event in events %}
+        <div class="event">
+            <a style="color: black;" href="{% url 'event-detail' event.id %}">
+                <div class="banner">
+                    <img src="{{ event.banner.url }}" alt="">
+                </div>
+                <h1 class="title">{{event.title}}</h1>
+                <p>{{event.content}}</p>
+
+                <div class="date">
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
+                    <p>{{event.date_posted|date:"F d, Y, h:i A"}}</p>
+
+                </div>
+
+                <div class="location">
+                    <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+                    <p>{{ event.venue }}</p>
+                </div>
+                <p class="organised-by">Organised by {{event.author}}</p>
+            </a>
+
+            {% if request.user != event.author %}
+            <button class="btn">Register</button>
+            {% endif %}
+        </div>
+
+        {% endfor %}
+    </div>
+
+
+    <div style="display: none;" class="events-container upcoming">
+        {% for event in registered_events %}
+        <div class="event">
+            <a style="color: black;" href="{% url 'event-detail' event.registered_event.id %}">
+                <div class="banner">
+                    <img src="{{ event.registered_event.banner.url }}" alt="">
+                </div>
+                <h1 class="title">{{event.registered_event.title}}</h1>
+                <p>{{event.registered_event.content}}</p>
+
+                <div class="date">
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
+                    <p>{{event.registered_event.date_posted|date:"F d, Y, h:i A"}}</p>
+
+                </div>
+
+                <div class="location">
+                    <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+                    <p>{{ event.registered_event.venue }}</p>
+                </div>
+                <p class="organised-by">Organised by {{event.registered_event.author}}</p>
+            </a>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<script>
+    const upcomingDiv = document.querySelector('.upcoming')
+    const myeventsDiv = document.querySelector('.my-events')
+
+    const myEventsBtn = document.querySelector('.myeventsBtn')
+    const upcomingBtn = document.querySelector('.upcomingBtn')
+
+
+
+
+    myEventsBtn.addEventListener('click', e => {
+        myEventsBtn.classList.toggle('active')
+        upcomingBtn.classList.toggle('active')
+        myeventsDiv.style.display = '';
+        upcomingDiv.style.display = 'none'
+    })
+
+    upcomingBtn.addEventListener('click', e => {
+        upcomingBtn.classList.toggle('active')
+        myEventsBtn.classList.toggle('active')
+        myeventsDiv.style.display = 'none';
+        upcomingDiv.style.display = 'grid'
+    });
+    document.querySelector('#im').addEventListener('change',i=>{
+        console.log("submitted")
+        document.querySelector('#dpform').submit()
+    })
+</script>
 
 {% endblock %}
