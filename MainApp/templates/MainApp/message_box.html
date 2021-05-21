@@ -3,13 +3,56 @@
 {% load static %}
 
 {% block content %}
+<div class="message-app">
+    <section class="message-sidebar">
+        <div class="chatsection" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}"></div>
 
-<div class="chatsection" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}">
+
+        <button class="chat-sidebar"> 
+            <div class="image">
+                <img src="/media/profile_pics/default.jpg" alt="">
+            </div>
+            <p class="username">Rahul T</p>
+        </button>
+
+        <button class="chat-sidebar"> 
+            <div class="image">
+                <img src="/media/profile_pics/default.jpg" alt="">
+            </div>
+            <p class="username">Rahul T</p>
+        </button>
+
+
+    </section>
+
+    <section class="message-section">
+        <div class="chat-input">
+            <form class="new-chat-form">
+                <textarea name="msg" id="msg" cols="30" rows="2" placeholder="type your message" required></textarea>
+                <input class="submit" type="submit" id="submit" value="send">
+            </form>
+        </div>
+
+        <div class="chats">
+            <div class="chat left">
+                <p class="author">Rahul T</p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptatum voluptate aspernatur tenetur! A, dignissimos libero atque, provident quasi hic explicabo tempora doloribus error quisquam sapiente. Obcaecati dolorum error exercitationem!
+            </div>
+
+            <div class="chat right">
+                <p class="author">Rahul T</p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptatum voluptate aspernatur tenetur! A, dignissimos libero atque, provident quasi hic explicabo tempora doloribus error quisquam sapiente. Obcaecati dolorum error exercitationem!
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<!-- <div class="chatsection" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}">
     <div class="chats-container">
         <div class="form">
             <form class="new-chat-form">
                 <textarea name="msg" id="msg" cols="30" rows="2" placeholder="type your message" required></textarea>
-                <!-- <input type="text" id="msg" autofocus required placeholder="Type a messege"> -->
                 <input class="btn" type="submit" id="submit" value="Send">
             </form>
         </div>
@@ -18,16 +61,7 @@
             
         </div>
     </div>
-    <div class="users container">
-        <div class="update-msg"></div>
-        <form class="update-username">
-            <input type="text" id="name" required placeholder="name">
-            <input type="submit" id="submit" value="Update"> 
-            <!-- <p>Developed by <a style="color: #fff;" href="https://rahulmanoj.xyz">Rahul T</a></p> -->
-        </form>
-        
 
-    </div>
 
 </div>
 
@@ -35,7 +69,7 @@
 
 
 
-</section>
+</section> -->
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"></script>

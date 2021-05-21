@@ -92,4 +92,4 @@ def messaging(request):
             id = user_1 + user_2
         return render(request,"MainApp/message_box.html",{"msg_id":id , "requser":request.user})
     users = [user for user in Messaging.objects.all().filter(user_id = request.user.id)]
-    return render(request,"users/Messaging.html",{"users":users}) 
+    return render(request,"users/messaging.html",{"users":users}) 

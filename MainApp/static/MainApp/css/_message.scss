@@ -1,0 +1,126 @@
+.message-app{
+    max-height: 87vh;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    .message-sidebar::-webkit-scrollbar {
+        width: 2px;
+    }
+
+    .message-sidebar::-webkit-scrollbar-thumb {
+        background: #6657da;
+    }
+  
+    .message-sidebar{
+        border-right: 1px solid #00000030;
+        height: 87vh;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+
+        .chat-sidebar{
+            padding: 20px;
+            background-color: transparent;
+            border: 1px solid #00000030;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .image{
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+                img{
+                    width: 100%;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+            .username{
+                font-size: 1.3rem;
+            }
+        }
+    }
+    .message-section{
+        position: relative;
+
+        .chat-input{
+            position: absolute;
+            bottom: 0;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+
+            .new-chat-form{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                textarea{
+                    width: 80%;
+                    margin: auto;
+                    padding: 20px;
+                    font-size: 1rem;
+                    border: 1px solid #00000030;
+                    border-radius: 20px;
+                    outline: none;
+                }
+
+                .submit{
+                    position: relative;
+                    right: 40px;
+                    padding: 10px 20px;
+                    font-size: 1rem;
+                    border: 1px solid #00000030;
+                    border-radius: 10px;
+                    outline: none;
+                    cursor: pointer;
+                    background-color: #6657da;
+                    color: #fff;
+                    
+                }
+
+            }
+        }
+        .chats::-webkit-scrollbar-thumb {
+            background: #b8b4d8;
+        }
+        .chats::-webkit-scrollbar {
+            width: 1px;
+        }
+        .chats{
+            width: 90% !important;
+            height: 70vh;
+            overflow-y: scroll;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+
+            .chat{
+                background-color: rgb(234, 231, 238);
+                width: 70%;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+
+                .author{
+                    font-weight: 600;
+                    font-size: 1.2rem;
+                    color: #6657da;
+                }
+
+                
+            }
+            .left{
+                align-items: flex-start !important;
+                margin: 10px 0;
+            }
+            .right{
+                align-self: flex-end !important;
+                margin: 10px 0;
+            }
+        }
+    }
+}
