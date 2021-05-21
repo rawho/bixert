@@ -45,7 +45,7 @@
                 
                 {% else %}
                     <img src="{{user.registered_user.profile.image.url }}" alt="">
-                    <h2> {{ user.registered_user.username }}</h2>
+                    <a href="{% url 'profile' user.registered_user.username %}"><h2> {{ user.registered_user.username }}</h2></a>
                     <img class="pending" src="{% static 'MainApp/images/icons/pending-email.svg' %}"/>
                 {% endif %}
             </div>

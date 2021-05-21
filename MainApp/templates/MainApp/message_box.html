@@ -25,11 +25,12 @@
 
     </section>
 
-    <section class="message-section">
+<section class="message-section chats-container">
+    <div class="chatsection" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}"></div>
         <div class="chat-input">
             <form class="new-chat-form">
                 <textarea name="msg" id="msg" cols="30" rows="2" placeholder="type your message" required></textarea>
-                <input class="submit" type="submit" id="submit" value="send">
+                <input class="submit btn" type="submit" id="submit" value="send">
             </form>
         </div>
 
@@ -45,31 +46,38 @@
             </div>
 
         </div>
+            
+    <!-- <div class="chatsection" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}" data-image = "{{ user.profile.image.url }}">
+        <div class="chats-container">
+            <div class="form">
+                <form class="new-chat-form">
+                    <textarea name="msg" id="msg" cols="30" rows="2" placeholder="type your message" required></textarea>
+                    <input class="btn" type="submit" id="submit" value="Send">
+                </form>
+            </div>
+    
+            <div class="chats">
+                
+            </div>
+        </div>
+        <div class="users container">
+            <div class="update-msg"></div>
+            <form class="update-username">
+                <input type="text" id="name" required placeholder="name">
+                <input type="submit" id="submit" value="Update"> 
+            </form>
+            
+    
+        </div>
+    
+    </div>
+
+</div> -->
+
+
     </section>
 </div>
 
-<!-- <div class="chatsection" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}">
-    <div class="chats-container">
-        <div class="form">
-            <form class="new-chat-form">
-                <textarea name="msg" id="msg" cols="30" rows="2" placeholder="type your message" required></textarea>
-                <input class="btn" type="submit" id="submit" value="Send">
-            </form>
-        </div>
-
-        <div class="chats">
-            
-        </div>
-    </div>
-
-
-</div>
-
-</div>
-
-
-
-</section> -->
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"></script>
@@ -110,30 +118,30 @@ const chatsBtn = document.querySelector('.chatsBtn')
 
 
 overviewBtn.addEventListener('click', e => {
-overviewBtn.classList.toggle('active')
-attendeesBtn.classList.remove('active')
-chatsBtn.classList.remove('active')
-contentDiv.style.display = '';
-attendeesDiv.style.display = 'none'
-chatsDiv.style.display = 'none'
+    overviewBtn.classList.toggle('active')
+    attendeesBtn.classList.remove('active')
+    chatsBtn.classList.remove('active')
+    contentDiv.style.display = '';
+    attendeesDiv.style.display = 'none'
+    chatsDiv.style.display = 'none'
 })
 
 attendeesBtn.addEventListener('click', e => {
-attendeesBtn.classList.toggle('active')
-overviewBtn.classList.remove('active')
-chatsBtn.classList.remove('active')
-contentDiv.style.display = 'none';
-attendeesDiv.style.display = 'grid'
-chatsDiv.style.display = 'none'
+    attendeesBtn.classList.toggle('active')
+    overviewBtn.classList.remove('active')
+    chatsBtn.classList.remove('active')
+    contentDiv.style.display = 'none';
+    attendeesDiv.style.display = 'grid'
+    chatsDiv.style.display = 'none'
 })
 
 chatsBtn.addEventListener('click', e => {
-attendeesBtn.classList.remove('active')
-overviewBtn.classList.remove('active')
-chatsBtn.classList.toggle('active')
-contentDiv.style.display = 'none';
-attendeesDiv.style.display = 'none'
-chatsDiv.style.display = 'grid'
+    attendeesBtn.classList.remove('active')
+    overviewBtn.classList.remove('active')
+    chatsBtn.classList.toggle('active')
+    contentDiv.style.display = 'none';
+    attendeesDiv.style.display = 'none'
+    chatsDiv.style.display = 'grid'
 })
 
 
