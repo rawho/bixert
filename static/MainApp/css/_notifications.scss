@@ -1,0 +1,23 @@
+.notification-section{
+    width: 50%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    @media(max-width: 767px){
+        width: 90%;
+    }
+    .notification{
+        margin-top: 10px;
+        width: 90%;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 20px;
+        border: 1px solid #00000020;
+        box-shadow: 1px 3px 7px -1px rgba(0,0,0,0.20);
+        -webkit-box-shadow: 1px 3px 7px -1px rgba(0,0,0,0.20);
+        -moz-box-shadow: 1px 3px 7px -1px rgba(0,0,0,0.20);
+        @media(max-width: 767px){
+            width: 100%;
+        }
+    }
+}

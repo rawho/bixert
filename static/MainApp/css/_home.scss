@@ -1,0 +1,36 @@
+.home{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    @media(max-width: 767px){
+        grid-template-columns: 1fr;
+        padding-top: 100px;
+    }
+
+    .content{
+        justify-self: flex-start;
+        h1{
+            font-size: 3rem;
+            margin-bottom: 30px;
+
+            @media(max-width: 767px){
+                font-size: 2rem;
+            }
+
+            span{
+                color: #6657da;
+            }
+        }
+    }
+
+    .home-image{
+        
+        img{
+            width: 100%;
+        }
+    }
+}

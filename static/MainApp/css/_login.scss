@@ -1,0 +1,115 @@
+.container, .container_{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 100;
+    display: none;
+    
+}
+.login-container, .signup-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 20rem;
+    height: 32rem;
+    background-color: #fff;
+    background: #7c9eec;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #839dda, #ddc7ff);
+    background: linear-gradient(to right, #8ca3d8, #d6c5f0);
+    box-shadow: 0 2rem 5rem 0 #00000060;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    .close{
+        width: 30px;
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+
+    }
+    h1{
+        margin-bottom: 30px;
+        color: #6452da;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+        input{
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #00000030;
+            outline: none;
+        }
+
+        .btn{
+            width: auto;
+            margin: 20px;
+        }
+        
+        p{
+            font-size: 0.7rem;
+        }
+
+    }
+
+    .already{
+        position: absolute;
+        bottom: 0;
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+}
+
+.login-container.open, .signup-container.open {
+    animation:  open 0.5s forwards;
+}
+
+.login-container.close, .signup-container.close {
+    animation: close 0.5s forwards;
+}
+
+@keyframes open {
+    0%{
+        transform: translate(200%, -400%) scale(0);
+    }
+    50%{
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    70%{
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    95%{
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes close {
+    100%{
+        transform: translate(200%, -400%) scale(0);
+    }
+    50%{
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    30%{
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    5%{
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    0%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

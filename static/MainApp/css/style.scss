@@ -1,0 +1,81 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+/* Scrollbar  */
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  @media(max-width: 676px){
+    ::-webkit-scrollbar {
+        width: 2px;
+      }
+  }
+  .chats::-webkit-scrollbar {
+    width: 2px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #6657da;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6657da;
+  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Quicksand', sans-serif;
+    scroll-behavior: smooth;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn{
+    border-radius: 20px;
+    background-color: #6657da;
+    border: none;
+    outline: none;
+    color: #E5E5E5;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.disabled{
+    background-color: #00000090;
+    cursor: not-allowed;
+}
+.success{
+    border: 2px solid greenyellow !important;
+}
+.error{
+    border: 2px solid crimson !important;
+}
+
+
+@import 'navbar';
+@import 'home';
+@import 'login';
+@import 'events';
+@import 'createEvent';
+@import 'profile';
+@import 'eventDetails';
+@import 'notifications';
+@import 'chats';

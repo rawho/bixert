@@ -1,0 +1,199 @@
+.header{
+    width: 100%;
+    background-color: #fff;
+    z-index: 100;
+    border-bottom: 1px solid #E2E8F0;
+    box-shadow: 10px 10px 18px -15px rgba(0,0,0,0.51);
+    -webkit-box-shadow: 10px 10px 18px -15px rgba(0,0,0,0.51);
+    -moz-box-shadow: 10px 10px 18px -15px rgba(0,0,0,0.51);
+
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        .nav-logo{
+            font-size: 2rem;
+            font-weight: 600;
+            color: #6657da;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .nav-item {
+                margin-left: 2rem;
+
+                @media(max-width: 767px){
+                    margin: 1.5rem 0;
+                }
+                .nav-link{
+                    color: #000;
+                    font-weight: 500;
+                    &:hover{
+                        color: #7b3ad1;
+                    }
+                }
+                .active{
+                    color: #7b3ad1;
+                }
+            }
+            .login{
+                border: 1px solid #7b3ad1;
+                border-radius: 20px;
+                color: #E5E5E5;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+            .register{
+                border-radius: 20px;
+                background-color: #6657da;
+                color: #E5E5E5;
+                padding: 10px 20px;
+                cursor: pointer;
+                
+                .nav-link{
+                    color: #fff;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+    .user{
+        img{
+            object-fit: cover;
+        }
+        &:hover .dropdown{
+            display: flex;
+        }
+        
+        @media(max-width: 767px){
+            &:active .dropdown{
+                display: flex;
+            }
+
+        }
+    }
+    .hamburger {
+        display: none;
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            background-color: #101010;
+        }
+
+        @media(max-width: 767px){
+            display: block;
+            cursor: pointer;
+            
+            .active .bar:nth-child(2){
+                opacity: 0;
+            }
+        }
+    }
+}
+
+.notification-dot{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: red;
+    position: relative;
+    right: -20px;
+    top: 10px;
+    @media(max-width:767px){
+        width: 6px;
+        height: 6px;
+        top: 6px;
+        right: -11px;
+    }
+}
+
+#notification{
+    width: 30px;
+    height: 30px;
+    @media(max-width:767px){
+        width: 20px;
+        height: 20px;
+    }
+}
+#dp{
+    width: 40px !important;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.mobile-nav-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-evenly;
+    padding: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+    a {
+        color: black;
+        text-decoration: none;
+
+        &:hover{
+            color: #7b3ad1;
+        }
+    }
+}
+
+
+  
+
+@media only screen and (max-width: 768px) {  
+
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+
+}
+
