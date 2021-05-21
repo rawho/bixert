@@ -43,6 +43,9 @@
             }
         }
     }
+    .chatsection{
+        margin-top: 0;
+    }
     .message-section{
         position: relative;
 
@@ -90,9 +93,10 @@
         .chats::-webkit-scrollbar {
             width: 1px;
         }
+        
         .chats{
             width: 90% !important;
-            height: 70vh;
+            height: 60vh;
             overflow-y: scroll;
             margin: auto;
             display: flex;
