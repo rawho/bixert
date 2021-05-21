@@ -6,22 +6,17 @@
 <div class="message-app">
     <section class="message-sidebar">
         <div class="chatsection" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}"></div>
-
-
-        <button class="chat-sidebar"> 
-            <div class="image">
-                <img src="/media/profile_pics/default.jpg" alt="">
-            </div>
-            <p class="username">Rahul T</p>
-        </button>
-
-        <button class="chat-sidebar"> 
-            <div class="image">
-                <img src="/media/profile_pics/default.jpg" alt="">
-            </div>
-            <p class="username">Rahul T</p>
-        </button>
-
+        {% for user in users %}
+        <form action="" method="GET">
+            <input type="hidden" value={{ user.user_2.username }} name="user_2">
+            <button class="chat-sidebar btn" name="user"> 
+                <div class="image">
+                    <img src="{{ user.user_2.profile.image.url }}" alt="">
+                </div>
+                <p class="username">{{ user.user_2.username }}</p>
+            </button>
+        </form>
+        {% endfor %}
 
     </section>
 

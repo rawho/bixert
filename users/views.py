@@ -82,6 +82,7 @@ def logout_view(request):
 
 
 def messaging(request):
+    users = [user for user in Messaging.objects.all().filter(user_id = request.user.id)]
     if request.GET:
         user_1 = request.user.username
         user_2 = request.GET.get("user_2")
@@ -91,6 +92,5 @@ def messaging(request):
         else:
             id = user_1 + user_2
         print(id)
-        return render(request,"MainApp/message_box.html",{"msg_id":id , "requser":request.user})
-    users = [user for user in Messaging.objects.all().filter(user_id = request.user.id)]
-    return render(request,"users/messaging.html",{"users":users}) 
+        return render(request,"MainApp/message_box.html",{"msg_id":id , "requser":request.user,"users":users})
+    return render(request,"MainApp/message_box.html",{"users":users}) 
