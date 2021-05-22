@@ -8,15 +8,15 @@ from django.contrib.auth.decorators import login_required
 import json
 import requests
 from django.http import JsonResponse
-import smtplib, ssl
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+# import smtplib, ssl
+# from email.mime.text import MIMEText
+# from email.mime.multipart import MIMEMultipart
 # from .send_mail import sendmail
 import datetime,pytz
 from .models import Notifications
 from users.models import Messaging
 from django.core.mail import send_mail
-
+import os
 def myevents(request):
     return render(
         request,
@@ -77,7 +77,7 @@ class EventsListView(ListView, View):
                 send_mail(
                     "Verify Email", #subject
                     "this is the message body", #message
-                    "bixertbot@gmail.com", #from email
+                    os.environ.get('EMAIL_USERNAME'), #from email
                     ["bixertbot@gmail.com"], #to email
                 )
         return render(
