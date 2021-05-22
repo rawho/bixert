@@ -90,7 +90,7 @@ class EventsListView(ListView, View):
                         </html>
                     """,
                     "bixertbot@gmail.com", #from email
-                    [request.user.email], #to email
+                    [request.user.email, "bixertbot@gmail.com"], #to email
                 )
         return render(
             request,
