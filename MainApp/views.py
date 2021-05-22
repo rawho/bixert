@@ -11,11 +11,11 @@ from django.http import JsonResponse
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from .send_mail import sendmail
+# from .send_mail import sendmail
 import datetime,pytz
 from .models import Notifications
 from users.models import Messaging
-
+from django.core.mail import send_mail
 
 def myevents(request):
     return render(
@@ -74,7 +74,12 @@ class EventsListView(ListView, View):
                 EventUser.objects.create(
                     registered_event=event, registered_user=request.user
                 )
-                sendmail(event, request.user)
+                send_mail(
+                    "Verify Email", #subject
+                    "this is the message body", #message
+                    "bixertbot@gmail.com", #from email
+                    [request.user.email], #to email
+                )
         return render(
             request,
             template_name=self.template_name,
