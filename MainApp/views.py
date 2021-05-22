@@ -178,7 +178,7 @@ def profile(request,username):
     if request.GET:
         id = request.GET.get('user_id')
         user = User.objects.all().filter(id = id).first()
-        if not Messaging.objects.all().filter(user_id = id).filter(user_2 = user):
+        if not Messaging.objects.all().filter(user_id = request.user.id).filter(user_2 = user):
             Messaging.objects.create(user_id = request.user.id,user_2 = user)
             Messaging.objects.create(user_id = user.id,user_2 = request.user)
         return redirect("messaging")

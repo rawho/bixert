@@ -33,10 +33,11 @@ def register_login(request):
                 context = { "message" : "passwords doesnot match" }
             if User.objects.all().filter(username = username).first():
                 context = { "message" : "Username already exists" }
-            User.objects.create_user(username=username, password=password, email=email)
-            user = authenticate(request, username=username, password=password)
-            login(request, user)
-            return redirect("events")
+            else:
+                User.objects.create_user(username=username, password=password, email=email)
+                user = authenticate(request, username=username, password=password)
+                login(request, user)
+                return redirect("events")
     return render(request, "users/home.html", context=context)
 
 
