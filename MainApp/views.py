@@ -84,7 +84,7 @@ class EventsListView(ListView, View):
                                     <h1>{event.title} </h1>
                                     <p>{event.content} </p>
                                     <p>Are you coming?</p>
-                                    <a href="https://bixert.xyz/verify/{event.id}-{user.id}"><button>Yes</button></a> <button>No</button>
+                                    <a href="https://bixert.xyz/verify/{event.id}-{request.user.id}"><button>Yes</button></a> <button>No</button>
                                 </div>
                             </body>
                         </html>
