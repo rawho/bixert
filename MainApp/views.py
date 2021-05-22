@@ -75,9 +75,9 @@ class EventsListView(ListView, View):
                     registered_event=event, registered_user=request.user
                 )
                 send_mail(
-                    "Verify Email", #subject
-                    "this is the message body", #message
-                    f"""
+                    subject="Verify Email", #subject
+                    message="this is the message body", #message
+                    html_message= f"""
                         <html>
                             <body>
                                 <div style="width:80%; margin: auto;">
@@ -89,8 +89,8 @@ class EventsListView(ListView, View):
                             </body>
                         </html>
                     """,
-                    "bixertbot@gmail.com", #from email
-                    [request.user.email, "bixertbot@gmail.com"], #to email
+                    from_email = "bixertbot@gmail.com", #from email
+                    recipient_list =  [request.user.email], #to email
                 )
         return render(
             request,
