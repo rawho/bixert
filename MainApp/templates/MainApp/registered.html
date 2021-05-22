@@ -14,7 +14,7 @@
                 <img src="{{ event.registered_event.banner.url }}" alt="">
             </div>
             <h1 class="title">{{event.registered_event.title}}</h1>
-            <p>{{event.registered_event.content}}</p>
+            <p>{{event.registered_event.content|slice:25}}</p>
 
             <div class="date">
                 <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />

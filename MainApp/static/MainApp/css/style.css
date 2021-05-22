@@ -1174,6 +1174,7 @@ a {
 
 .event-details .overview .content {
   margin: 60px 0;
+  width: 80%;
 }
 
 .event-details .overview .attendees {

@@ -40,7 +40,7 @@
             <div class="user">
                 {% if user.confirm %}
                     <img src="{{user.registered_user.profile.image.url }}" alt="">
-                    <h2>{{ user.registered_user.username }}</h2>
+                    <a href="{% url 'profile' user.registered_user.username %}"><h2>{{ user.registered_user.username }}</h2></a>
                     <img class="tick" src="{% static 'MainApp/images/icons/success.svg' %}"/>
                 
                 {% else %}

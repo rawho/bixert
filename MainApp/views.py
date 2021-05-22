@@ -92,6 +92,7 @@ class EventsListView(ListView, View):
                     from_email = "bixertbot@gmail.com", #from email
                     recipient_list =  [request.user.email], #to email
                 )
+                Notifications.objects.create(user = request.user,notification = "Please confirm you invitations for "+str(event.title))
         return render(
             request,
             template_name=self.template_name,
