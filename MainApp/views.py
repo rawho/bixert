@@ -77,8 +77,20 @@ class EventsListView(ListView, View):
                 send_mail(
                     "Verify Email", #subject
                     "this is the message body", #message
-                    os.environ.get('EMAIL_USERNAME'), #from email
-                    ["bixertbot@gmail.com"], #to email
+                    f"""
+                        <html>
+                            <body>
+                                <div style="width:80%; margin: auto;">
+                                    <h1>{event.title} </h1>
+                                    <p>{event.content} </p>
+                                    <p>Are you coming?</p>
+                                    <a href="https://bixert.xyz/verify/{event.id}-{user.id}"><button>Yes</button></a> <button>No</button>
+                                </div>
+                            </body>
+                        </html>
+                    """,
+                    "bixertbot@gmail.com", #from email
+                    [request.user.email], #to email
                 )
         return render(
             request,
