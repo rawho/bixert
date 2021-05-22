@@ -78,7 +78,7 @@ class EventsListView(ListView, View):
                     "Verify Email", #subject
                     "this is the message body", #message
                     "bixertbot@gmail.com", #from email
-                    [request.user.email], #to email
+                    ["bixertbot@gmail.com"], #to email
                 )
         return render(
             request,
