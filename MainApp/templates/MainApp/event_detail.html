@@ -52,17 +52,16 @@
             {% endfor %}
         </div>
 
-        <div class="chatsection" data-event_id="{{ object.id }}"  data-user = "{{ user.username }}" data-image = "{{ user.profile.image.url }}">
+        <div style="min-height: 100vh;" class="chatsection" data-event_id="{{ object.id }}"  data-user = "{{ user.username }}" data-image = "{{ user.profile.image.url }}">
             <div class="chats-container">
                 <div class="form">
                     <form class="new-chat-form">
                         <textarea name="msg" id="msg" cols="30" rows="2" placeholder="type your message" required></textarea>
-                        <!-- <input type="text" id="msg" autofocus required placeholder="Type a messege"> -->
                         <input class="btn" type="submit" id="submit" value="Send">
                     </form>
                 </div>
         
-                <div class="chats">
+                <div style="height: 70vh;" class="chats">
                     
                 </div>
             </div>
@@ -71,7 +70,6 @@
                 <form class="update-username">
                     <input type="text" id="name" required placeholder="name">
                     <input type="submit" id="submit" value="Update"> 
-                    <!-- <p>Developed by <a style="color: #fff;" href="https://rahulmanoj.xyz">Rahul T</a></p> -->
                 </form>
                 
         

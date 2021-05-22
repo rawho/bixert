@@ -41,6 +41,9 @@
                 font-size: 1.3rem;
             }
         }
+        .active{
+            background-color: #e2dffa;
+        }
     }
     .chatsection{
         margin-top: 0;
@@ -99,7 +102,7 @@
             overflow-y: scroll;
             margin: auto;
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
 
             .chat{
                 background-color: rgb(234, 231, 238);
