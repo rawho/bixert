@@ -9,7 +9,7 @@
         {% for user in users %}
         <form action="" method="GET">
             <input type="hidden" value={{ user.user_2.username }} name="user_2">
-            <button class="chat-sidebar btn" name="user"> 
+            <button style="width: 100%;" class="chat-sidebar" name="user"> 
                 <div class="image">
                     <img src="{{ user.user_2.profile.image.url }}" alt="">
                 </div>
@@ -30,15 +30,7 @@
         </div>
 
         <div class="chats">
-            <div class="chat left">
-                <p class="author">Rahul T</p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptatum voluptate aspernatur tenetur! A, dignissimos libero atque, provident quasi hic explicabo tempora doloribus error quisquam sapiente. Obcaecati dolorum error exercitationem!
-            </div>
-
-            <div class="chat right">
-                <p class="author">Rahul T</p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptatum voluptate aspernatur tenetur! A, dignissimos libero atque, provident quasi hic explicabo tempora doloribus error quisquam sapiente. Obcaecati dolorum error exercitationem!
-            </div>
+            
              <div class="users container">
             <div class="update-msg"></div>
             <form class="update-username">

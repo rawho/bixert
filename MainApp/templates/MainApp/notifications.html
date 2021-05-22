@@ -1,16 +1,28 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% for event in current_event %}
-    <h1>{{ event.title }}</h1>
-    {% endfor %}
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    span{
+        color: blue;
+    }
+</style>
+    <section class="notification-section">
+        {% for event in current_event %}
+        <div class="notification">
+            <p>Today you have an event <a href="/events/{{event.id}}"><span>{{ event.title }}</span></a> </p>
+        </div>
+        {% endfor %}
+    </section>
+
+    <section class="notification-section">
     {% for notification in noti %}
-    <h2>{{ notification.notification }}</h2>
+    <div class="notification">
+        <p>{{ notification.notification }}</p>
+    </div>
     {% endfor %}
-</body>
-</html>
+    </section>
+
+   
+{% endblock %}

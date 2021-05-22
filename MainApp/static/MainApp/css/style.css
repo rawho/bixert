@@ -1472,13 +1472,12 @@ a {
 }
 
 .message-app .message-sidebar .chat-sidebar .image {
-  width: 30px;
-  height: 30px;
   margin-right: 10px;
 }
 
 .message-app .message-sidebar .chat-sidebar .image img {
-  width: 100%;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;

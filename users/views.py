@@ -10,6 +10,7 @@ from .models import Profile,Messaging
 from django.core.files.storage import FileSystemStorage
 
 def register_login(request):
+    context = {}
     if request.method == "POST":
         if "login_form" in request.POST:
             username = request.POST.get("username")
@@ -22,19 +23,21 @@ def register_login(request):
                 else:
                     return HttpResponse("<h1>Disabled account<h1>")
             else:
-                return HttpResponse("<h1>invalid login<h1>")
+                context = { "message" : "Username or password is incorrect" }
         elif "register_form" in request.POST:
             username = request.POST.get("username")
             password = request.POST.get("password")
             email = request.POST.get("email")
             conf_password = request.POST.get("confirmPassword")
+            if conf_password != password:
+                context = { "message" : "passwords doesnot match" }
             if User.objects.all().filter(username = username).first():
-                return HttpResponse("username already exists")
+                context = { "message" : "Username already exists" }
             User.objects.create_user(username=username, password=password, email=email)
             user = authenticate(request, username=username, password=password)
             login(request, user)
             return redirect("events")
-    return render(request, "users/home.html")
+    return render(request, "users/home.html", context=context)
 
 
 @login_required

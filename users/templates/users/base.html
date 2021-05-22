@@ -73,14 +73,14 @@
         <nav class="navbar">
             <a href="{% url 'MainApp-home' %}" class="nav-logo">Bixert</a>
             <ul class="nav-menu">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="{% url 'events' %}" class="nav-link">Discover Events</a>
-                </li>
+                </li> -->
                 <li class="nav-item login">
                     <a href="#" class="nav-link">Login</a>
                 </li>
                 <li class="nav-item register">
-                    <a style="color: #E5E5E5;" href="#" class="nav-link">Get Started</a>
+                    <a style="color: #E5E5E5;" href="#" class="nav-link">signup</a>
                 </li>
             </ul>
 
@@ -99,6 +99,11 @@
                 <img src="{% static 'MainApp/images/icons/close.svg' %}" alt="">
             </div>
             <h1>Login</h1>
+            {% if message %}
+                <div class="message">
+                    <p>{{message}}</p>
+                </div>
+            {% endif %}
             <form class="login-form" action="" method="POST">
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="username" required>
@@ -119,6 +124,11 @@
                 <img src="{% static 'MainApp/images/icons/close.svg' %}" alt="">
             </div>
             <h1>Signup</h1>
+            {% if message %}
+                <div class="message">
+                    <p>{{message}}</p>
+                </div>
+            {% endif %}
             <div class="feedback"></div>
             <form class="signup-form" action="" method="POST">
                 {% csrf_token %}

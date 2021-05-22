@@ -83,16 +83,16 @@ signupForm.password.addEventListener('keyup', e => {
 signupForm.confirmPassword.addEventListener('keyup', e => {
     const password = signupForm.password.value
     const confirmPassword = signupForm.confirmPassword.value
-    if(password === confirmPassword){
+    if(password === confirmPassword && passPattern.test(confirmPassword)){
         document.getElementById('confirm').className = 'success'
         document.querySelector('#signup').classList.remove('disabled')
-        document.querySelector('#signup').toggleAttribute('disabled')
+        document.querySelector('#signup').removeAttribute('disabled')
     }
     else{
         
         document.getElementById('confirm').className = 'error'
         document.querySelector('#signup').classList.add('disabled')
-        document.querySelector('#signup').toggleAttribute('disabled')
+        document.querySelector('#signup').setAttribute('disabled')
 
     }
 })
