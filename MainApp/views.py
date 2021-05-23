@@ -39,24 +39,28 @@ class EventsListView(ListView, View):
     def post(self, request, *args, **kwargs):
         if "chat" in request.POST:
             text = request.POST.get("chatbot")
+            print(text)
             chatter = joblib.load("model.sav")
             cv = joblib.load("vector.pkl")
             i = chatter.predict(cv.transform([text]).toarray())[0]
             print(i)
             if i == 1:
-                return HttpResponse('Hi have a nice day')
+                return JsonResponse(json.dumps({"value":"hi have a nice day"}),safe=False)
             elif i == 2:
                 return redirect("notifications")
             elif i == 3:
-                return redirect("messaging")
+                return redirect("myevents")
             elif i == 4:
                 return redirect("logout")
             elif i == 5:
                 return redirect("registered")
-            else:
-                redirect("events")
-            # return redirect("messaging")
-        
+            elif i == 6:
+                return redirect("create-event")
+            elif i == 7:
+                return redirect("messaging")
+            elif i == 8:
+                return redirect("profile")
+
         if "search_value" in json.loads(request.body.decode()).keys():
             if(json.loads(request.body.decode())["search_value"] == '$#@$'):
                 x = {}
