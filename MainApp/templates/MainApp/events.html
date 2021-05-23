@@ -339,14 +339,15 @@ textarea::placeholder {
     </aside>
   </header>
   <main class="chatbox-popup__main">
-    We make it simple and seamless for<br> bussiness and people to talk to each<br> other. Ask us anything.
+      
+    <p id='message'></p>
   </main>
-  <form action="" method="POST">
-    {% csrf_token %}
     <footer class="chatbox-popup__footer">
       <aside style="flex:3">
-        <button style="width: 50px;" class="btn"><i class="fa fa-microphone"></i></button>
+        <button id="btnGiveCommand" style="width: 50px;" class="btn"><i class="fa fa-microphone"></i></button>
       </aside>
+      <form action="" method="POST">
+        {% csrf_token %}
       <aside style="flex:10">
         <textarea name="chatbot" type="text" placeholder="Type your message here..." autofocus></textarea>
       </aside>
@@ -356,37 +357,9 @@ textarea::placeholder {
     </footer>
   </form>
 </section>
-<section class="chatbox-panel">
-  <header class="chatbox-panel__header">
-    <aside style="flex:3">
-      <i class="fa fa-user-circle fa-3x chatbox-popup__avatar" aria-hidden="true"></i>
-    </aside>
-    <aside style="flex:6">
-      <h1>Bixert Bot</h1>
-    </aside>
-    <aside style="flex:3;text-align:right;">
-      <button class="chatbox-minimize"><i class="fa fa-window-restore" aria-hidden="true"></i></button>
-      <button class="chatbox-panel-close"><i class="fa fa-close" aria-hidden="true"></i></button>
-    </aside>
-  </header>
-  <main class="chatbox-panel__main" style="flex:1">
-    We make it simple and seamless for<br> bussiness and people to talk to each<br> other. Ask us anything.
-  </main>
-  <footer class="chatbox-panel__footer">
-    <aside style="flex:1;color:#888;text-align:center;">
-      <i class="fa fa-camera" aria-hidden="true"></i>
-    </aside>
-    <aside style="flex:10">
-      <textarea type="text" name="chatbot" placeholder="Type your message here..." autofocus></textarea>
-    </aside>
-    <aside style="flex:1;color:#888;text-align:center;">
-      <i class="fa fa-paper-plane" aria-hidden="true"></i>
-    </aside>
-  </footer>
-</section>
+
 
 <script>
-
 const chatbox = jQuery.noConflict();
 
 chatbox(() => {
@@ -417,4 +390,40 @@ chatbox(() => {
 
 </script>
 
+<script>
+    var message = document.querySelector('#message');
+
+    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+    var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+
+    var grammar = '#JSGF V1.0;'
+
+    var recognition = new SpeechRecognition();
+    var speechRecognitionList = new SpeechGrammarList();
+    speechRecognitionList.addFromString(grammar, 1);
+    recognition.grammars = speechRecognitionList;
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+
+    recognition.onresult = function(event) {
+        var last = event.results.length - 1;
+        var command = event.results[last][0].transcript;
+        message.textContent = 'Voice Input: ' + command + '.';   
+    };
+
+    recognition.onspeechend = function() {
+        recognition.stop();
+    };
+
+    recognition.onerror = function(event) {
+        message.textContent = 'Error occurred in recognition: ' + event.error;
+    }        
+
+    document.querySelector('#btnGiveCommand').addEventListener('click', function(){
+        recognition.start();
+
+    });
+
+
+</script>
 {% endblock %}
