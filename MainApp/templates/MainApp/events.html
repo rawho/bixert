@@ -344,7 +344,9 @@ textarea::placeholder {
   <form action="" method="POST">
     {% csrf_token %}
     <footer class="chatbox-popup__footer">
-  
+      <aside style="flex:3">
+        <button style="width: 50px;" class="btn"><i class="fa fa-microphone"></i></button>
+      </aside>
       <aside style="flex:10">
         <textarea name="chatbot" type="text" placeholder="Type your message here..." autofocus></textarea>
       </aside>
