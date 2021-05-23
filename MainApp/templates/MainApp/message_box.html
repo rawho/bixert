@@ -20,7 +20,12 @@
 
     </section>
 
-<section style="display: None;" class="chatsection message-section chats-container" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}">
+
+<section style="display: none; width: 100%; height: 100vh;" id="none">
+    <img style="width: 50%; display: flex; align-items: center; justify-content: center;" src="{% static 'MainApp/images/message.svg' %}" alt="">
+</section>
+
+<section class="chatsection message-section chats-container" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}">
         <div class="chat-input">
             
             <form class="new-chat-form">
@@ -45,11 +50,19 @@
 
     </section >
     <script>
+        
+        if(window.location.href === 'http://127.0.0.1:8000/app/messaging/'){
+            console.log('ehlo')
+            document.querySelector('.message-section').style.display = 'none'
+            document.querySelector('#none').style.display = ''
+        }
         let chat_button = document.querySelectorAll('.chat-sidebar')
         
         chat_button.forEach(btn =>{
             addEventListener("click",e=>{
-            document.querySelector('.chatsection').style.display = 'flex'
+                console.log('clicked')
+                document.querySelector('.chatsection').style.display = 'flex'
+                document.querySelector('#none').style.display = 'none'
             })
         }) 
     </script>
