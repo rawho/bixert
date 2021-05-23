@@ -1283,6 +1283,146 @@ a {
   }
 }
 
+#courses {
+  width: 50%;
+  margin: auto;
+}
+
+#courses .todays-events {
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
+.courses::-webkit-scrollbar {
+  display: none;
+}
+
+.courses {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 30px;
+  overflow-x: scroll;
+}
+
+@media (max-width: 767px) {
+  .courses {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 20px;
+  }
+}
+
+.courses .course {
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #00000020;
+  width: 300px !important;
+}
+
+.courses .course .banner img {
+  width: 100%;
+  max-height: 150px;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.courses .course h1 {
+  font-size: 1rem;
+}
+
+.courses .course .title {
+  font-size: 1rem;
+  text-align: left;
+}
+
+.courses .course p {
+  font-size: .9rem;
+  padding: 10px 0;
+}
+
+.courses .course .date, .courses .course .location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.courses .course .date img, .courses .course .location img {
+  width: 20px;
+}
+
+.courses .course .date p, .courses .course .location p {
+  margin-left: 10px;
+}
+
+.courses .course .btn {
+  background-color: transparent;
+  border: 1px solid #00000030;
+  color: #6657da;
+  -webkit-transition: 0.1s ease;
+  transition: 0.1s ease;
+}
+
+.courses .course .btn:hover {
+  background-color: #6657da;
+  color: #fff;
+}
+
+.courses .course .registered {
+  background-color: #6657da;
+  color: #fff;
+}
+
+.courses-container {
+  position: relative;
+}
+
+.left-scroll, .right-scroll {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.left-scroll {
+  position: absolute;
+  left: -50px;
+  top: 50%;
+}
+
+@media (max-width: 767px) {
+  .left-scroll {
+    display: none;
+  }
+}
+
+.right-scroll {
+  position: absolute;
+  right: -50px;
+  top: 50%;
+}
+
+@media (max-width: 767px) {
+  .right-scroll {
+    display: none;
+  }
+}
+
 .chatsection {
   display: -webkit-box;
   display: -ms-flexbox;

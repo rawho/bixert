@@ -8,13 +8,46 @@
         color: blue;
     }
 </style>
-    <section class="notification-section">
-        {% for event in current_event %}
-        <div class="notification">
-            <p>Today you have an event <a href="/events/{{event.id}}"><span>{{ event.title }}</span></a> </p>
+    <section id="courses">
+        <div class="empty"></div>
+        <h1 class="todays-events">Todays Events</h1>
+        <div class="courses-container">
+
+            <div class="left-scroll">
+                <img src="{% static 'MainApp/images/icons/left-arrow.svg' %}" alt="">
+            </div>
+            <div class="courses">
+                {% for event in current_event %}
+                <div class="course">
+                    <a style="color: black;" href="{% url 'event-detail' event.id %}">
+                        <div class="banner">
+                            <img src="{{ event.banner.url }}" alt="">
+                        </div>
+                        <h1 class="title">{{event.title}}</h1>
+                        <p>{{event.content|slice:25}}</p>
+        
+                        <div class="date">
+                            <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
+                            <p>{{event.date_posted|date:"F d, Y"}} - {{ event.time }}</p>
+        
+                        </div>
+        
+                        <div class="location">
+                            <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+                            <p>{{ event.venue }}</p>
+                        </div>
+                        <p class="organised-by">Organised by {{event.author}}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="right-scroll">
+                <img src="{% static 'MainApp/images/icons/right-arrow.svg' %}" alt="">
+            </div>
+
         </div>
-        {% endfor %}
     </section>
+
 
     <section class="notification-section">
     {% for notification in noti %}
@@ -24,5 +57,26 @@
     {% endfor %}
     </section>
 
-   
+
+    <script>
+        const leftScroll = document.querySelector('.left-scroll')
+        const rightScroll = document.querySelector('.right-scroll')
+        leftScroll.addEventListener('click', () => {
+            coursesContainer.scrollBy({
+                top: 0,
+                left: -700,
+                behavior: 'smooth'
+            })
+            
+        })
+
+
+        rightScroll.addEventListener('click', () => {
+            coursesContainer.scrollBy({
+                top: 0,
+                left: 700,
+                behavior: 'smooth'
+            }) 
+        })
+    </script>
 {% endblock %}
