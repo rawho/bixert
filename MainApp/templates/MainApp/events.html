@@ -346,17 +346,18 @@ textarea::placeholder {
   <main class="chatbox-popup__main">
     We make it simple and seamless for<br> bussiness and people to talk to each<br> other. Ask us anything.
   </main>
-  <footer class="chatbox-popup__footer">
-    <aside style="flex:1;color:#888;text-align:center;">
-      <i class="fa fa-camera" aria-hidden="true"></i>
-    </aside>
-    <aside style="flex:10">
-      <textarea type="text" placeholder="Type your message here..." autofocus></textarea>
-    </aside>
-    <aside style="flex:1;color:#888;text-align:center;">
-      <i class="fa fa-paper-plane" aria-hidden="true"></i>
-    </aside>
-  </footer>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <footer class="chatbox-popup__footer">
+  
+      <aside style="flex:10">
+        <textarea name="chatbot" type="text" placeholder="Type your message here..." autofocus></textarea>
+      </aside>
+      <aside style="flex:1;color:#888;text-align:center;">
+        <input class="btn" type="submit" name="chat" id="" value="chat">
+      </aside>
+    </footer>
+  </form>
 </section>
 <section class="chatbox-panel">
   <header class="chatbox-panel__header">
