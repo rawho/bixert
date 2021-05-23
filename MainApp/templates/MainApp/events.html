@@ -190,7 +190,7 @@ textarea::placeholder {
     <form action="" method="POST">
         {% csrf_token %}
         <input type="text" name="chatbot" placeholder="typesomething">
-        <input type="submit" id="chat" name="chat" value="chatbot">
+        <input type="submit" name="chat" value="chatbot">
     </form>
     <div class="events-container">
 
@@ -379,7 +379,7 @@ textarea::placeholder {
       <i class="fa fa-camera" aria-hidden="true"></i>
     </aside>
     <aside style="flex:10">
-      <textarea type="text" placeholder="Type your message here..." autofocus></textarea>
+      <textarea type="text" name="chatbot" placeholder="Type your message here..." autofocus></textarea>
     </aside>
     <aside style="flex:1;color:#888;text-align:center;">
       <i class="fa fa-paper-plane" aria-hidden="true"></i>
