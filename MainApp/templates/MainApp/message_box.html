@@ -20,7 +20,7 @@
 
     </section>
 
-<section class="chatsection message-section chats-container" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}">
+<section style="display: None;" class="chatsection message-section chats-container" data-event_id="{{ msg_id }}"  data-user = "{{ requser.username }}">
         <div class="chat-input">
             
             <form class="new-chat-form">
@@ -43,7 +43,16 @@
 
         </div>
 
-    </section>
+    </section >
+    <script>
+        let chat_button = document.querySelectorAll('.chat-sidebar')
+        
+        chat_button.forEach(btn =>{
+            addEventListener("click",e=>{
+            document.querySelector('.chatsection').style.display = 'flex'
+            })
+        }) 
+    </script>
 </div>
 
 

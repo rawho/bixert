@@ -187,11 +187,6 @@ textarea::placeholder {
             <input type="search" placeholder="Search for event" name="searchbar" class="search">
         </form>
     </div>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <input type="text" name="chatbot" placeholder="typesomething">
-        <input type="submit" name="chat" value="chatbot">
-    </form>
     <div class="events-container">
 
         {% for event in events %}
@@ -275,7 +270,7 @@ textarea::placeholder {
                                         <img src="${event.image}" alt="">
                                     </div>
                                     <h1 class="title">${event.title}</h1>
-                                    <p>${event.content}</p>
+                                    <p>${event.content.slice(0,25)}</p>
     
                                     <div class="date">
                                         <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
