@@ -56,30 +56,46 @@ class EventsListView(ListView, View):
             else:
                 redirect("events")
             # return redirect("messaging")
-        self.x = json.loads(request.body.decode())
-        event = Event.objects.all().filter(title__contains=self.x["search_value"])
-        d = []
+        
+        if "search_value" in json.loads(request.body.decode()).keys():
+            if(json.loads(request.body.decode())["search_value"] == '$#@$'):
+                x = {}
+                x["search_value"] = "" 
+            else:   
+                x = json.loads(request.body.decode())
+            event = Event.objects.all().filter(title__icontains=x["search_value"])
+            d = []
 
-        for eve in event:
-            d.append(
-                {
-                    "title": eve.title,
-                    "content": eve.content,
-                    "venue": eve.venue,
-                    "author": eve.author.username,
-                    "id": eve.id,
-                    "image": f"/media/{eve.banner}",
-                    "date": eve.date_posted.strftime(" %d-%b-%Y"),
-                    "time" : eve.time.strftime("%I:%M %p"),
-                    "if_reg": True if request.user in [x.registered_user for x in EventUser.objects.all().filter(registered_event=eve)] else False,
-                    "user": request.user.username,
-                    "isAuthor": request.user.username == eve.author.username,
-                }
-            )
-        d = json.dumps(d)
-        print(d)
-        return JsonResponse(d, safe=False)
-
+            for eve in event:
+                d.append(
+                    {
+                        "title": eve.title,
+                        "content": eve.content,
+                        "venue": eve.venue,
+                        "author": eve.author.username,
+                        "id": eve.id,
+                        "image": f"/media/{eve.banner}",
+                        "date": eve.date_posted.strftime(" %d-%b-%Y"),
+                        "time" : eve.time.strftime("%I:%M %p"),
+                        "if_reg": True if request.user in [x.registered_user for x in EventUser.objects.all().filter(registered_event=eve)] else False,
+                        "user": request.user.username,
+                        "isAuthor": request.user.username == eve.author.username,
+                    }
+                )
+            d = json.dumps(d)
+            print(d)
+            return JsonResponse(d, safe=False)
+        if "value" in json.loads(request.body.decode()):
+            command = json.loads(request.body.decode())
+            print(command["value"])
+            text = command["value"]
+            chatter = joblib.load("model.sav")
+            cv = joblib.load("vector.pkl")
+            i = chatter.predict(cv.transform([text]).toarray())[0]
+            print(i)
+            i = json.dumps(i)
+            return JsonResponse(i, safe=False)
+            
     def get(self, request, *args, **kwargs):
 
         if "register" in request.GET:

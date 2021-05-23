@@ -235,7 +235,11 @@ textarea::placeholder {
         let searchvalue = {
             search_value: searchbar.value,
         }
-
+        if(searchbar.value === ""){
+            searchvalue = {
+                search_value: '$#@$',
+            }   
+        }
 
         async function postdata() {
             const response = await fetch('', {
@@ -392,7 +396,6 @@ chatbox(() => {
 
 <script>
     var message = document.querySelector('.message');
-
     var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
     var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 
@@ -405,16 +408,36 @@ chatbox(() => {
     recognition.lang = 'en-US';
     recognition.interimResults = false;
 
-    recognition.onresult = function(event) {
+    // const sendCommand = async function(command_obj){
+    //         const response = await fetch('', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 "X-CSRFToken": '{{csrf_token}}'
+    //             },
+    //             body: JSON.stringify(command_obj)
+    //         })
+
+    // };
+    
+    recognition.onresult = async function(event) {
         var last = event.results.length - 1;
         var command = event.results[last][0].transcript;
         message.innerHTML = `<span>${command}</span>`;   
         console.log(command)
+        command_obj = {
+            value : command,
+        }
+        // sendCommand(command_obj).then(response=>{
+        //     console.log(response)
+        // })
+        document.querySelector(".chatbot").setAttribute('value',command)
+        document.querySelector(".chat").click()
     };
 
     recognition.onspeechend = function() {
         recognition.stop();
-    };
+    }
 
     recognition.onerror = function(event) {
         message.textContent = 'Error occurred in recognition: ' + event.error;
