@@ -353,7 +353,7 @@ textarea::placeholder {
       <form action="" method="POST">
         {% csrf_token %}
       <aside style="flex:10">
-        <textarea class="chatbot" name="chatbot" type="text" placeholder="Type your message here..." autofocus></textarea>
+        <textarea class="chatbottext" name="chatbot" type="text" placeholder="Type your message here..." autofocus></textarea>
       </aside>
       <aside style="flex:1;color:#888;text-align:center;">
         <input class="btn" type="submit" name="chat" id="chatbtn" value="chat">
@@ -431,8 +431,8 @@ chatbox(() => {
         // sendCommand(command_obj).then(response=>{
         //     console.log(response)
         // })
-          console.log(document.querySelector('.chatbot'))
-        document.querySelector(".chatbot").setAttribute('value',command)
+        console.log(document.querySelector('.chatbottext'))
+        document.querySelector(".chatbottext").value = command
         document.querySelector("#chatbtn").click()
     };
 
