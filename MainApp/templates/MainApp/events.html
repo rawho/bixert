@@ -353,10 +353,10 @@ textarea::placeholder {
       <form action="" method="POST">
         {% csrf_token %}
       <aside style="flex:10">
-        <textarea name="chatbot" type="text" placeholder="Type your message here..." autofocus></textarea>
+        <textarea class="chatbot" name="chatbot" type="text" placeholder="Type your message here..." autofocus></textarea>
       </aside>
       <aside style="flex:1;color:#888;text-align:center;">
-        <input class="btn" type="submit" name="chat" id="" value="chat">
+        <input class="btn" type="submit" name="chat" id="chatbtn" value="chat">
       </aside>
     </footer>
   </form>
@@ -420,7 +420,7 @@ chatbox(() => {
 
     // };
     
-    recognition.onresult = async function(event) {
+    recognition.onresult = function(event) {
         var last = event.results.length - 1;
         var command = event.results[last][0].transcript;
         message.innerHTML = `<span>${command}</span>`;   
@@ -431,8 +431,9 @@ chatbox(() => {
         // sendCommand(command_obj).then(response=>{
         //     console.log(response)
         // })
+          console.log(document.querySelector('.chatbot'))
         document.querySelector(".chatbot").setAttribute('value',command)
-        document.querySelector(".chat").click()
+        document.querySelector("#chatbtn").click()
     };
 
     recognition.onspeechend = function() {
