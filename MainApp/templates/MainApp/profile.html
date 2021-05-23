@@ -10,14 +10,14 @@
         <p>View & Update Your Profile Details</p> -->
         <div class="profile-details">
             <div class="dp">
-                <img src="{{ user.profile.image.url }}" alt="">
+                <img src="{{ user_2.profile.image.url }}" alt="">
                 
             </div>
             <div class="personal-details">
-                <h1>{{ user.username }}</h1>
-                <p>{{ user.email }}</p>
+                <h1>{{ user_2.username }}</h1>
+                <p>{{ user_2.email }}</p>
                 <form action="" method="GET">
-                    <input type="hidden" value={{ user.id }} name="user_id">
+                    <input type="hidden" value={{ user_2.id }} name="user_id">
                     <button class="btn" name="message">message</button>
                 </form>
                 
@@ -33,11 +33,11 @@
             }
         </style>
         <div class="pro-details">
-            <p>Username: <span>{{ user.username }}</span></p>
-            <p>Name: <span>{% if user.profile.name %} {{ user.profile.name }} {% else %} - {% endif %}</span> </p>
-            <p>Email: <span>{{ user.email }}</span> </p>
-            <p>Phone Number: <span>{% if user.profile.phone_no %} {{ user.profile.phone_no }} {% else %} - {% endif %}</span> </p>
-            <p>College: <span>{% if user.profile.company %} {{ user.profile.company }} {% else %} - {% endif %}</span>
+            <p>Username: <span>{{ user_2.username }}</span></p>
+            <p>Name: <span>{% if user_2.profile.name %} {{ user_2.profile.name }} {% else %} - {% endif %}</span> </p>
+            <p>Email: <span>{{ user_2.email }}</span> </p>
+            <p>Phone Number: <span>{% if user_2.profile.phone_no %} {{ user_2.profile.phone_no }} {% else %} - {% endif %}</span> </p>
+            <p>College: <span>{% if user_2.profile.company %} {{ user_2.profile.company }} {% else %} - {% endif %}</span>
             </p>
         </div>
     </div>

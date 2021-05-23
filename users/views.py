@@ -8,6 +8,9 @@ from django.contrib.auth.models import User
 from MainApp.models import Event, EventUser
 from .models import Profile,Messaging
 from django.core.files.storage import FileSystemStorage
+import joblib
+from django.http import JsonResponse
+import json
 
 def register_login(request):
     context = {}
@@ -43,6 +46,29 @@ def register_login(request):
 
 @login_required
 def profile(request):
+    if "chat" in request.POST:
+            text = request.POST.get("chatbot")
+            print(text)
+            chatter = joblib.load("model.sav")
+            cv = joblib.load("vector.pkl")
+            i = chatter.predict(cv.transform([text]).toarray())[0]
+            print(i)
+            if i == 1:
+                return JsonResponse(json.dumps({"value":"hi have a nice day"}),safe=False)
+            elif i == 2:
+                return redirect("notifications")
+            elif i == 3:
+                return redirect("myevents")
+            elif i == 4:
+                return redirect("logout")
+            elif i == 5:
+                return redirect("registered")
+            elif i == 6:
+                return redirect("create-event")
+            elif i == 7:
+                return redirect("messaging")
+            elif i == 8:
+                return redirect("profile")
     if request.POST:
         if "edit" in request.POST:
             name = request.POST.get("name")
@@ -86,6 +112,29 @@ def logout_view(request):
 
 
 def messaging(request):
+    if "chat" in request.POST:
+            text = request.POST.get("chatbot")
+            print(text)
+            chatter = joblib.load("model.sav")
+            cv = joblib.load("vector.pkl")
+            i = chatter.predict(cv.transform([text]).toarray())[0]
+            print(i)
+            if i == 1:
+                return JsonResponse(json.dumps({"value":"hi have a nice day"}),safe=False)
+            elif i == 2:
+                return redirect("notifications")
+            elif i == 3:
+                return redirect("myevents")
+            elif i == 4:
+                return redirect("logout")
+            elif i == 5:
+                return redirect("registered")
+            elif i == 6:
+                return redirect("create-event")
+            elif i == 7:
+                return redirect("messaging")
+            elif i == 8:
+                return redirect("profile")
     users = [user for user in Messaging.objects.all().filter(user_id = request.user.id)]
     if request.GET:
         user_1 = request.user.username
