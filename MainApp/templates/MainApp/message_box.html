@@ -21,7 +21,7 @@
     </section>
 
 
-<section style="display: none; width: 100%; height: 100vh;" id="none">
+<section style="display: none; width: 100%; height: 100vh; justify-content: center; align-items: center;" id="none">
     <img style="width: 50%; display: flex; align-items: center; justify-content: center;" src="{% static 'MainApp/images/message.svg' %}" alt="">
 </section>
 
@@ -54,7 +54,7 @@
         if(window.location.href === 'http://127.0.0.1:8000/app/messaging/'){
             console.log('ehlo')
             document.querySelector('.message-section').style.display = 'none'
-            document.querySelector('#none').style.display = ''
+            document.querySelector('#none').style.display = 'flex'
         }
         let chat_button = document.querySelectorAll('.chat-sidebar')
         

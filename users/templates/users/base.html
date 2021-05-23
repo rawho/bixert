@@ -23,20 +23,8 @@
 </head>
 
 <body>
-    <style>
-        body {
-      margin: 0;
-      padding: 0;
-      font-family: "Lato", sans-serif;
-      background-color: #f6f7f9;
-    }
-    
-    h1 {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1;
-    }
-    
+    <style>    
+
     button {
       color: inherit;
       background-color: transparent;
@@ -78,7 +66,7 @@
       margin: 16px calc(2 * 16px + 52px) 16px 16px;
     }
     
-    textarea {
+    .chatbottext {
       box-sizing: border-box;
       width: 100%;
       margin: 0;
@@ -116,6 +104,12 @@
       height: auto;
       background-color: #fff;
       border-radius: 16px;
+    }
+
+    @media(max-width: 767px){
+      .chatbox-popup {
+        width: 90%;
+      }
     }
     .chatbox-popup .chatbox-popup__header {
       box-sizing: border-box;
