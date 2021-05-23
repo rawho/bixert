@@ -340,7 +340,7 @@ textarea::placeholder {
   </header>
   <main class="chatbox-popup__main">
       
-    <p id='message'></p>
+    <p class='message'>  </p>
   </main>
     <footer class="chatbox-popup__footer">
       <aside style="flex:3">
@@ -391,7 +391,7 @@ chatbox(() => {
 </script>
 
 <script>
-    var message = document.querySelector('#message');
+    var message = document.querySelector('.message');
 
     var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
     var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
@@ -408,7 +408,8 @@ chatbox(() => {
     recognition.onresult = function(event) {
         var last = event.results.length - 1;
         var command = event.results[last][0].transcript;
-        message.textContent = 'Voice Input: ' + command + '.';   
+        message.innerHTML = `<span>${command}</span>`;   
+        console.log(command)
     };
 
     recognition.onspeechend = function() {
@@ -417,6 +418,7 @@ chatbox(() => {
 
     recognition.onerror = function(event) {
         message.textContent = 'Error occurred in recognition: ' + event.error;
+        console.log(event.error)
     }        
 
     document.querySelector('#btnGiveCommand').addEventListener('click', function(){
