@@ -98,3 +98,4 @@ def messaging(request):
         print(id)
         return render(request,"MainApp/message_box.html",{"msg_id":id , "requser":request.user,"users":users})
     return render(request,"MainApp/message_box.html",{"users":users}) 
+

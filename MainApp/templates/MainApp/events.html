@@ -5,15 +5,17 @@
 {% block content %}
 
 <section class="events-page">
-
     <div class="search-bar">
-
         <form>
             <div class="search-icon"><img src="https://img.icons8.com/pastel-glyph/64/000000/search--v2.png" /></div>
             <input type="search" placeholder="Search for event" name="searchbar" class="search">
         </form>
     </div>
-
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="chatbot" placeholder="typesomething">
+        <input type="submit" id="chat" name="chat" value="chatbot">
+    </form>
     <div class="events-container">
 
         {% for event in events %}

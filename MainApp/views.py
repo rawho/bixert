@@ -5,7 +5,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import HttpResponse
 import json
+import joblib
 import requests
 from django.http import JsonResponse
 # import smtplib, ssl
@@ -35,6 +37,25 @@ class EventsListView(ListView, View):
     ordering = ["date_posted"]
 
     def post(self, request, *args, **kwargs):
+        if "chat" in request.POST:
+            text = request.POST.get("chatbot")
+            chatter = joblib.load("model.sav")
+            cv = joblib.load("vector.pkl")
+            i = chatter.predict(cv.transform([text]).toarray())[0]
+            print(i)
+            if i == 1:
+                return HttpResponse('Hi have a nice day')
+            elif i == 2:
+                return redirect("notifications")
+            elif i == 3:
+                return redirect("messaging")
+            elif i == 4:
+                return redirect("logout")
+            elif i == 5:
+                return redirect("registered")
+            else:
+                redirect("events")
+            # return redirect("messaging")
         self.x = json.loads(request.body.decode())
         event = Event.objects.all().filter(title__contains=self.x["search_value"])
         d = []
