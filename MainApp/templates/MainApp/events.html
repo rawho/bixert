@@ -324,6 +324,31 @@ textarea::placeholder {
     });
 </script>
 
+
+<style>
+
+#mic{
+  animation: pulsate 2s infinite;
+}
+
+@keyframes pulsate {
+  0% {
+    -webkit-transform: scale(1, 1);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: scale(1.2, 1.2);
+    opacity: 0.5;
+  }
+  100%{
+    -webkit-transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+</style>
+
+
 <button class="chatbox-open">
     <i class="fa fa-comment fa-2x" aria-hidden="true"></i>
   </button>
@@ -338,16 +363,16 @@ textarea::placeholder {
     <aside style="flex:8">
       <h1>Bixert Bot</h1>
     </aside>
-    <aside style="flex:1">
+    <!-- <aside style="flex:1">
       <button class="chatbox-maximize"><i class="fa fa-window-maximize" aria-hidden="true"></i></button>
-    </aside>
+    </aside> -->
   </header>
   <main class="chatbox-popup__main">
       
     <p class='message'>  </p>
   </main>
     <footer class="chatbox-popup__footer">
-      <aside style="flex:3">
+      <aside class="micro" style="flex:3">
         <button id="btnGiveCommand" style="width: 50px;" class="btn"><i class="fa fa-microphone"></i></button>
       </aside>
       <form action="" method="POST">
@@ -449,6 +474,10 @@ chatbox(() => {
         recognition.start();
 
     });
+
+    document.querySelector('.micro').addEventListener('click', e => {
+      document.querySelector('.micro').id = 'mic'
+    })
 
 
 </script>
