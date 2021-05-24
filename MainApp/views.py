@@ -116,21 +116,7 @@ class EventsListView(ListView, View):
                 send_mail(
                     subject="Verify Email", #subject
                     message='This is message body',
-                    # html_message= f"""
-                    #     <html>
-                    #         <body>
-                    #             <div style="width:80%; margin: auto;">
-                    #                 <h1>{event.title} </h1>
-                    #                 <p>{event.content} </p>
-                    #                 <p>Are you coming?</p>
-                    #                 <a href="https://bixert.xyz/verify/{event.id}-{request.user.id}"><button>Yes</button></a> <button>No</button>
-                    #             </div>
-                    #         </body>
-                    #     </html>
-                    # """,
                     html_message = render_to_string('MainApp/mailtemplate.html', {'event': event, 'id': request.user.id}),
-                    # plain_message= strip_tags(html_message), #message
-                    
                     from_email = "bixertbot@gmail.com", #from email
                     recipient_list =  [request.user.email], #to email
                 )
