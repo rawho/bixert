@@ -18,6 +18,29 @@ from users.models import Messaging
 from django.core.mail import send_mail
 import os
 def myevents(request):
+    if "chat" in request.POST:
+        text = request.POST.get("chatbot")
+        print(text)
+        chatter = joblib.load("model.sav")
+        cv = joblib.load("vector.pkl")
+        i = chatter.predict(cv.transform([text]).toarray())[0]
+        print(i)
+        if i == 1:
+            return redirect("/")
+        elif i == 2:
+            return redirect("notifications")
+        elif i == 3:
+            return redirect("myevents")
+        elif i == 4:
+            return redirect("logout")
+        elif i == 5:
+            return redirect("registered")
+        elif i == 6:
+            return redirect("create-event")
+        elif i == 7:
+            return redirect("messaging")
+        elif i == 8:
+            return redirect("profile")
     return render(
         request,
         "MainApp/events.html",
@@ -43,7 +66,7 @@ class EventsListView(ListView, View):
             i = chatter.predict(cv.transform([text]).toarray())[0]
             print(i)
             if i == 1:
-                return JsonResponse(json.dumps({"value":"hi have a nice day"}),safe=False)
+                return redirect("/")
             elif i == 2:
                 return redirect("notifications")
             elif i == 3:
@@ -53,7 +76,7 @@ class EventsListView(ListView, View):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event", 0)
+                return redirect("create-event")
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
@@ -146,7 +169,7 @@ def registered(request):
             i = chatter.predict(cv.transform([text]).toarray())[0]
             print(i)
             if i == 1:
-                return JsonResponse(json.dumps({"value":"hi have a nice day"}),safe=False)
+                return redirect("/")
             elif i == 2:
                 return redirect("notifications")
             elif i == 3:
@@ -156,7 +179,7 @@ def registered(request):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event", 0)
+                return redirect("create-event")
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
@@ -194,7 +217,7 @@ class EventsDetailView(DetailView):
             i = chatter.predict(cv.transform([text]).toarray())[0]
             print(i)
             if i == 1:
-                return JsonResponse(json.dumps({"value":"hi have a nice day"}),safe=False)
+                return redirect("/")
             elif i == 2:
                 return redirect("notifications")
             elif i == 3:
@@ -204,7 +227,7 @@ class EventsDetailView(DetailView):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event",0)
+                return redirect("create-event")
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
@@ -212,7 +235,7 @@ class EventsDetailView(DetailView):
 
 
 @csrf_exempt
-def createEvent(request,id):
+def createEvent(request):
     if "chat" in request.POST:
             text = request.POST.get("chatbot")
             print(text)
@@ -221,7 +244,7 @@ def createEvent(request,id):
             i = chatter.predict(cv.transform([text]).toarray())[0]
             print(i)
             if i == 1:
-                return JsonResponse(json.dumps({"value":"hi have a nice day"}),safe=False)
+                return redirect("/")
             elif i == 2:
                 return redirect("notifications")
             elif i == 3:
@@ -231,23 +254,12 @@ def createEvent(request,id):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event", 0)
+                return redirect("create-event")
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
                 return redirect("profile")
-
-    if request.method == "POST" and not request.FILES:
-        title = request.POST.get("title")
-        content = request.POST.get("content")
-        max_participants = request.POST.get("maxParticipants")
-        event = Event.objects.all().filter(id=id).first()
-        event.title = title
-        event.content = content
-        event.max_participants = max_participants
-        event.save()
-        return redirect("event-detail",id)
-    elif request.method == "POST" and request.FILES["banner"]:
+    if request.method == "POST" and request.FILES["banner"]:
         title = request.POST.get("title")
         content = request.POST.get("content")
         author = request.user
@@ -271,11 +283,49 @@ def createEvent(request,id):
             max_participants=max_participants,
         )
         return redirect("events")
-    context = {}
-    if id != 0:
-        context = {
-            "event" :  Event.objects.all().filter(id=id).first()
-        }
+    return render(request, "MainApp/createEvent.html",{})
+
+
+
+
+@csrf_exempt
+def UpdateEvent(request,id):
+    if "chat" in request.POST:
+        text = request.POST.get("chatbot")
+        print(text)
+        chatter = joblib.load("model.sav")
+        cv = joblib.load("vector.pkl")
+        i = chatter.predict(cv.transform([text]).toarray())[0]
+        print(i)
+        if i == 1:
+            return redirect("/")
+        elif i == 2:
+            return redirect("notifications")
+        elif i == 3:
+            return redirect("myevents")
+        elif i == 4:
+            return redirect("logout")
+        elif i == 5:
+            return redirect("registered")
+        elif i == 6:
+            return redirect("create-event")
+        elif i == 7:
+            return redirect("messaging")
+        elif i == 8:
+            return redirect("profile")
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        max_participants = request.POST.get("maxParticipants")
+        event = Event.objects.all().filter(id=id).first()
+        event.title = title
+        event.content = content
+        event.max_participants = max_participants
+        event.save()
+        return redirect("event-detail",id)
+    context = {
+        "event" :  Event.objects.all().filter(id=id).first()
+    }
     return render(request, "MainApp/createEvent.html",context=context)
 
 def verify(request, ids):
@@ -302,7 +352,7 @@ def notifications(request):
             i = chatter.predict(cv.transform([text]).toarray())[0]
             print(i)
             if i == 1:
-                return JsonResponse(json.dumps({"value":"hi have a nice day"}),safe=False)
+                return redirect("/")
             elif i == 2:
                 return redirect("notifications")
             elif i == 3:
@@ -312,7 +362,7 @@ def notifications(request):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event", 0)
+                return redirect("create-event")
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
@@ -343,7 +393,7 @@ def profile(request,username):
             i = chatter.predict(cv.transform([text]).toarray())[0]
             print(i)
             if i == 1:
-                return JsonResponse(json.dumps({"value":"hi have a nice day"}),safe=False)
+                return redirect("/")
             elif i == 2:
                 return redirect("notifications")
             elif i == 3:
@@ -353,7 +403,7 @@ def profile(request,username):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event", 0)
+                return redirect("create-event")
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
