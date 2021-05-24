@@ -36,6 +36,8 @@ def register_login(request):
                 context = { "message" : "passwords doesnot match" }
             if User.objects.all().filter(username = username).first():
                 context = { "message" : "Username already exists" }
+            if User.objects.all().filter(email = email).first():
+                context = { "message" : "Email already exists" }
             else:
                 User.objects.create_user(username=username, password=password, email=email)
                 user = authenticate(request, username=username, password=password)
