@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width" name="viewport"/>
+<!--[if !mso]><!-->
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!--<![endif]-->
+<title></title>
+
+
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn{
+        background-color: #6657da;
+        border: none;
+        outline: none;
+        padding: 5px 10px;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    @media(max-width: 767px){
+        h1{
+            font-size: 2rem !important;
+        }
+    }
+</style>
+
+</head>
+
+<body style="width: 100%;">
+    <img style="width: 80%; margin: auto;" src="{{ event.banner.url }}" alt="">
+    <h1 style="font-size: 2.6rem;" >{{event.title}}</h1>
+    <p>{{event.date_posted|date:"F d, Y"}} - {{ event.time }}</p>
+    <p style="width: 80%; ">{{event.content}}</p>
+    <h2>Are You Coming? <a href="https://bixert.xyz/verify/{{event.id}}-{{request.user.id}}"><button class="btn">Yes</button></a> <button class="btn">No</button> </h2>
+</body>
+
+</html>
