@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 import datetime
-
+from PIL import Image
 
 class Event(models.Model):
     title = models.CharField(max_length=100)
@@ -14,6 +14,16 @@ class Event(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     time = models.TimeField(auto_now=False, auto_now_add=False, default=datetime.datetime.now())
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    def save(self, *args, **kwargs):
+        super().save()
+
+        img = Image.open(self.banner.path)
+        img = img.convert("RGB")
+        if img.height > 700 or img.width > 400:
+            output_size = (700, 400)
+            img.thumbnail(output_size)
+        img.save(self.banner.path)
+
 
     def __str__(self):
         return self.title
