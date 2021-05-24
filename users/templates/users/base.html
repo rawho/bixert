@@ -207,7 +207,7 @@
                     <a href="{% url 'myevents' %}" class="nav-link {% if request.path == my_events_url %} active {%endif%}">My Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'create-event' %}" class="nav-link {% if request.path == create_events_url %} active {%endif%}">Create Event</a>
+                    <a href="{% url 'create-event' 0 %}" class="nav-link {% if request.path == create_events_url %} active {%endif%}">Create Event</a>
                 </li>
 
             </ul>

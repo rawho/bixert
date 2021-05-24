@@ -204,7 +204,7 @@ class EventsDetailView(DetailView):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event")
+                return redirect("create-event",0)
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
@@ -212,7 +212,7 @@ class EventsDetailView(DetailView):
 
 
 @csrf_exempt
-def createEvent(request):
+def createEvent(request,id):
     if "chat" in request.POST:
             text = request.POST.get("chatbot")
             print(text)
@@ -236,7 +236,18 @@ def createEvent(request):
                 return redirect("messaging")
             elif i == 8:
                 return redirect("profile")
-    if request.method == "POST" and request.FILES["banner"]:
+
+    if request.method == "POST" and not request.FILES:
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        max_participants = request.POST.get("maxParticipants")
+        event = Event.objects.all().filter(id=id).first()
+        event.title = title
+        event.content = content
+        event.max_participants = max_participants
+        event.save()
+        return redirect("event-detail",id)
+    elif request.method == "POST" and request.FILES["banner"]:
         title = request.POST.get("title")
         content = request.POST.get("content")
         author = request.user
@@ -260,7 +271,12 @@ def createEvent(request):
             max_participants=max_participants,
         )
         return redirect("events")
-    return render(request, "MainApp/createEvent.html", {})
+    context = {}
+    if id != 0:
+        context = {
+            "event" :  Event.objects.all().filter(id=id).first()
+        }
+    return render(request, "MainApp/createEvent.html",context=context)
 
 def verify(request, ids):
     event_id, user_id = ids.split("-")

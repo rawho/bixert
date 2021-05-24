@@ -4,6 +4,31 @@
 
 
 {% block content %}
+{% if event %}
+<div class="create-event-container">
+    <form class="create-event" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="question-container">
+            <div class="circle">1</div>
+            <h1 class="question">What is your event name?</h1>
+            <input type="text" placeholder="Event name" name="title" required value="{{ event.title }}">
+        </div>
+
+        <div class="question-container">
+            <div class="circle">2</div>
+            <h1 class="question">Brief Description of Event</h1>
+            <textarea id="description" cols="30" rows="10" name="content">{{ event.content }}</textarea>
+        </div>
+
+        <div class="question-container">
+            <div class="circle">3</div>
+            <h1 class="question">Max Number of Participants</h1>
+            <input type="number" name="maxParticipants" required value="{{ event.max_participants }}">
+        </div>
+        <input type="submit" class="btn" value="Update">
+    </form>
+</div>
+{% else %}
 <div class="create-event-container">
     <form class="create-event" action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -55,7 +80,7 @@
         <input type="submit" class="btn" value="Create Event">
     </form>
 </div>
-
+{% endif %}
 <script>
     CKEDITOR.replace( 'content' );
     const radioBtns = document.querySelectorAll('input[type=radio]')

@@ -32,6 +32,9 @@
             <button class="btn chatsBtn">Chats</button>
         </div>
         <div class="content">
+            {% if user.username == object.author.username %}
+                <a href="{% url 'create-event' object.id %}"><button class="btn">edit</button></a>
+            {% endif %}
             <p>{{object.content|safe}}</p>
         </div>
         <div class="attendees">
