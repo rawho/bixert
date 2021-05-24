@@ -9,6 +9,9 @@
     </div>
     <div class="details">
         <h1 class="event-title">{{object.title}}</h1>
+        {% if user.username == object.author.username %}
+            <a href="{% url 'create-event' object.id %}"><button class="btn">edit</button></a>
+        {% endif %}
     </div>
     <div class="_">
         <p>Organised by <span>{{object.author}}</span></p>
@@ -32,9 +35,6 @@
             <button class="btn chatsBtn">Chats</button>
         </div>
         <div class="content">
-            {% if user.username == object.author.username %}
-                <a href="{% url 'create-event' object.id %}"><button class="btn">edit</button></a>
-            {% endif %}
             <p>{{object.content|safe}}</p>
         </div>
         <div class="attendees">

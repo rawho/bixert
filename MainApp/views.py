@@ -53,7 +53,7 @@ class EventsListView(ListView, View):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event")
+                return redirect("create-event", 0)
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
@@ -156,7 +156,7 @@ def registered(request):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event")
+                return redirect("create-event", 0)
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
@@ -231,7 +231,7 @@ def createEvent(request,id):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event")
+                return redirect("create-event", 0)
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
@@ -312,7 +312,7 @@ def notifications(request):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event")
+                return redirect("create-event", 0)
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
@@ -353,7 +353,7 @@ def profile(request,username):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event")
+                return redirect("create-event", 0)
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:

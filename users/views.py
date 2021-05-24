@@ -66,7 +66,7 @@ def profile(request):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event")
+                return redirect("create-event",0)
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
@@ -132,7 +132,7 @@ def messaging(request):
             elif i == 5:
                 return redirect("registered")
             elif i == 6:
-                return redirect("create-event")
+                return redirect("create-event",0)
             elif i == 7:
                 return redirect("messaging")
             elif i == 8:
