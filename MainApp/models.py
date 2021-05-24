@@ -3,10 +3,12 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 import datetime
 from PIL import Image
+from ckeditor_uploader.fields import RichTextUploadingField
+
 
 class Event(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = RichTextUploadingField(blank=True,null=True)
     banner = models.ImageField(default="banner/quiz.png", upload_to="banner")
     venue = models.CharField(max_length=50)
     max_participants = models.IntegerField()

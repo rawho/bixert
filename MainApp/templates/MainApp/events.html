@@ -19,8 +19,9 @@
                     <img src="{{ event.banner.url }}" alt="">
                 </div>
                 <h1 class="title">{{event.title}}</h1>
-                <p>{{event.content|slice:25}}</p>
-
+                {% with description=event.content|safe %}
+                    <p>{{description|slice:"65"}}</p>
+                {% endwith %}
                 <div class="date">
                     <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
                     <p>{{event.date_posted|date:"F d, Y"}} - {{ event.time }}</p>

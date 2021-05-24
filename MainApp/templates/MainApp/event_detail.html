@@ -27,12 +27,12 @@
 
     <div class="overview">
         <div class="overview-nav">
-            <button class="btn overviewBtn active">Overviwe</button>
+            <button class="btn overviewBtn active">Overview</button>
             <button class="btn attendeesBtn">Attendees</button>
             <button class="btn chatsBtn">Chats</button>
         </div>
         <div class="content">
-            <p>{{object.content}}</p>
+            <p>{{object.content|safe}}</p>
         </div>
         <div class="attendees">
 

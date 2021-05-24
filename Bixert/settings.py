@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "MainApp",
     "users",
     "crispy_forms",
+    "ckeditor",
+    "ckeditor_uploader",
 ]
 
 MIDDLEWARE = [
@@ -146,3 +148,15 @@ EMAIL_PORT = "587"
 EMAIL_HOST_USER = os.environ.get("email_username") 
 EMAIL_HOST_PASSWORD = os.environ.get("email_password")
 EMAIL_USE_TLS = True
+
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}

@@ -57,7 +57,8 @@
 </div>
 
 <script>
-    const radioBtns = document.querySelectorAll('input[type=radio')
+    CKEDITOR.replace( 'content' );
+    const radioBtns = document.querySelectorAll('input[type=radio]')
     radioBtns.forEach(radioBtn => {
         radioBtn.addEventListener('click', e => {
             if (e.target.getAttribute('id') === 'venue') {
