@@ -128,7 +128,7 @@ class EventsListView(ListView, View):
                     #         </body>
                     #     </html>
                     # """,
-                    html_message = render_to_string('MainApp/mailtemplate.html', {'event': event}),
+                    html_message = render_to_string('MainApp/mailtemplate.html', {'event': event, 'id': request.user.id}),
                     # plain_message= strip_tags(html_message), #message
                     
                     from_email = "bixertbot@gmail.com", #from email
