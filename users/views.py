@@ -12,8 +12,10 @@ import joblib
 from django.http import JsonResponse
 import json
 
+# register function handles registration and login of users
 def register_login(request):
     context = {}
+    # handles request for login
     if request.method == "POST":
         if "login_form" in request.POST:
             username = request.POST.get("username")
@@ -27,6 +29,8 @@ def register_login(request):
                     return HttpResponse("<h1>Disabled account<h1>")
             else:
                 context = { "message" : "Username or password is incorrect" }
+        
+        # handles request for registration
         elif "register_form" in request.POST:
             username = request.POST.get("username")
             password = request.POST.get("password")
@@ -45,9 +49,10 @@ def register_login(request):
                 return redirect("events")
     return render(request, "users/home.html", context=context)
 
-
+# profile function views the profile of a user once logged in
 @login_required
 def profile(request):
+    # request from bixert bot on the profile page
     if "chat" in request.POST:
             text = request.POST.get("chatbot")
             print(text)
@@ -71,6 +76,7 @@ def profile(request):
                 return redirect("messaging")
             elif i == 8:
                 return redirect("profile")
+    # request for editing the profile of user
     if request.POST:
         if "edit" in request.POST:
             name = request.POST.get("name")
@@ -106,14 +112,15 @@ def profile(request):
         },
     )
 
-
+# function for logging out
 def logout_view(request):
     logout(request)
     return redirect("MainApp-home")
 
 
-
+# function personal messaging
 def messaging(request):
+    # request from bixert bot on the messaging page
     if "chat" in request.POST:
         text = request.POST.get("chatbot")
         print(text)

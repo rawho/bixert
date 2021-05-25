@@ -17,7 +17,10 @@ from .models import Notifications
 from users.models import Messaging
 from django.core.mail import send_mail
 import os
+
+# function for handling my events page
 def myevents(request):
+    # request from bixert bot on my events page
     if "chat" in request.POST:
         text = request.POST.get("chatbot")
         print(text)
@@ -50,13 +53,13 @@ def myevents(request):
         },
     )
 
-
+# class based view for handling discover events page
 class EventsListView(ListView, View):
     model = Event
     template_name = "MainApp/events.html"  # <app>/<models>_<viewtype>.html
     context_object_name = "events"
     ordering = ["date_posted"]
-
+    # request from bixert bot on the discover events page
     def post(self, request, *args, **kwargs):
         if "chat" in request.POST:
             text = request.POST.get("chatbot")
@@ -81,7 +84,7 @@ class EventsListView(ListView, View):
                 return redirect("messaging")
             elif i == 8:
                 return redirect("profile")
-
+        # request for handling dynamic search
         if "search_value" in json.loads(request.body.decode()).keys():
             if(json.loads(request.body.decode())["search_value"] == '$#@$'):
                 x = {}
@@ -120,7 +123,7 @@ class EventsListView(ListView, View):
             print(i)
             i = json.dumps(i)
             return JsonResponse(i, safe=False)
-            
+    # get request for handling register events       
     def get(self, request, *args, **kwargs):
 
         if "register" in request.GET:
@@ -143,7 +146,7 @@ class EventsListView(ListView, View):
                     from_email = "bixertbot@gmail.com", #from email
                     recipient_list =  [request.user.email], #to email
                 )
-                Notifications.objects.create(user = request.user,notification = "Please confirm you invitations for "+str(event.title))
+                Notifications.objects.create(user = request.user,notification = "Please confirm you invitations for "+str(event.title) + "send to" + str(request.user.email))
         return render(
             request,
             template_name=self.template_name,
@@ -159,7 +162,7 @@ class EventsListView(ListView, View):
             },
         )
 
-
+# function for rendering my registered events page
 def registered(request):
     if "chat" in request.POST:
             text = request.POST.get("chatbot")
@@ -194,6 +197,7 @@ def registered(request):
 
     return render(request, "MainApp/registered.html", context)
 
+# class based view for rendering separate page for each event
 class EventsDetailView(DetailView):
     model = Event
     template_name = "MainApp/event_detail.html"
@@ -238,7 +242,7 @@ class EventsDetailView(DetailView):
             return redirect("events")
 
 
-
+# function for creating a new event
 @csrf_exempt
 def createEvent(request):
     if "chat" in request.POST:
@@ -292,7 +296,7 @@ def createEvent(request):
 
 
 
-
+# function for updating an existing event 
 @csrf_exempt
 def UpdateEvent(request,id):
     if "chat" in request.POST:
@@ -332,6 +336,7 @@ def UpdateEvent(request,id):
         "event" :  Event.objects.all().filter(id=id).first()
     }
     return render(request, "MainApp/createEvent.html",context=context)
+
 
 def verify(request, ids):
     event_id, user_id = ids.split("-")
@@ -373,6 +378,7 @@ def notifications(request):
             elif i == 8:
                 return redirect("profile")
     l = Notifications.objects.all().filter(user = request.user)
+    l = reversed(l)
     IST = pytz.timezone('Asia/Kolkata')
     events = [eve.registered_event for eve in EventUser.objects.all().filter(registered_user = request.user)]
     events = [event for event in events if event.date_posted.strftime("%d-%b-%Y") == datetime.datetime.now(IST).strftime("%d-%b-%Y")]

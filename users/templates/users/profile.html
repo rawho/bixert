@@ -77,7 +77,9 @@
                     <img src="{{ event.banner.url }}" alt="">
                 </div>
                 <h1 class="title">{{event.title}}</h1>
-                <p>{{event.content}}</p>
+                {% with description=event.content|safe %}
+                    <p>{{description|slice:"25"}}</p>
+                {% endwith %}
 
                 <div class="date">
                     <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
@@ -109,7 +111,9 @@
                     <img src="{{ event.registered_event.banner.url }}" alt="">
                 </div>
                 <h1 class="title">{{event.registered_event.title}}</h1>
-                <p>{{event.registered_event.content}}</p>
+                {% with description=event.registered_event.content|safe %}
+                    <p>{{description|slice:"25"}}</p>
+                {% endwith %}
 
                 <div class="date">
                     <img src="https://img.icons8.com/cute-clipart/64/000000/planner.png" />
