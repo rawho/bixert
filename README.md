@@ -27,7 +27,8 @@
   - install all the packages - `pip install -r requirements.txt`
 - ### Creating Database
   - install mysql - [help](https://www.javatpoint.com/how-to-install-mysql)
-  - Create a user by entering to the mysql shell- `CREATE USER 'bixert'@'localhost' IDENTIFIED BY 'Bixert@123';`
+  - Create a user by entering to the mysql shell- 
+      `CREATE USER 'bixert'@'localhost' IDENTIFIED BY 'Bixert@123';`
   - `CREATE DATABASE bixert;`
 - ### migrating and running
   - `python manage.py migrate`
