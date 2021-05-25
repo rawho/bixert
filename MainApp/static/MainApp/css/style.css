@@ -1118,6 +1118,12 @@ a {
   font-size: 3rem;
 }
 
+@media (max-width: 767px) {
+  .event-details .details .event-title {
+    font-size: 2rem;
+  }
+}
+
 .event-details ._ {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1441,7 +1447,7 @@ a {
 .chatsection .new-chat-form {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1708,7 +1714,7 @@ a {
 }
 
 .message-app .message-section .chat-input .new-chat-form {
-  width: 100%;
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
