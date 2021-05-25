@@ -50,9 +50,7 @@
   </a>
   Adithya Kurien Peter 
 </div>
-
-<br><br>
-
+<br>
 <div style="display: flex; flex-direction: row;">
  
   <a href="https://linkedin.com/in/rahulmanojcet">
