@@ -6,6 +6,15 @@
 - [scikit-learn](https://scikit-learn.org/stable/)
 - [Numpy](https://numpy.org/)
 
+## Technologies We used
+![](https://img.shields.io/badge/DJANGO-5da673?style=for-the-badge&logo=django&logoColor=white)
+![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![](https://img.shields.io/badge/FireBase-3997de?style=for-the-badge&logo=firebase&logoColor=f6be0f)
+
+
 ## How to Run locally
 
 - ### Cloning and creating virtual env
@@ -20,3 +29,4 @@
 - ### migrating and running
   - `python manage.py migrate`
   - `python manage.py runserver` - Head over to http://localhost:8000 and see the magic 
+
