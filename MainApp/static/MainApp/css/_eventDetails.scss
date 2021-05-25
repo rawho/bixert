@@ -35,6 +35,9 @@
         }
         .event-title{
             font-size: 3rem;
+            @media(max-width: 767px){
+                font-size: 2rem;
+            }
             
         }
     }

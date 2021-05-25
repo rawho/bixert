@@ -8,15 +8,24 @@
         <img src="{{ object.banner.url }}" alt="">
     </div>
     <div class="details">
+        <style>
+            @media(max-width: 767px){
+                .event-title{
+                    font-size: 2rem;
+                }
+            }
+        </style>
         <h1 class="event-title">{{object.title}}</h1>
-        {% if user.username == object.author.username %}
-            <a href="{% url 'create-event' object.id %}"><button class="btn">edit</button></a>
-            <form action="" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="deleting" value="{{ object.id }}">
-                <button name="delete" class="btn">Delete</button>
-            </form>
-        {% endif %}
+        <div style="display: flex; flex-direction: row;" class="adi">
+            {% if user.username == object.author.username %}
+                <a href="{% url 'create-event' object.id %}"><button style="margin-right: 10px;" class="btn">edit</button></a>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="deleting" value="{{ object.id }}">
+                    <button name="delete" class="btn">Delete</button>
+                </form>
+            {% endif %}
+        </div>
     </div>
     <div class="_">
         <p>Organised by <span>{{object.author}}</span></p>
