@@ -232,6 +232,11 @@ class EventsDetailView(DetailView):
                 return redirect("messaging")
             elif i == 8:
                 return redirect("profile")
+        if "delete" in request.POST:
+            id = request.POST.get("deleting")
+            Event.objects.all().filter(id = id).delete()
+            return redirect("events")
+
 
 
 @csrf_exempt
@@ -371,6 +376,7 @@ def notifications(request):
     IST = pytz.timezone('Asia/Kolkata')
     events = [eve.registered_event for eve in EventUser.objects.all().filter(registered_user = request.user)]
     events = [event for event in events if event.date_posted.strftime("%d-%b-%Y") == datetime.datetime.now(IST).strftime("%d-%b-%Y")]
+    print(datetime.datetime.now(IST).strftime("%d-%b-%Y"))
     return render(request,"MainApp/notifications.html",context= {"noti":l,"current_event":events})
 
 

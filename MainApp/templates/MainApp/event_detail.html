@@ -11,6 +11,11 @@
         <h1 class="event-title">{{object.title}}</h1>
         {% if user.username == object.author.username %}
             <a href="{% url 'create-event' object.id %}"><button class="btn">edit</button></a>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="deleting" value="{{ object.id }}">
+                <button name="delete" class="btn">Delete</button>
+            </form>
         {% endif %}
     </div>
     <div class="_">
