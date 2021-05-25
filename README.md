@@ -1,5 +1,9 @@
 # [Project Bixert](https://bixert.xyz/)
 
+- TeamID : `BFH/rec7TArwrQ98nLkWc/2021`
+
+### Project is live at [bixert.xyz](https://bixert.xyz)
+
 ## Packages used 
 - [Django](https://www.djangoproject.com/)
 - [CKeditor](https://ckeditor.com/)
@@ -46,7 +50,7 @@
     <img align="left" alt="Whatsapp" width="22px" src="screenshots/whatsapp.svg" />
   </a>
   <a href="https://github.com/aaadddiii">
-    <img align="left" alt="github" width="22px" src="screenshots/github.svg" />
+    <img align="left" alt="github" width="30px" src="screenshots/github.png" />
   </a>
   Adithya Kurien Peter 
 </div>
@@ -60,7 +64,7 @@
     <img align="left" alt="Whatsapp" width="22px" src="screenshots/whatsapp.svg" />
   </a>
   <a href="https://github.com/rawho">
-    <img align="left" alt="github" width="22px" src="screenshots/github.svg" />
+    <img align="left" alt="github" width="30px" src="screenshots/github.png" />
   </a>
   Rahul T
 </div>
