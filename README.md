@@ -34,3 +34,5 @@
   - `python manage.py migrate`
   - `python manage.py runserver` - Head over to http://localhost:8000 and see the magic 
 
+## Developers
+![Rahul And Adi](screenshots/adi-and-rahul.gif)
