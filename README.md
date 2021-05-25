@@ -35,4 +35,37 @@
   - `python manage.py runserver` - Head over to http://localhost:8000 and see the magic 
 
 ## Developers
+
+
+<div style="display: flex; flex-direction: row;">
+ 
+  <a href="https://www.linkedin.com/in/adithya-kurien-ab1b11197">
+    <img align="left" alt="Linkdein" width="22px" src="screenshots/linkedin.svg" />
+  </a>
+  <a href="https://wa.me/+919387971684">
+    <img align="left" alt="Whatsapp" width="22px" src="screenshots/whatsapp.svg" />
+  </a>
+  <a href="https://github.com/aaadddiii">
+    <img align="left" alt="github" width="22px" src="screenshots/github.svg" />
+  </a>
+  Adithya Kurien Peter 
+</div>
+
+<br><br>
+
+<div style="display: flex; flex-direction: row;">
+ 
+  <a href="https://linkedin.com/in/rahulmanojcet">
+    <img align="left" alt="Linkdein" width="22px" src="screenshots/linkedin.svg" />
+  </a>
+  <a href="https://wa.me/+919747406685">
+    <img align="left" alt="Whatsapp" width="22px" src="screenshots/whatsapp.svg" />
+  </a>
+  <a href="https://github.com/rawho">
+    <img align="left" alt="github" width="22px" src="screenshots/github.svg" />
+  </a>
+  Rahul T
+</div>
+<br><br>
+
 ![Rahul And Adi](screenshots/adi-and-rahul.gif)
